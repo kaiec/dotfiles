@@ -88,3 +88,9 @@ highlight CursorLineNr ctermfg=5 ctermbg=4
 " ------------ LINE LIMIT -----------------------
 set colorcolumn=81
 highlight ColorColumn ctermbg=4 ctermfg=255
+
+
+" ------------ Windows specific -----------------
+if has("win32") || has("win64")
+    set guifont=Consolas:h16:cANSI
+endif
