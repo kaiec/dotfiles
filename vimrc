@@ -17,7 +17,7 @@ Plugin 'tpope/vim-fugitive'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'johngrib/vim-game-snake', {'pinned': 1}
+" Plugin 'johngrib/vim-game-snake', {'pinned': 1}
 Plugin 'suan/vim-instant-markdown'
 Plugin 'vimwiki/vimwiki'
 
