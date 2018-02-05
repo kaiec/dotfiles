@@ -1,5 +1,5 @@
 # Install all as submodule:
-# for ...
+# grep -v "#" plugins.txt | while read i; do git submodule add $i; done;
 https://github.com/kien/ctrlp.vim.git  
 https://github.com/scrooloose/nerdtree.git
 https://github.com/johngrib/vim-game-snake.git
