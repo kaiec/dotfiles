@@ -26,3 +26,24 @@ map <leader>md :InstantMarkdownPreview<CR>
 
 " Notizen
 map <F11> :NERDTree
+
+set laststatus=2
+
+" ------------ COLOR SCHEME ---------------------
+
+" colorscheme greenwint
+
+" ------------ LINE NUMBERS ---------------------
+set number relativenumber
+" https://jeffkreeftmeijer.com/vim-number/
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+highlight LineNr ctermfg=5 ctermbg=4
+highlight CursorLineNr ctermfg=5 ctermbg=4
+
+" ------------ LINE LIMIT -----------------------
+set colorcolumn=81
+highlight ColorColumn ctermbg=4 ctermfg=255

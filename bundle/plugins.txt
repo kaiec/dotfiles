@@ -5,4 +5,3 @@ https://github.com/scrooloose/nerdtree.git
 https://github.com/johngrib/vim-game-snake.git
 https://github.com/suan/vim-instant-markdown.git
 https://github.com/vimwiki/vimwiki.git
-git@github.com:dracula/vim.git dracula-theme

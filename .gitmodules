@@ -16,3 +16,9 @@
 [submodule "bundle/dracula-theme"]
 	path = bundle/dracula-theme
 	url = git@github.com:dracula/vim.git
+[submodule "bundle/greenwint"]
+	path = bundle/greenwint
+	url = https://github.com/preocanin/greenwint.git
+[submodule "bundle/neodark.vim"]
+	path = bundle/neodark.vim
+	url = https://github.com/KeitaNakamura/neodark.vim.git
