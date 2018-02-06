@@ -68,8 +68,8 @@ map <leader>md :InstantMarkdownPreview<CR>
 
 " Notizen
 nmap <F12> :NERDTree ~/Dropbox/Notizen<CR>
-nmap <S-F12> :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR><Shift>
-map! <C-d> <C-R>=strftime('%Y-%m-%d')<CR>
+nmap <S-F12> :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
+map <LEADER>d :put=strftime('%Y-%m-%d')<CR>10la
 
 set laststatus=2
 
