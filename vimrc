@@ -96,6 +96,21 @@ vnoremap Ö :
 " noremap i k
 " noremap h i
 " noremap j h
+
+" Let's try to get rid of the arrows...
+noremap <Left> <nop>
+noremap <Right> <nop>
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap! <Left> <nop>
+noremap! <Right> <nop>
+noremap! <Up> <nop>
+noremap! <Down> <nop>
+noremap! <PageDown> <nop>
+noremap <PageDown> <nop>
+noremap! <PageUp> <nop>
+noremap <PageUp> <nop>
+noremap! <Down> <nop>
 " ------------ COLOR SCHEME ---------------------
 
 " colorscheme greenwint
