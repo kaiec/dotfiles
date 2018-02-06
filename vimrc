@@ -20,6 +20,7 @@ Plugin 'scrooloose/nerdtree'
 " Plugin 'johngrib/vim-game-snake', {'pinned': 1}
 Plugin 'suan/vim-instant-markdown'
 Plugin 'vimwiki/vimwiki'
+Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -34,7 +35,7 @@ filetype plugin indent on    " required
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
-" see :h vundle for more details or wiki for FAQ
+" SEE :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
 
@@ -49,7 +50,7 @@ let mapleader = ","
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 " NERDTree toggle
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen=1
 
 " vimwiki - Personal Wiki for Vim
@@ -66,10 +67,18 @@ let g:instant_markdown_autostart = 0	" disable autostart
 map <leader>md :InstantMarkdownPreview<CR>
 
 " Notizen
-map <F11> :NERDTree
+nmap <F12> :NERDTree ~/Dropbox/Notizen<CR>
+nmap <S-F12> :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR><Shift>
+map! <C-d> <C-R>=strftime('%Y-%m-%d')<CR>
 
 set laststatus=2
 
+" ------------ KEY MAPPINGS ---------------------
+
+nnoremap ö :
+nnoremap Ö :
+vnoremap ö :
+vnoremap Ö :
 " ------------ COLOR SCHEME ---------------------
 
 " colorscheme greenwint
@@ -93,4 +102,6 @@ highlight ColorColumn ctermbg=4 ctermfg=255
 " ------------ Windows specific -----------------
 if has("win32") || has("win64")
     set guifont=Consolas:h16:cANSI
+    set background=dark
+    colorscheme colorized
 endif
