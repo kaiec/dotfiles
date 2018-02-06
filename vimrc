@@ -111,6 +111,11 @@ noremap <PageDown> <nop>
 noremap! <PageUp> <nop>
 noremap <PageUp> <nop>
 noremap! <Down> <nop>
+" let g:BASH_Ctrl_j = 'off'
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
 " ------------ COLOR SCHEME ---------------------
 
 " colorscheme greenwint
@@ -136,5 +141,9 @@ if has("win32") || has("win64")
     set guifont=Consolas:h16:cANSI
     set background=dark
     colorscheme solarized
+    :set guioptions-=m  "remove menu bar
+    :set guioptions-=T  "remove toolbar
+    :set guioptions-=r  "remove right-hand scroll bar
+    :set guioptions-=L  "remove left-hand scroll bar
 endif
 
