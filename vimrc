@@ -103,5 +103,5 @@ highlight ColorColumn ctermbg=4 ctermfg=255
 if has("win32") || has("win64")
     set guifont=Consolas:h16:cANSI
     set background=dark
-    colorscheme colorized
+    colorscheme solarized
 endif
