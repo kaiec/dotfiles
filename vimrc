@@ -49,6 +49,15 @@ filetype plugin indent on
 set showcmd
 let mapleader = ","
 
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
+	
 " Markdown support for .md files
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
@@ -82,6 +91,11 @@ nnoremap ö :
 nnoremap Ö :
 vnoremap ö :
 vnoremap Ö :
+" Use ijkl as arrow key. j for insert mode
+" noremap k j
+" noremap i k
+" noremap h i
+" noremap j h
 " ------------ COLOR SCHEME ---------------------
 
 " colorscheme greenwint
@@ -108,3 +122,4 @@ if has("win32") || has("win64")
     set background=dark
     colorscheme solarized
 endif
+
