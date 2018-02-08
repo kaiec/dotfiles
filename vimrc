@@ -24,6 +24,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'vimwiki/vimwiki'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'python-mode/python-mode'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -135,6 +137,29 @@ highlight CursorLineNr ctermfg=5 ctermbg=4
 set colorcolumn=81
 highlight ColorColumn ctermbg=4 ctermfg=255
 
+" ------------ FOLDING --------------------------
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" ------------- Python --------------------------
+let g:SimpylFold_docstring_preview=1
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" ------------- HTML, CSS ------------------------
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
 
 " ------------ Windows specific -----------------
 if has("win32") || has("win64")
@@ -146,4 +171,7 @@ if has("win32") || has("win64")
     :set guioptions-=r  "remove right-hand scroll bar
     :set guioptions-=L  "remove left-hand scroll bar
 endif
+
+" ------------ MISC ---------------------
+command! VRC :e ~/.vim/vimrc
 
