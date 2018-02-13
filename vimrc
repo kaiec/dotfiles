@@ -1,9 +1,13 @@
 :set encoding=utf-8
 :set fileencoding=utf-8
 
+"" vim:fdm=expr:fdl=0
+"" vim:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+""" Plugins
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -24,7 +28,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'vimwiki/vimwiki'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'tmhedberg/SimpylFold'
+" Plugin 'tmhedberg/SimpylFold'
 Plugin 'python-mode/python-mode'
 
 " All of your Plugins must be added before the following line
@@ -43,13 +47,13 @@ filetype plugin indent on    " required
 " SEE :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-
+""" Common Stuff
 
 
 syntax on
 filetype plugin indent on
 set showcmd
-let mapleader = ","
+set laststatus=2
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -59,6 +63,7 @@ autocmd BufReadPost *
   \   exe "normal! g`\"" |
   \ endif
 
+""" Markdown
 	
 " Markdown support for .md files
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
@@ -85,9 +90,9 @@ nmap <F12> :NERDTree ~/Dropbox/Notizen<CR>
 nmap <S-F12> :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
 map <LEADER>d :put=strftime('%Y-%m-%d')<CR>10la
 
-set laststatus=2
 
-" ------------ KEY MAPPINGS ---------------------
+""" Key Mappings
+let mapleader = "ä"
 
 nnoremap ö :
 nnoremap Ö :
@@ -118,11 +123,14 @@ nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
-" ------------ COLOR SCHEME ---------------------
 
+vnoremap < <gv
+vnoremap > >gv
+
+""" Color Scheme
 " colorscheme greenwint
 
-" ------------ LINE NUMBERS ---------------------
+""" Line Numbers
 set number relativenumber
 " https://jeffkreeftmeijer.com/vim-number/
 :augroup numbertoggle
@@ -133,35 +141,37 @@ set number relativenumber
 highlight LineNr ctermfg=5 ctermbg=4
 highlight CursorLineNr ctermfg=5 ctermbg=4
 
-" ------------ LINE LIMIT -----------------------
+""" Line Limit
 set colorcolumn=81
 highlight ColorColumn ctermbg=4 ctermfg=255
 
-" ------------ FOLDING --------------------------
+""" Folding 
 " Enable folding with the spacebar
-nnoremap <space> za
+nnoremap <tab> za
+nnoremap <S-tab> zM
 
-" ------------- Python --------------------------
-let g:SimpylFold_docstring_preview=1
+""" Python 
 au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
     \ set fileformat=unix
 
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-" ------------- HTML, CSS ------------------------
+""" Clipboard
+vnoremap <leader>c :!xclip -i -f<cr> 
+nnoremap <leader>v :r!xclip -o<cr>
+""" HTML, CSS 
 au BufNewFile,BufRead *.js, *.html, *.css
     \ set tabstop=2
     \ set softtabstop=2
     \ set shiftwidth=2
 
 
-" ------------ Windows specific -----------------
+""" Windows specific 
 if has("win32") || has("win64")
     set guifont=Consolas:h16:cANSI
     set background=dark
@@ -171,7 +181,6 @@ if has("win32") || has("win64")
     :set guioptions-=r  "remove right-hand scroll bar
     :set guioptions-=L  "remove left-hand scroll bar
 endif
-
-" ------------ MISC ---------------------
+""" Misc 
 command! VRC :e ~/.vim/vimrc
 
