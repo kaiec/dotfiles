@@ -55,6 +55,7 @@ syntax on
 filetype plugin indent on
 set showcmd
 set laststatus=2
+set backspace=2
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -120,10 +121,16 @@ noremap! <PageUp> <nop>
 noremap <PageUp> <nop>
 noremap! <Down> <nop>
 " let g:BASH_Ctrl_j = 'off'
+
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
+
+inoremap <C-H> <Left>
+inoremap <C-J> <Down>
+inoremap <C-K> <Up>
+inoremap <C-L> <Right>
 
 vnoremap < <gv
 vnoremap > >gv
