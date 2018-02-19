@@ -29,8 +29,10 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'vimwiki/vimwiki'
 Plugin 'altercation/vim-colors-solarized'
 " Plugin 'tmhedberg/SimpylFold'
-Plugin 'python-mode/python-mode'
+" Plugin 'python-mode/python-mode'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'benmills/vimux'
+Plugin 'mhartington/oceanic-next'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -137,7 +139,13 @@ vnoremap > >gv
 
 """ Color Scheme
 " colorscheme greenwint
+if (has("termguicolors"))
+ set termguicolors
+endif
 
+" Theme
+syntax enable
+colorscheme OceanicNext
 """ Line Numbers
 set number relativenumber
 " https://jeffkreeftmeijer.com/vim-number/
@@ -168,7 +176,7 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 
-
+let g:python3_host_prog = 'C:/Users/kai/.vim/venv-vim-win/Scripts/python.exe'
 """ Clipboard
 vnoremap <leader>c :!xclip -i -f<cr> 
 nnoremap <leader>v :r!xclip -o<cr>
@@ -180,7 +188,7 @@ au BufNewFile,BufRead *.js, *.html, *.css
 
 
 """ Windows specific 
-if has("win32") || has("win64")
+if !has("nvim") && (has("win32") || has("win64"))
     set guifont=Consolas:h16:cANSI
     set background=dark
     colorscheme solarized
