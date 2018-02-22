@@ -134,6 +134,9 @@ inoremap <C-J> <Down>
 inoremap <C-K> <Up>
 inoremap <C-L> <Right>
 
+inoremap <C-S> <esc>:w<cr>
+nnoremap <C-S> :w<cr>
+
 vnoremap < <gv
 vnoremap > >gv
 
@@ -197,6 +200,18 @@ if !has("nvim") && (has("win32") || has("win64"))
     :set guioptions-=r  "remove right-hand scroll bar
     :set guioptions-=L  "remove left-hand scroll bar
 endif
+let g:fontsize=11
+function! IncreaseFontsize()
+	let g:fontsize+=1
+	execute "GuiFont! consolas:h" . g:fontsize
+endfunction
+
+function! DecreaseFontsize()
+	let g:fontsize-=1
+	execute "GuiFont! consolas:h" . g:fontsize
+endfunction
+nnoremap <C-]> :call IncreaseFontsize()<cr>
+nnoremap <C--> :call DecreaseFontsize()<cr>
 """ Misc 
 command! VRC :e ~/.vim/vimrc
 
