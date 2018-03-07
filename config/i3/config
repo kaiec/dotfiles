@@ -166,4 +166,7 @@ workspace 4 output eDP1
 
 exec thunderbird
 exec firefox
-exec gnome-terminal --title Notes -e nvim /home/kai/Dropbox/Notizen/index.md
+exec gnome-terminal --class="notizen" -e "nvim Dropbox/Notizen/index.md"
+assign [class="notizen"] 1
+assign [class="Thunderbird"] 2
+assign [class="Firefox"] 3
