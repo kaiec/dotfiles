@@ -1,5 +1,6 @@
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
-mkdir -p ~/.config/nvim
-ln -s ~/dotfiles/config/nvim/init.vim ~/.config/nvim/init.vim
-ln -s ~/dotfiles/vimrc ~/.vimrc
-ln -s ~/dotfiles/bashrc ~/.bashrc
+ln -sTf ~/dotfiles/config/nvim ~/.config/nvim
+ln -sTf ~/dotfiles/config/i3 ~/.config/i3
+ln -sTf ~/dotfiles/config/i3status ~/.config/i3status
+ln -sTf ~/dotfiles/vimrc ~/.vimrc
+ln -sTf ~/dotfiles/bashrc ~/.bashrc
