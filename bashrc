@@ -119,6 +119,8 @@ fi
 stty -ixon
 export EDITOR=nvim
 
-alias today="gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)"
+# alias today="gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)"
+alias today="khal list"
 
-gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)
+# gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)
+khal list
