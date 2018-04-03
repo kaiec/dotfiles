@@ -7,3 +7,4 @@ ln -sTf ~/dotfiles/bashrc ~/.bashrc
 mkdir ~/.todo
 ln -sTf ~/dotfiles/todo.conf ~/.todo/config
 ln -sTf ~/dotfiles/bin/t ~/bin/t
+ln -sTf ~/dotfiles/profile ~/.profile
