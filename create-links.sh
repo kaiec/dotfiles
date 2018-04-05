@@ -7,5 +7,5 @@ ln -sTf ~/dotfiles/vimrc ~/.vimrc
 ln -sTf ~/dotfiles/bashrc ~/.bashrc
 mkdir ~/.todo
 ln -sTf ~/dotfiles/todo.conf ~/.todo/config
-ln -sTf ~/dotfiles/bin/t ~/bin/t
+ln -sTf ~/dotfiles/bin/todo.sh ~/bin/todo.sh
 ln -sTf ~/dotfiles/profile ~/.profile

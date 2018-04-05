@@ -119,8 +119,16 @@ fi
 stty -ixon
 export EDITOR=nvim
 
+export TODOTXT_DEFAULT_ACTION=ls
+alias t="todo.sh -a -t"
 # alias today="gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)"
 alias today="khal list"
 
 # gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)
+echo "------ TERMINE ------"
 khal list
+echo
+echo "------- TODO --------"
+t -pP lsp A
+echo "---------------------"
+echo
