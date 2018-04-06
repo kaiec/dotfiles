@@ -37,6 +37,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'benmills/vimux'
 Plugin 'mhartington/oceanic-next'
+Plugin 'dhruvasagar/vim-table-mode'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -61,7 +62,16 @@ syntax on
 filetype plugin indent on
 set showcmd
 set laststatus=2
-set backspace=2
+" backspace behaves normal
+set backspace=indent,eol,start
+" Cursor moves over beginning and end of lines
+set whichwrap+=<,>,[,]
+" Cursor moves over visual lines
+noremap  <buffer> <silent> <Up>   gk
+noremap  <buffer> <silent> <Down> gj
+inoremap <buffer> <silent> <Up>   <C-o>gk
+inoremap <buffer> <silent> <Down> <C-o>gj
+
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -108,19 +118,19 @@ vnoremap ö :
 vnoremap Ö :
 
 " Let's try to get rid of the arrows...
-noremap <Left> <nop>
-noremap <Right> <nop>
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap! <Left> <nop>
-noremap! <Right> <nop>
-noremap! <Up> <nop>
-noremap! <Down> <nop>
-noremap! <PageDown> <nop>
-noremap <PageDown> <nop>
-noremap! <PageUp> <nop>
-noremap <PageUp> <nop>
-noremap! <Down> <nop>
+" noremap <Left> <nop>
+" noremap <Right> <nop>
+" noremap <Up> <nop>
+" noremap <Down> <nop>
+" noremap! <Left> <nop>
+" noremap! <Right> <nop>
+" noremap! <Up> <nop>
+" noremap! <Down> <nop>
+" noremap! <PageDown> <nop>
+" noremap <PageDown> <nop>
+" noremap! <PageUp> <nop>
+" noremap <PageUp> <nop>
+" noremap! <Down> <nop>
 " let g:BASH_Ctrl_j = 'off'
 
 nnoremap <C-H> <C-W>h
