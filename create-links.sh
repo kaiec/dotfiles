@@ -9,3 +9,5 @@ mkdir ~/.todo
 ln -sTf ~/dotfiles/todo.conf ~/.todo/config
 ln -sTf ~/dotfiles/bin/todo.sh ~/bin/todo.sh
 ln -sTf ~/dotfiles/profile ~/.profile
+ln -sTf ~/dotfiles/bin/screenshot.sh ~/bin/screenshot.sh
+

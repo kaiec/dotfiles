@@ -1,0 +1,4 @@
+scrot
+xclip
+optipng
+

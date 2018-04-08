@@ -86,6 +86,9 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+# Screenshots with Print Screen
+bindsym --release Print exec ~/bin/screenshot.sh
+
 # focus the child container
 #bindsym $mod+d focus child
 
