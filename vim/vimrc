@@ -146,9 +146,11 @@ inoremap <C-L> <Right>
 inoremap <C-S> <esc>:w<cr>
 nnoremap <C-S> :w<cr>
 
-nnoremap <C-C> :q<cr>
+nnoremap <C-Q> :qa<cr>
+inoremap <C-Q> <esc>:qa<cr>
 vnoremap < <gv
 vnoremap > >gv
+
 
 """ Color Scheme
 " colorscheme greenwint
