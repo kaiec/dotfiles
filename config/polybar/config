@@ -25,7 +25,7 @@ height = 40
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -50,7 +50,7 @@ font-3 = Font Awesome 5 Free Regular:pixelsize=13;2
 modules-left = i3 screenmenu 
 modules-center = nextdate 
 ; modules-right = wlan filesystem xbacklight xkeyboard memory cpu battery temperature date powermenu
-modules-right = battery1 battery2 cpu date
+modules-right = cpu battery1 battery2 date
 
 tray-position = right
 tray-padding = 2
@@ -74,7 +74,7 @@ cursor-scroll = ns-resize
 
 [module/nextdate]
 type = custom/script
-exec = "khal list `date +%H:%M` 3h | grep ^[012] --color=never | head -n 1"
+exec = "(khal list `date +%H:%M` 3h | grep ^[012] --color=never || echo "") | head -n 1"
 interval = 600
 label = "  %output%"
 [module/xwindow]
