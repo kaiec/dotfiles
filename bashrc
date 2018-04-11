@@ -117,6 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 stty -ixon
+
 export EDITOR=nvim
 
 export TODOTXT_DEFAULT_ACTION=ls

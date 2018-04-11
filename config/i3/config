@@ -163,10 +163,13 @@ focus_follows_mouse no
 #         tray_output primary
 # }
 
-exec_always --no-startup-id xmodmap -e "clear lock" #disable caps lock switch
-exec_always --no-startup-id xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
+exec_always --no-startup-id sleep 5; xmodmap -e "clear lock" #disable caps lock switch
+exec_always --no-startup-id sleep 6; xmodmap -e "keycode 0x42  = Escape" #set caps_lock as escape
 exec_always --no-startup-id feh --bg-scale ~/dotfiles/bg.png
 exec_always --no-startup-id ~/dotfiles/bin/polybar_launch.sh
+
+# FIX firefox sound issue, see https://support.mozilla.org/en-US/kb/no-sound-firefox-59-linux
+exec_always --no-startup-id sleep 10;pulseaudio --start --exit-idle-time=-1
 
 # switch monitors
 bindsym $mod+m move workspace to output left
