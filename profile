@@ -20,3 +20,4 @@ fi
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 export EDITOR=vim
+export TERMINAL=urxvt
