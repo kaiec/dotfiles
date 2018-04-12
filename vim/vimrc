@@ -236,3 +236,7 @@ augroup mail_trailing_whitespace " {
     autocmd FileType mail setlocal textwidth=72
 augroup END " }
 
+" Transparent Background
+hi Normal guibg=none ctermbg=none
+hi NonText guibg=none ctermbg=none
+hi EndOfBuffer guibg=none ctermbg=none
