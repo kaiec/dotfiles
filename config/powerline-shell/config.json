@@ -10,5 +10,9 @@
     "jobs",
     "root"
   ],
+  "cwd": {
+  	"max_depth": 2,
+	"mode": "dironly"
+  },
   "mode": "patched"
 }
