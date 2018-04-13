@@ -32,7 +32,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start ranger
-bindsym $mod+numbersign exec i3-sensible-terminal -e ranger
+bindsym $mod+numbersign exec i3-sensible-terminal -e ranger ~/Daten
 
 # start ikhal
 bindsym $mod+c exec i3-sensible-terminal -e ikhal
