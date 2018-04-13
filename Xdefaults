@@ -1,21 +1,21 @@
-urxvt*font:             xft:Hack:size=20
-urxvt*termName:         rxvt-256color
-urxvt*background:       #000000
-urxvt*foreground:       #cccccc
-urxvt*scrollBar:        false
-urxvt*perl-lib:         /usr/lib/urxvt/perl/
-urxvt*perl-ext-common:  default,matcher,font-size,prevent-close
-urxvt*urlLauncher:      /usr/bin/jumanji
-urxvt*matcher.button:   1
-#urxvt*fading:           50
-#urxvt*fadeColor:        #000000
+URxvt*font:             xft:Hack:size=20
+URxvt*termName:         rxvt-256color
+URxvt*background:       #000000
+URxvt*foreground:       #cccccc
+URxvt*scrollBar:        false
+URxvt*perl-lib:         /usr/lib/urxvt/perl/
+URxvt*perl-ext-common:  default,matcher,font-size,prevent-close
+URxvt*urlLauncher:      /usr/bin/jumanji
+URxvt*matcher.button:   1
+#URxvt*fading:           50
+#URxvt*fadeColor:        #000000
 
 Xft*dpi:                96
 Xft*antialias:          true
 Xft*hinting:            full
 
-urxvt*background:       rgba:0000/0000/0000/cccc
-urxvt*depth: 32
+URxvt*background:       rgba:0000/0000/0000/cccc
+URxvt*depth: 32
 #URxvt.transparent:   true
 #URxvt.tintColor:     white
 #URxvt.shading:       20 

@@ -184,15 +184,16 @@ workspace 2 output eDP1
 workspace 3 output eDP1
 workspace 4 output eDP1
 
-# exec thunderbird
-# exec firefox
-# exec gnome-terminal --class="notizen" -e "nvim Dropbox/Notizen/index.md"
-# assign [class="notizen"] 1
-# assign [class="Thunderbird"] 2
-# assign [class="Firefox"] 3
-
 exec --no-startup-id compton
 
 gaps inner 10
 gaps outer 0 
 for_window [class="^.*"] border pixel 3
+
+# Terminal scratchpad
+#for_window [title="vim_notes"] move to scratchpad, border 1pixel
+#bindsym $mod+Shift+n [title="vim_notes"] scratchpad show
+#exec i3-sensible-terminal -e trap 'echo -ne "\e]0;vim_notes\007"' DEBUG; vim ~/Dropbox/Notizen/index.md
+
+bindsym $mod+y scratchpad show
+bindsym $mod+Shift+y move to scratchpad
