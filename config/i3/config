@@ -130,30 +130,36 @@ bindsym $mod+Shift+w exec "i3lock -e -c 000000"
 bindsym $mod+Shift+s exec "i3lock -e -c 000000 && systemctl suspend"
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
+mode "layout" {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 20 px or 20 ppt
+        bindsym j resize grow height 20 px or 20 ppt
+        bindsym k resize shrink height 20 px or 20 ppt
+        bindsym l resize grow width 20 px or 20 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 20 px or 20 ppt
+        bindsym Down resize grow height 20 px or 20 ppt
+        bindsym Up resize shrink height 20 px or 20 ppt
+        bindsym Right resize grow width 20 px or 20 ppt
 
+        bindsym Shift+Left move left 20 px
+        bindsym Shift+Down move down 20 px
+        bindsym Shift+Up move up 20 px
+        bindsym Shift+Right move right 20 px
+	
+	bindsym c move position center
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "layout"
 
 # no focus on mouse hove
 focus_follows_mouse no
@@ -197,3 +203,4 @@ for_window [class="^.*"] border pixel 3
 
 bindsym $mod+y scratchpad show
 bindsym $mod+Shift+y move to scratchpad
+
