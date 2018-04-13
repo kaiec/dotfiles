@@ -8,6 +8,7 @@ ln -sTf ~/dotfiles/config/rofi ~/.config/rofi
 ln -sTf ~/dotfiles/config/powerline-shell ~/.config/powerline-shell
 ln -sTf ~/dotfiles/vimrc ~/.vimrc
 ln -sTf ~/dotfiles/bashrc ~/.bashrc
+ln -sTf ~/dotfiles/urxvt ~/.urxvt
 ln -sTf ~/dotfiles/Xdefaults ~/.Xdefaults
 mkdir ~/.todo
 ln -sTf ~/dotfiles/todo.conf ~/.todo/config

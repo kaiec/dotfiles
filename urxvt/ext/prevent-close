@@ -1,0 +1,4 @@
+#!/usr/bin/perl  
+sub on_wm_delete_window {
+    return 1;
+}
