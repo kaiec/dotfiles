@@ -102,6 +102,12 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias ..='cd ..'
+alias 1..='cd ..'
+alias 2..='cd ../..'
+alias 3..='cd ../../..'
+alias 4..='cd ../../../..'
+alias 5..='cd ../../../../..'
+
 alias gst='git status'
 alias gpu='git push'
 alias gca='git commit -a'
