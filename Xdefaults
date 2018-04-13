@@ -1,4 +1,4 @@
-URxvt*font:             xft:Hack:size=20
+URxvt*font:             xft:Hack:size=15
 URxvt*termName:         rxvt-256color
 URxvt*background:       #000000
 URxvt*foreground:       #cccccc
