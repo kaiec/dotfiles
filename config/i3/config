@@ -14,6 +14,20 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:SFNS Display 13
 
+gaps inner 10
+gaps outer 0 
+for_window [class="^.*"] border pixel 3
+smart_gaps on
+smart_borders on
+
+# Colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #f4c7899  #6699ff
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -198,9 +212,6 @@ workspace 4 output eDP1
 
 exec --no-startup-id compton
 
-gaps inner 10
-gaps outer 0 
-for_window [class="^.*"] border pixel 3
 
 # Terminal scratchpad
 #for_window [title="vim_notes"] move to scratchpad, border 1pixel
@@ -209,4 +220,18 @@ for_window [class="^.*"] border pixel 3
 
 bindsym $mod+y scratchpad show
 bindsym $mod+Shift+y move to scratchpad
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+
+# Set minimum birghtness to 1
+exec --no-startup-id light -Sc 1
+#
+#
 
