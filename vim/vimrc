@@ -1,6 +1,7 @@
 :set encoding=utf-8
 :set fileencoding=utf-8
 
+set nocompatible
 
 set background=dark
 set t_Co=256
@@ -8,39 +9,34 @@ set t_Co=256
 "" vim:fdm=expr:fdl=0
 "" vim:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
 
 """ Plugins
 " set the runtime path to include Vundle and initialize
 set rtp+=~/dotfiles/vim/bundle/Vundle.vim
+filetype off                  " required by vundle
+
+"--------------------------------------------
 " call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 call vundle#begin('~/dotfiles/vim/bundle')
-
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-" Plugin 'johngrib/vim-game-snake', {'pinned': 1}
-Plugin 'suan/vim-instant-markdown'
-Plugin 'vimwiki/vimwiki'
-Plugin 'altercation/vim-colors-solarized'
-" Plugin 'tmhedberg/SimpylFold'
-" Plugin 'python-mode/python-mode'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'benmills/vimux'
-Plugin 'mhartington/oceanic-next'
-Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'tpope/vim-fugitive' 			" GIT support
+Plugin 'kien/ctrlp.vim'				" quick file browser
+Plugin 'scrooloose/nerdtree'			" file tree
+Plugin 'vimwiki/vimwiki'			" Wiki style markdown
+Plugin 'davidhalter/jedi-vim'			" auto completion
+Plugin 'mhartington/oceanic-next'		" color scheme
+Plugin 'dhruvasagar/vim-table-mode'		" edit tables
+Plugin 'vim-syntastic/syntastic'		" Syntax checker
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+"--------------------------------------------
+
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -92,7 +88,6 @@ let NERDTreeQuitOnOpen=1
 
 " vimwiki - Personal Wiki for Vim
 " https://github.com/vimwiki/vimwiki
-set nocompatible
 
 " vimwiki with markdown support
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
@@ -151,16 +146,16 @@ inoremap <C-Q> <esc>:qa<cr>
 vnoremap < <gv
 vnoremap > >gv
 
+" clear search highlight with esc
+nnoremap <esc> :noh<return><esc>
 
 """ Color Scheme
-" colorscheme greenwint
-" if (has("termguicolors"))
-"  set termguicolors
-" endif
-
 " Theme
 syntax enable
 colorscheme OceanicNext
+
+
+
 """ Line Numbers
 set number relativenumber
 " https://jeffkreeftmeijer.com/vim-number/
@@ -191,7 +186,8 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 
-let g:python3_host_prog = 'C:/Users/kai/.vim/venv-vim-win/Scripts/python.exe'
+let g:python_host_prog = '/home/kai/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/home/kai/.pyenv/versions/neovim3/bin/python'
 """ Clipboard
 vnoremap <leader>c :!xclip -i -f<cr> 
 nnoremap <leader>v :r!xclip -o<cr>
@@ -202,28 +198,6 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set shiftwidth=2
 
 
-""" Windows specific 
-if !has("nvim") && (has("win32") || has("win64"))
-    set guifont=Consolas:h16:cANSI
-    set background=dark
-    colorscheme solarized
-    :set guioptions-=m  "remove menu bar
-    :set guioptions-=T  "remove toolbar
-    :set guioptions-=r  "remove right-hand scroll bar
-    :set guioptions-=L  "remove left-hand scroll bar
-endif
-let g:fontsize=11
-function! IncreaseFontsize()
-	let g:fontsize+=1
-	execute "GuiFont! consolas:h" . g:fontsize
-endfunction
-
-function! DecreaseFontsize()
-	let g:fontsize-=1
-	execute "GuiFont! consolas:h" . g:fontsize
-endfunction
-nnoremap <C-]> :call IncreaseFontsize()<cr>
-nnoremap <C--> :call DecreaseFontsize()<cr>
 """ Misc 
 command! VRC :e ~/dotfiles/vim/vimrc
 
@@ -240,3 +214,25 @@ augroup END " }
 hi Normal guibg=none ctermbg=none
 hi NonText guibg=none ctermbg=none
 hi EndOfBuffer guibg=none ctermbg=none
+
+" persistent undo
+" tell it to use an undo file
+set undofile
+" set a directory to store the undo history
+set undodir=~/.vimundo/
+
+
+" completion
+" http://vim.wikia.com/wiki/VimTip1386
+:set completeopt=longest,menuone
+:inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Syntastic Syntax Checking
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
