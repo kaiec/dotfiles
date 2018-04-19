@@ -21,3 +21,5 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 export EDITOR=vim
 export TERMINAL=urxvt
+
+export QT_SCALE_FACTOR=1.5
