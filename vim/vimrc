@@ -2,6 +2,7 @@
 :set fileencoding=utf-8
 
 set nocompatible
+let mapleader = "ä"
 
 set background=dark
 set t_Co=256
@@ -105,33 +106,17 @@ map <leader>md :InstantMarkdownPreview<CR>
 
 " Notizen
 nmap <F12> :NERDTree ~/Dropbox/Notizen<CR>
-nmap <S-F12> :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
+" F24 should be S-F12
+nmap <F24> :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
 map <LEADER>d :put=strftime('%Y-%m-%d')<CR>10la
 
 
 """ Key Mappings
-let mapleader = "ä"
 
 nnoremap ö :
 nnoremap Ö :
 vnoremap ö :
 vnoremap Ö :
-
-" Let's try to get rid of the arrows...
-" noremap <Left> <nop>
-" noremap <Right> <nop>
-" noremap <Up> <nop>
-" noremap <Down> <nop>
-" noremap! <Left> <nop>
-" noremap! <Right> <nop>
-" noremap! <Up> <nop>
-" noremap! <Down> <nop>
-" noremap! <PageDown> <nop>
-" noremap <PageDown> <nop>
-" noremap! <PageUp> <nop>
-" noremap <PageUp> <nop>
-" noremap! <Down> <nop>
-" let g:BASH_Ctrl_j = 'off'
 
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
@@ -151,8 +136,11 @@ inoremap <C-Q> <esc>:qa<cr>
 vnoremap < <gv
 vnoremap > >gv
 
+" Rewrap current paragraph without moving cursor
+nnoremap Q gwip
+
 " clear search highlight with esc
-" nnoremap <esc> :noh<return><esc>
+nnoremap <esc> :noh<return><esc>
 
 """ Color Scheme
 " Theme
