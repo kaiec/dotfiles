@@ -77,6 +77,11 @@ autocmd BufReadPost *
   \   exe "normal! g`\"" |
   \ endif
 
+" Different cursor shapes in different modes.
+let &guicursor = 'n-v-c-sm:block-blinkwait1000-blinkon500-blinkoff500,'
+        \          . 'i-c-ci-ve:ver25-blinkwait1000-blinkon500-blinkoff500,'
+        \          . 'r-cr-o:hor20-blinkwait1000-blinkon500-blinkoff500'
+
 """ Markdown
 	
 " Markdown support for .md files
