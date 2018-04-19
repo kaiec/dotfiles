@@ -147,7 +147,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " clear search highlight with esc
-nnoremap <esc> :noh<return><esc>
+" nnoremap <esc> :noh<return><esc>
 
 """ Color Scheme
 " Theme
@@ -238,15 +238,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
-" This fixes key codes in rxvt-unicode. I used to set this in ~/.Xdefaults, but
-" that did not translate to GNU Screen. By placing it in this file it needs less
-" total code.
-" http://510x.se/notes/posts/My_Vim_usage/#keycodes
-map ^[Oa <C-Up>
-map ^[Ob <C-Down>
-map ^[Oc <C-Right>
-map ^[Od <C-Left>
-map ^[[5^ <C-PageUp>
-map ^[[6^ <C-PageDown>
-map ^[[7^ <C-Home>
-map ^[[8^ <C-End>
+
+
+
