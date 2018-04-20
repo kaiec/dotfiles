@@ -42,8 +42,8 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# start a terminal, ideally in our current directory
+bindsym $mod+Return exec cwd.sh 
 
 # start ranger
 bindsym $mod+numbersign exec i3-sensible-terminal -e ranger ~/Daten

@@ -16,4 +16,5 @@ ln -sTf ~/dotfiles/bin/todo.sh ~/bin/todo.sh
 ln -sTf ~/dotfiles/profile ~/.profile
 ln -sTf ~/dotfiles/screenlayout ~/.screenlayout
 ln -sTf ~/dotfiles/bin/screenshot.sh ~/bin/screenshot.sh
+ln -sTf ~/dotfiles/bin/cwd.sh ~/bin/cwd.sh
 
