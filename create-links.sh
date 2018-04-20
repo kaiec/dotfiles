@@ -17,4 +17,5 @@ ln -sTf ~/dotfiles/profile ~/.profile
 ln -sTf ~/dotfiles/screenlayout ~/.screenlayout
 ln -sTf ~/dotfiles/bin/screenshot.sh ~/bin/screenshot.sh
 ln -sTf ~/dotfiles/bin/cwd.sh ~/bin/cwd.sh
+ln -sTf ~/dotfiles/bin/toggle-pad.sh ~/bin/toggle-pad.sh
 
