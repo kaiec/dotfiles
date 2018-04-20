@@ -48,7 +48,10 @@ URxvt.keysym.Control-Right:    \033[1;5C
 # http://510x.se/notes/posts/Configuring_and_using_rxvt-unicode/
 URxvt.iso14755:         False
 
+# Hide mouse when typing or after a delay
 
+URxvt*pointerBlank:		True
+URxvt*pointerBlankDelay:	3
 # -------- XTERM EMULATION ------------
 ! Act more like XTerm :-)
 URxvt*termName:               xterm-256color
