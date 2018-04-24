@@ -142,6 +142,9 @@ nnoremap Q gwip
 " clear search highlight with esc
 nnoremap <esc> :noh<return><esc>
 
+" CTRL-C to copy to system clipboard
+map <C-c> "+y<CR>
+
 """ Color Scheme
 " Theme
 syntax enable
