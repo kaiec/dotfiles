@@ -145,6 +145,10 @@ nnoremap <esc> :noh<return><esc>
 " CTRL-C to copy to system clipboard
 map <C-c> "+y<CR>
 
+if has("nvim")
+    tnoremap <Esc> <C-\><C-n>
+endif
+
 """ Color Scheme
 " Theme
 syntax enable
