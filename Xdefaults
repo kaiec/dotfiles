@@ -4,7 +4,16 @@ URxvt*background:       #000000
 URxvt*foreground:       #cccccc
 URxvt*scrollBar:        false
 URxvt*perl-lib:         /usr/lib/urxvt/perl/
-URxvt*perl-ext-common:  default,matcher,font-size,prevent-close
+URxvt*perl-ext-common:  default,matcher,font-size,prevent-close,keyboard-select
+
+# Keyboard select settings
+# https://github.com/muennich/urxvt-perls
+URxvt.keysym.M-Escape:  perl:keyboard-select:activate
+URxvt.keysym.M-s: 	perl:keyboard-select:search
+# If true, copy to clipboard too
+URxvt.keyboard-select.clipboard: true
+
+
 URxvt*urlLauncher:      /usr/bin/jumanji
 URxvt*matcher.button:   1
 #URxvt*fading:           50
