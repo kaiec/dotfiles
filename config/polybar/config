@@ -74,7 +74,8 @@ cursor-scroll = ns-resize
 
 [module/nextdate]
 type = custom/script
-exec = "(khal list `date +%H:%M` 3h | grep ^[012] --color=never || echo "") | head -n 1"
+;exec = "(khal list `date +%H:%M` 3h | grep ^[012] --color=never || echo "") | head -n 1"
+exec = "(khal list `date +%H:%M` 3h | grep ^[012] --color=never || echo '') | head -n 2 | paste -sd '%' - | sed 's/%/ | /'"
 interval = 600
 label = "  %output%"
 [module/xwindow]
