@@ -147,7 +147,7 @@ bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed 
 # lock screen
 bindsym $mod+Shift+w exec "i3lock -e -c 000000"
 # suspend
-bindsym $mod+Shift+s exec "i3lock -e -c 000000 && systemctl suspend"
+bindsym $mod+Shift+s exec "systemctl suspend"
 
 # resize window (you can also use the mouse for that)
 mode "layout" {
