@@ -55,6 +55,14 @@ macro index <Delete> "d"
 
 macro index S "<Esc>t;s"
 
+# notmuch integration
+macro index <F8> \
+          "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \
+          "search mail (using notmuch)"
+    macro index <F9> \
+          "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" \
+          "search and reconstruct owning thread (using notmuch)"
+
 set realname="Kai Eckert"
 set from="eckert@hdm-stuttgart.de"
 set use_from=yes
