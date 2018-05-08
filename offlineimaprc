@@ -1,0 +1,24 @@
+[general]
+accounts = hdm
+sockettimeout = 10
+pythonfile = ~/.offlineimap/confhelpers.py
+
+[Account hdm]
+localrepository = hdmLocal
+remoterepository = hdmRemote
+postsynchook = notmuch new
+
+[Repository hdmRemote]
+type = IMAP
+remotehost = mail.hdm-stuttgart.de
+remoteuser = eckert
+remotepasseval = mailpasswd("hdm")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+
+[Repository hdmLocal]
+type = Maildir
+localfolders = ~/Maildir/hdm
+restoreatime = no
+sep = /

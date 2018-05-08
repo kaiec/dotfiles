@@ -20,4 +20,14 @@ ln -sTf ~/dotfiles/bin/cwd.sh ~/bin/cwd.sh
 ln -sTf ~/dotfiles/bin/toggle-pad.sh ~/bin/toggle-pad.sh
 ln -sTf ~/dotfiles/bin/caps.sh ~/bin/caps.sh
 ln -sTf ~/dotfiles/bin/beamer-optimizer.sh ~/bin/beamer-optimizer.sh
-
+ln -sTf ~/dotfiles/bin/mutt-mailboxes.py ~/bin/mutt-mailboxes.py
+ln -sTf ~/dotfiles/muttrc ~/.muttrc
+ln -sTf ~/dotfiles/offlineimaprc ~/.offlineimaprc
+mkdir ~/.offlineimap
+ln -sTf ~/dotfiles/offlineimap/confhelpers.py ~/.offlineimap/confhelpers.py
+ln -sTf ~/dotfiles/msmtprc ~/.msmtprc
+ln -sTf ~/dotfiles/notmuch-config ~/.notmuch-config
+mkdir ~/.msmtp.queue
+chmod 0700 ~/.msmtp.queue
+mkdir ~/log
+ln -sTf ~/dotfiles/bin/mail ~/bin/mail
