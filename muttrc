@@ -108,3 +108,12 @@ set editor='vim'
 
 auto_view text/html
 
+set alias_file=~/.mutt/aliases
+set sort_alias=alias
+set reverse_alias
+source $alias_file
+
+
+set query_command = "echo ''; notmuch address --deduplicate=address from:%s | sort"
+set query_format = "%4c %t %-70.70a %-70.70n %?e?(%e)?"
+# bind editor <Tab> complete-query
