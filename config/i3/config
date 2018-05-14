@@ -107,6 +107,11 @@ bindsym --release Print exec ~/bin/screenshot.sh
 # focus the child container
 #bindsym $mod+d focus child
 
+# Switch screen layouts
+bindsym $mod+F1 exec "~/.screenlayout/nb.sh"
+bindsym $mod+F7 exec "~/.screenlayout/beamer.sh"
+bindsym $mod+F2 exec "~/.screenlayout/home.sh"
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
