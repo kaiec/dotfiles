@@ -155,14 +155,16 @@ alias t="todo.sh -a -t"
 alias today="khal list"
 
 # gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)
-echo "------ TERMINE ------"
-khal list
-echo
-echo "------- TODO --------"
-t -pP lsp A
-echo "---------------------"
-echo
-
+if ! [ -e ~/.is_presentation ]
+then
+	echo "------ TERMINE ------"
+	khal list
+	echo
+	echo "------- TODO --------"
+	t -pP lsp A
+	echo "---------------------"
+	echo
+fi
 
 # Change to last directory.
 # Should work as follows:
