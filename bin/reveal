@@ -1,0 +1,2 @@
+#!/bin/bash
+pandoc -t revealjs --slide-level=2 -s -o $1.html $1 -V revealjs-url=$HOME/dotfiles/reveal.js

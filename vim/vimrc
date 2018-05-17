@@ -33,6 +33,7 @@ Plugin 'davidhalter/jedi-vim'			" auto completion
 Plugin 'mhartington/oceanic-next'		" color scheme
 Plugin 'dhruvasagar/vim-table-mode'		" edit tables
 Plugin 'vim-syntastic/syntastic'		" Syntax checker
+Plugin 'sotte/presenting.vim'			" Presentations
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

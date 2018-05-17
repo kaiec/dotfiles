@@ -32,3 +32,4 @@ mkdir ~/.msmtp.queue
 chmod 0700 ~/.msmtp.queue
 mkdir ~/log
 ln -sTf ~/dotfiles/bin/mail ~/bin/mail
+ln -sTf ~/dotfiles/bin/reveal ~/bin/reveal
