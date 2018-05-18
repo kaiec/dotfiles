@@ -14,6 +14,7 @@ ln -sTf ~/dotfiles/Xdefaults ~/.Xdefaults
 mkdir ~/.todo
 ln -sTf ~/dotfiles/todo.conf ~/.todo/config
 ln -sTf ~/dotfiles/bin/todo.sh ~/bin/todo.sh
+ln -sTf ~/dotfiles/todotxt-machinerc ~/.todotxt-machinerc
 ln -sTf ~/dotfiles/profile ~/.profile
 ln -sTf ~/dotfiles/screenlayout ~/.screenlayout
 ln -sTf ~/dotfiles/bin/screenshot.sh ~/bin/screenshot.sh

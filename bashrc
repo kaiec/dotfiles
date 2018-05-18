@@ -151,6 +151,7 @@ HISTIGNORE="$HISTIGNORE:t *"
 
 export TODOTXT_DEFAULT_ACTION=ls
 alias t="todo.sh -a -t"
+alias todo=todotxt-machine
 # alias today="gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)"
 alias today="khal list"
 
