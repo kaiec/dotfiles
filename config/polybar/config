@@ -48,7 +48,7 @@ font-2 = Font Awesome 5 Free Solid:pixelsize=13;2
 font-3 = Font Awesome 5 Free Regular:pixelsize=13;2
 
 modules-left = i3 screenmenu 
-modules-center = nextdate 
+modules-center = pomodoro nextdate 
 ; modules-right = wlan filesystem xbacklight xkeyboard memory cpu battery temperature date powermenu
 modules-right = cpu battery1 battery2 date
 
@@ -78,6 +78,13 @@ type = custom/script
 exec = "~/dotfiles/bin/nextdate.sh"
 interval = 600
 label = "  %output%"
+
+[module/pomodoro]
+type = custom/script
+exec = "~/dotfiles/bin/pomodoro.sh"
+interval = 10
+label = "%output%"
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
