@@ -147,7 +147,7 @@ stty -ixon
 
 export EDITOR=nvim
 HISTIGNORE="$HISTIGNORE:jrnl *"
-HISTIGNORE="$HISTIGNORE:t *"
+HISTIGNORE="$HISTIGNORE:t a*"
 
 export TODOTXT_DEFAULT_ACTION=ls
 alias t="todo.sh -a -t"
@@ -158,14 +158,9 @@ alias today="khal list"
 # gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)
 if ! [ -e ~/.is_presentation ]
 then
-	echo "------ TERMINE ------"
-	khal list
-	echo
-	echo "------- TODO --------"
-	t -pP lsp A
-	echo "---------------------"
-	echo
+	~/dotfiles/bin/agenda.sh
 fi
+alias a=~/dotfiles/bin/agenda.sh
 
 # Change to last directory.
 # Should work as follows:
