@@ -34,3 +34,4 @@ chmod 0700 ~/.msmtp.queue
 mkdir ~/log
 ln -sTf ~/dotfiles/bin/mail ~/bin/mail
 ln -sTf ~/dotfiles/bin/reveal ~/bin/reveal
+ln -sTf ~/dotfiles/bin/poll-stuff.sh ~/bin/poll-stuff.sh
