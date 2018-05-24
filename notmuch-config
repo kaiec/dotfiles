@@ -47,7 +47,7 @@ primary_email=eckert@hdm-stuttgart.de
 #		in the mail store.
 #
 [new]
-tags=unread;inbox;
+tags=
 ignore=
 
 # Search configuration

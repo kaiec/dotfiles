@@ -161,6 +161,7 @@ then
 	~/dotfiles/bin/agenda.sh
 fi
 alias a=~/dotfiles/bin/agenda.sh
+alias m="notmuch search tag:unread | cut -f 3- -d ' '"
 
 # Change to last directory.
 # Should work as follows:
