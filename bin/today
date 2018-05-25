@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ $# -eq 0 ]
+then
+	~/dotfiles/bin/todo.sh lsp A
+else
+	for task in $@
+	do
+		~/dotfiles/bin/todo.sh pri $task A
+	done
+fi
