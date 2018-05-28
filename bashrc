@@ -153,7 +153,7 @@ export TODOTXT_DEFAULT_ACTION=ls
 alias t="todo.sh -a -t"
 alias todo=todotxt-machine
 alias plan="todo.sh pom plan"
-alias start="todo.sh pom start"
+alias start="date;todo.sh pom start"
 
 # gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)
 if ! [ -e ~/.is_presentation ]
