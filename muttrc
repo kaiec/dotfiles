@@ -30,6 +30,8 @@ set sidebar_format = "%B%* %?N?%N?"
 set sidebar_width = 14
 set mail_check_stats
 set mark_old=no
+set sort=threads
+set sort_aux=last-date-received
 
 bind index,pager <C-Up> sidebar-prev
 bind index,pager <C-Down> sidebar-next
