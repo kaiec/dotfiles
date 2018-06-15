@@ -34,6 +34,8 @@ Plugin 'mhartington/oceanic-next'		" color scheme
 Plugin 'dhruvasagar/vim-table-mode'		" edit tables
 Plugin 'vim-syntastic/syntastic'		" Syntax checker
 Plugin 'sotte/presenting.vim'			" Presentations
+Plugin 'moll/vim-node'				" Node.js
+Plugin 'maksimr/vim-jsbeautify'			" Javascript Formatting
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -178,25 +180,27 @@ nnoremap <tab> za
 nnoremap <S-tab> zM
 
 """ Python 
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
+au FileType py
+    \ setlocal tabstop=4 |
+    \ setlocal softtabstop=4 |
+    \ setlocal shiftwidth=4 |
+    \ setlocal textwidth=79 |
+    \ setlocal expandtab |
+    \ setlocal autoindent |
+    \ setlocal fileformat=unix
 
 let g:python_host_prog = '/home/kai/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/home/kai/.pyenv/versions/neovim3/bin/python'
 """ Clipboard
 vnoremap <leader>c :!xclip -i -f<cr> 
 nnoremap <leader>v :r!xclip -o<cr>
-""" HTML, CSS 
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+""" HTML, CSS
+let g:editorconfig_Beautifier = '/home/kai/dotfiles/vim/.editorconfig'
+au FileType javascript,html,css
+    \ setlocal tabstop=2 softtabstop=2 shiftwidth=2
+
+au FileType javascript
+    \ noremap <buffer> <c-f> :call JsBeautify()<cr>
 
 
 """ Misc 
