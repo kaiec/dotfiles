@@ -13,6 +13,8 @@ URxvt.keysym.M-s: 	perl:keyboard-select:search
 # If true, copy to clipboard too
 URxvt.keyboard-select.clipboard: true
 
+# This should select URLs
+URxvt.keysym.M-u: 	perl:matcher:select
 
 URxvt*urlLauncher:      /usr/bin/jumanji
 URxvt*matcher.button:   1
