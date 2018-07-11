@@ -125,3 +125,18 @@ alias gpu='git push'
 alias gca='git commit -a'
 alias ga='git add'
 
+# Change to last directory.
+# Should work as follows:
+# In i3 for a new terminal cwd.sh is invoked which tries to find
+# the cwd of the currently focussed terminal window if any.
+# if this does not work, i.e., the terminal is in home directory,
+# the last saved cwd is used based on this approach:
+# 
+# https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/%3C/p%3E.html
+# 
+# 
+# Save current working dir
+PROMPT_COMMAND="pwd > ${XDG_RUNTIME_DIR}/.cwd; $PROMPT_COMMAND"
+
+# Change to saved working dir
+[[ -f "${XDG_RUNTIME_DIR}/.cwd" ]] && [[ $PWD == ~ ]] && cd "$(< ${XDG_RUNTIME_DIR}/.cwd)"
