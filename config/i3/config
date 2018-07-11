@@ -14,7 +14,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:SFNS Display 13
 
-gaps inner 10
+gaps inner 5
 gaps outer 0 
 for_window [class="^.*"] border pixel 3
 smart_gaps on
