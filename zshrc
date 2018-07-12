@@ -145,3 +145,7 @@ PROMPT_COMMAND="pwd > ${XDG_RUNTIME_DIR}/.cwd; $PROMPT_COMMAND"
 
 # Change to saved working dir
 [[ -f "${XDG_RUNTIME_DIR}/.cwd" ]] && [[ $PWD == ~ ]] && cd "$(< ${XDG_RUNTIME_DIR}/.cwd)"
+
+# Make zsh use the bash PROMPT_COMMAND variable
+prmptcmd() { eval "$PROMPT_COMMAND" }
+add-zsh-hook precmd prmptcmd
