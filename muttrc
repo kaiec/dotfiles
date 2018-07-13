@@ -20,6 +20,7 @@ set folder="~/Maildir/hdm/INBOX"
 set record="="
 set postponed="=Drafts"
 set mbox="=archive"
+set trash="=trash"
 
 mailboxes `mutt-mailboxes.py` 
 
