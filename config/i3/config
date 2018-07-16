@@ -205,7 +205,7 @@ exec --no-startup-id dropbox start
 exec --no-startup-id nm-applet
 
 # FIX firefox sound issue, see https://support.mozilla.org/en-US/kb/no-sound-firefox-59-linux
-exec_always --no-startup-id sleep 10;pulseaudio --start --exit-idle-time=-1
+# exec_always --no-startup-id sleep 10;pulseaudio --start --exit-idle-time=-1
 
 # switch monitors
 bindsym $mod+m move workspace to output left
@@ -235,9 +235,11 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 
-# Set minimum birghtness to 1
+# Set minimum brightness to 1
 exec --no-startup-id light -Sc 1
 #
 #
 
 bindsym XF86Explorer exec toggle-pad.sh # Toggle mouse pad 
+# Hide mouse cursor when not used
+exec --no-startup-id unclutter -root
