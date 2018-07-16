@@ -12,6 +12,7 @@ ln -sTf ~/dotfiles/bashrc ~/.bashrc
 ln -sTf ~/dotfiles/zshrc ~/.zshrc
 ln -sTf ~/dotfiles/urxvt ~/.urxvt
 ln -sTf ~/dotfiles/Xdefaults ~/.Xdefaults
+ln -sTf ~/dotfiles/mailcap ~/.mailcap
 mkdir ~/.todo
 ln -sTf ~/dotfiles/todo.conf ~/.todo/config
 ln -sTf ~/dotfiles/bin/todo.sh ~/bin/todo.sh

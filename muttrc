@@ -110,6 +110,7 @@ color body  brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
 set editor='vim'
 
 auto_view text/html
+alternative_order text/enriched text/plain text/html text
 
 set alias_file=~/.mutt/aliases
 set sort_alias=alias
