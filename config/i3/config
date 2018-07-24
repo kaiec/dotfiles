@@ -243,8 +243,6 @@ exec --no-startup-id light -Sc 1
 bindsym XF86Explorer exec toggle-pad.sh # Toggle mouse pad 
 # Hide mouse cursor when not used
 exec --no-startup-id unclutter -root
-# Make touchpad less sensitive, values: low high press
-# https://www.x.org/archive/X11R7.5/doc/man/man4/synaptics.4.html
-exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Finger" 35 45 250
-# Disable touchpad while typing
-exec --no-startup-id syndaemon -i 0.5 -K -R
+
+# Enable tapping in touch pad (libinput)
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
