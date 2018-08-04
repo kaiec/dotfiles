@@ -10,3 +10,5 @@ text/html; elinks -dump %s; nametemplate=%s.html; copiousoutput
 # Source: 
 # https://unix.stackexchange.com/questions/65381/how-to-tell-mutt-not-to-wait-for-an-attachment-program-to-return
 application/*; mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; xdg-open /tmp/mutt/$(basename %s) > /dev/null 2>&1 &
+
+text/calendar; printics %s; needsterminal
