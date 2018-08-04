@@ -1,0 +1,2 @@
+#!/bin/bash
+khal printics --format $'Start: {start}\nEnd: {end}\nTitle: {title}\nDescription: {description}\nLocation: {location}' $@

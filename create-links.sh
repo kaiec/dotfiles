@@ -38,3 +38,4 @@ ln -sTf ~/dotfiles/bin/mail ~/bin/mail
 ln -sTf ~/dotfiles/bin/reveal ~/bin/reveal
 ln -sTf ~/dotfiles/bin/poll-stuff.sh ~/bin/poll-stuff.sh
 ln -sTf ~/dotfiles/bin/today ~/bin/today
+ln -sTf ~/dotfiles/bin/printics ~/bin/printics
