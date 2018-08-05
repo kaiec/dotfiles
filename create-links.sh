@@ -26,6 +26,8 @@ ln -sTf ~/dotfiles/bin/caps.sh ~/bin/caps.sh
 ln -sTf ~/dotfiles/bin/beamer-optimizer.sh ~/bin/beamer-optimizer.sh
 ln -sTf ~/dotfiles/bin/mutt-mailboxes.py ~/bin/mutt-mailboxes.py
 ln -sTf ~/dotfiles/muttrc ~/.muttrc
+mkdir ~/.mutt
+ln -sTf ~/dotfiles/mutt/gpg.rc ~/.mutt/gpg.rc
 ln -sTf ~/dotfiles/offlineimaprc ~/.offlineimaprc
 mkdir ~/.offlineimap
 ln -sTf ~/dotfiles/offlineimap/confhelpers.py ~/.offlineimap/confhelpers.py
