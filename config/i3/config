@@ -246,3 +246,11 @@ exec --no-startup-id unclutter -root
 
 # Enable tapping in touch pad (libinput)
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+
+# Cam setup
+for_window [title="mpvfloat"] floating enable
+for_window [title="mpvfloat"] sticky enable
+for_window [title="mpvfloat"] border pixel 0
+no_focus [title="mpvfloat"]
+
+bindsym $mod+p exec --no-startup-id camtoggle
