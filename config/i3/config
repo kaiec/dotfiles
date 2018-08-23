@@ -253,4 +253,11 @@ for_window [title="mpvfloat"] sticky enable
 for_window [title="mpvfloat"] border pixel 0
 no_focus [title="mpvfloat"]
 
+# Toggle cam, start / stop recording
 bindsym $mod+p exec --no-startup-id camtoggle
+bindsym $mod+Shift+p exec --no-startup-id screencast
+bindsym $mod+Delete exec --no-startup-id killrecording
+
+# FN-F11 to activate Screenkey
+bindsym XF86LaunchA exec --no-startup-id "killall screenkey || screenkey"
+

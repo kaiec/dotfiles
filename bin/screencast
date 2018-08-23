@@ -1,0 +1,39 @@
+#!/bin/bash
+# vim: set syntax=bash:
+
+# This script records a screencast with audio and video.
+# It runs an appropriate record script for either ALSA and Pulseaudio.
+# It also names files smartly to prevent overwrites.
+
+# Picks a file name for the output file based on availability:
+while [[ -f $HOME/screencast$n.mkv ]]
+do
+	n=$((n+1))
+done
+filename="$HOME/screencast$n.mkv"
+
+record_pulse() { \
+ffmpeg -y \
+-probesize 10MB \
+-fflags "+genpts" \
+-avoid_negative_ts "make_zero" \
+-threads 8 \
+-vaapi_device $DISPLAY \
+-f x11grab \
+-s $(xdpyinfo | grep dimensions | awk '{print $2;}') \
+-thread_queue_size 1024 \
+-i $DISPLAY \
+-f alsa \
+-thread_queue_size 1024 \
+-i default \
+-r 30 \
+-vf format=nv12,hwupload \
+-vsync 1 -async 1 \
+-c:a aac \
+-c:v h264_vaapi \
+-b:a 192k \
+$filename ;}
+
+if [[ $(pgrep -x pulseaudio) ]]; then record_pulse; fi &
+# Updating i3blocks recording icon:
+# echo ⏺️ > ~/.recordingicon && pkill -RTMIN+9 i3blocks
