@@ -205,7 +205,7 @@ exec --no-startup-id dropbox start
 exec --no-startup-id nm-applet
 
 # FIX firefox sound issue, see https://support.mozilla.org/en-US/kb/no-sound-firefox-59-linux
-# exec_always --no-startup-id sleep 10;pulseaudio --start --exit-idle-time=-1
+exec_always --no-startup-id sleep 10;pulseaudio --start --exit-idle-time=-1
 
 # switch monitors
 bindsym $mod+m move workspace to output left
