@@ -58,6 +58,11 @@ macro index <Delete> "d"
 
 macro index S "<Esc>t;s"
 
+# Open Mail in less for copy / paste
+macro index,pager \Cl "<view-attachments><search>text/plain<enter><pipe-entry>less<enter><exit>"
+# https://demu.red/blog/2017/11/neomutt-macro-opening-texthtml-attachment-from-the-index-view/
+# macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
+
 # notmuch integration
 macro index <F8> \
           "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \
