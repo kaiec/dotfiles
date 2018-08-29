@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ $# -eq 0 ]
+then
+	~/dotfiles/bin/todo.sh lsp A
+else
+	task=$(todo.sh -a -t a $1 | head -n1 | cut -d" " -f1 )
+	~/dotfiles/bin/todo.sh pri $task A
+fi
