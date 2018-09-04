@@ -36,6 +36,8 @@ Plugin 'vim-syntastic/syntastic'		" Syntax checker
 Plugin 'sotte/presenting.vim'			" Presentations
 Plugin 'moll/vim-node'				" Node.js
 Plugin 'maksimr/vim-jsbeautify'			" Javascript Formatting
+Plugin 'dylanaraps/wal.vim'			" WAL color schem
+Plugin 'ap/vim-css-color'			" Show CSS colors
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -143,7 +145,9 @@ vnoremap > >gv
 nnoremap Q gwip
 
 " clear search highlight with esc
-nnoremap <esc> :noh<return><esc>
+" nnoremap <esc> :noh<return><esc>
+" remapping esc leads to strange sideffects in standard vim
+
 
 " CTRL-C to copy to system clipboard
 map <C-c> "+y<CR>
@@ -155,7 +159,7 @@ endif
 """ Color Scheme
 " Theme
 syntax enable
-colorscheme OceanicNext
+colorscheme wal
 
 
 
@@ -189,13 +193,13 @@ au FileType py
     \ setlocal autoindent |
     \ setlocal fileformat=unix
 
-let g:python_host_prog = '/home/kai/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/home/kai/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = '~/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
 """ Clipboard
 vnoremap <leader>c :!xclip -i -f<cr> 
 nnoremap <leader>v :r!xclip -o<cr>
 """ HTML, CSS
-let g:editorconfig_Beautifier = '/home/kai/dotfiles/vim/.editorconfig'
+let g:editorconfig_Beautifier = '~/dotfiles/vim/.editorconfig'
 au FileType javascript,html,css
     \ setlocal tabstop=2 softtabstop=2 shiftwidth=2
 

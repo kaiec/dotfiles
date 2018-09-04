@@ -198,8 +198,6 @@ focus_follows_mouse no
 
 exec_always --no-startup-id sleep 5; xmodmap -e "clear lock" #disable caps lock switch
 exec_always --no-startup-id sleep 6; xmodmap -e "keycode 0x42  = Escape" #set caps_lock as escape
-exec_always --no-startup-id feh --bg-scale ~/dotfiles/bg.png
-exec_always --no-startup-id ~/dotfiles/bin/polybar_launch.sh
 
 exec --no-startup-id dropbox start
 exec --no-startup-id nm-applet
@@ -253,6 +251,9 @@ for_window [title="mpvfloat"] sticky enable
 for_window [title="mpvfloat"] border pixel 0
 no_focus [title="mpvfloat"]
 
+# FS-UAE
+for_window [class="fs-uae"] floating enable
+
 # Toggle cam, start / stop recording
 bindsym $mod+p exec --no-startup-id camtoggle
 bindsym $mod+Shift+p exec --no-startup-id screencast
@@ -261,3 +262,27 @@ bindsym $mod+Delete exec --no-startup-id killrecording
 # FN-F11 to activate Screenkey
 bindsym XF86LaunchA exec --no-startup-id "killall screenkey || screenkey"
 
+# wal support
+exec_always --no-startup-id wal -R
+
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $focus i3wm.color15 #f0f0f0
+set_from_resource $indicator i3wm.color12 #f0f0f0
+
+# class                 border  backgr. text indicator  child_border
+client.focused          $focus  $bg     $fg  $indicator $focus
+client.focused_inactive $bg     $bg     $fg  $bg        $bg
+client.unfocused        $bg     $bg     $fg  $bg        $bg
+client.urgent           $bg     $bg     $fg  $bg        $bg
+client.placeholder      $bg     $bg     $fg  $bg        $bg
+
+client.background       $bg
+
+exec_always --no-startup-id feh --bg-scale ~/dotfiles/bg.png
+exec_always --no-startup-id ~/dotfiles/bin/polybar_launch.sh

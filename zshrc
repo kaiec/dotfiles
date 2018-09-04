@@ -150,3 +150,7 @@ PROMPT_COMMAND="pwd > ${XDG_RUNTIME_DIR}/.cwd; $PROMPT_COMMAND"
 # Make zsh use the bash PROMPT_COMMAND variable
 prmptcmd() { eval "$PROMPT_COMMAND" }
 add-zsh-hook precmd prmptcmd
+
+# wal support
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh
