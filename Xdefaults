@@ -6,20 +6,20 @@ URxvt*scrollBar:        false
 URxvt*perl-lib:         /usr/lib/urxvt/perl/
 URxvt*perl-ext-common:  default,matcher,font-size,prevent-close,keyboard-select
 
-# Keyboard select settings
-# https://github.com/muennich/urxvt-perls
+! Keyboard select settings
+! https://github.com/muennich/urxvt-perls
 URxvt.keysym.M-Escape:  perl:keyboard-select:activate
 URxvt.keysym.M-s: 	perl:keyboard-select:search
-# If true, copy to clipboard too
+! If true, copy to clipboard too
 URxvt.keyboard-select.clipboard: true
 
-# This should select URLs
+! This should select URLs
 URxvt.keysym.M-u: 	perl:matcher:select
 
 URxvt*urlLauncher:      /usr/bin/jumanji
 URxvt*matcher.button:   1
-#URxvt*fading:           50
-#URxvt*fadeColor:        #000000
+!URxvt*fading:           50
+!URxvt*fadeColor:        #000000
 
 Xft*dpi:                96
 Xft*antialias:          true
@@ -27,9 +27,9 @@ Xft*hinting:            full
 
 URxvt*background:       rgba:0000/0000/0000/dddd
 URxvt*depth: 32
-#URxvt.transparent:   true
-#URxvt.tintColor:     white
-#URxvt.shading:       20 
+!URxvt*transparent:   true
+!URxvt.tintColor:     white
+!URxvt.shading:       20 
  
 URxvt*color0:      #000000
 URxvt*color1:      #9e1828
@@ -48,22 +48,22 @@ URxvt*color13:     #cf9ebe
 URxvt*color14:     #71bebe
 URxvt*color15:     #ffffff
 
-# Fix vim issues with escape sequences
-# this should be the behaviour of xterm
+! Fix vim issues with escape sequences
+! this should be the behaviour of xterm
 URxvt.keysym.Control-Up:   \033[1;5A
 URxvt.keysym.Control-Down:    \033[1;5B
 URxvt.keysym.Control-Left:    \033[1;5D
 URxvt.keysym.Control-Right:    \033[1;5C
 
-# !Disables the insanely annoying Ctrl+Shift shortcut that enters ISO14755 mode
-# http://510x.se/notes/posts/Configuring_and_using_rxvt-unicode/
+! !Disables the insanely annoying Ctrl+Shift shortcut that enters ISO14755 mode
+! http://510x.se/notes/posts/Configuring_and_using_rxvt-unicode/
 URxvt.iso14755:         False
 
-# Hide mouse when typing or after a delay
+! Hide mouse when typing or after a delay
 
 URxvt*pointerBlank:		True
 URxvt*pointerBlankDelay:	3
-# -------- XTERM EMULATION ------------
+! -------- XTERM EMULATION ------------
 ! Act more like XTerm :-)
 URxvt*termName:               xterm-256color
 ! Normal
