@@ -38,6 +38,7 @@ Plugin 'moll/vim-node'				" Node.js
 Plugin 'maksimr/vim-jsbeautify'			" Javascript Formatting
 Plugin 'dylanaraps/wal.vim'			" WAL color schem
 Plugin 'ap/vim-css-color'			" Show CSS colors
+Plugin 'junegunn/goyo.vim'			" Zen mode
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -164,12 +165,24 @@ colorscheme wal
 
 
 """ Line Numbers
+let g:numbertoggle=1
 set number relativenumber
 " https://jeffkreeftmeijer.com/vim-number/
+function! RelNum ()
+	if g:numbertoggle
+		set relativenumber
+	endif
+endfunction
+function! AbsNum ()
+	if g:numbertoggle
+		set norelativenumber
+	endif
+endfunction
+
 :augroup numbertoggle
 :  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:  autocmd BufEnter,FocusGained,InsertLeave * :call RelNum() 
+:  autocmd BufLeave,FocusLost,InsertEnter   * :call AbsNum()
 :augroup END
 " highlight LineNr ctermfg=5 ctermbg=4
 " highlight CursorLineNr ctermfg=5 ctermbg=4
@@ -247,6 +260,20 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
+" Goyo, Zen Mode
+function! s:goyo_enter()
+	let g:numbertoggle=0
+	set nonumber norelativenumber
+	set linebreak
+endfunction
 
+function! s:goyo_leave()
+	let g:numbertoggle=1
+	set number relativenumber
+	set nolinebreak
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 
