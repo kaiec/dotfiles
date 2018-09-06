@@ -122,7 +122,10 @@ set sort_alias=alias
 set reverse_alias
 source $alias_file
 
-
+# notmuch address completion
+# https://github.com/neomutt/neomutt/issues/629
+# https://gitlab.com/muttmua/mutt/wikis/QueryCommand
+ 
 set query_command = "echo ''; notmuch address --deduplicate=address from:%s | sort"
 set query_format = "%4c %t %-70.70a %-70.70n %?e?(%e)?"
 # bind editor <Tab> complete-query
