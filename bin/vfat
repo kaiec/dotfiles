@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# This script creates a new directory with a VFAT image file in it
+# and mounts this image to the directory. 
+# If the directory with the image exists, it tries to mount the image.
+# If the directory exists without the image, it tries to umount it.
+#
+# The purpose is to quickly generate a local directory with a Windows
+# filesysten, particularly to test stuff that was developed on a 
+# case-insensitive filesystem.
+#
+# Created by Kai Eckert
+# September 2018
+# MIT License
+
+function err {
+	echo $1
+	exit 1
+}
+
+
+if [ "$#" -ne 1 ]
+then
+  err "Provide a name for a new directory."
+fi
+
+IMG="$1/vfat.img"
+GID=`id -g`
+
+if [ -e "$1" ]
+then
+  if [ -f $IMG ]
+  then
+	  sudo mount $IMG "$1" -t vfat -o loop -o uid=$UID -o gid=$GID \
+		  2> /dev/null \
+		  && err "Existing VFAT directory mounted: $1"
+  else
+	  sudo umount "$1" \
+		  2> /dev/null \
+		  && err "Existing VFAT directory unmounted: $1"
+  fi
+  err "$1 exists, but is not a VFAT mount point."
+fi
+
+mkdir -p "$1"
+
+if [ ! -d "$1" ]
+then
+	err "Could not create mount point: $1"
+fi
+
+# Create image file, 500 MB
+dd if=/dev/zero of=$IMG bs=1048576 count=500 2> /dev/null \
+	|| err "Could not create file: $IMG"
+mkfs.vfat $IMG > /dev/null \
+	|| err "Could not create VFAT filesystem."
+
+# Mount image
+sudo mount $IMG "$1" -t vfat -o loop -o uid=$UID -o gid=$GID 2> /dev/null \
+	&& echo "Created VFAT directory: $1"
