@@ -248,7 +248,7 @@ exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapp
 # Cam setup
 for_window [title="mpvfloat"] floating enable
 for_window [title="mpvfloat"] sticky enable
-for_window [title="mpvfloat"] border pixel 0
+for_window [title="mpvfloat"] border pixel 1
 no_focus [title="mpvfloat"]
 
 # FS-UAE
