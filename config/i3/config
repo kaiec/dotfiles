@@ -43,19 +43,19 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 floating_modifier $mod
 
 # start a terminal, ideally in our current directory
-bindsym $mod+Return exec cwd.sh 
+bindsym $mod+Return exec cwd.sh &
 
 # start ranger
-bindsym $mod+numbersign exec i3-sensible-terminal -e ranger ~/Daten
+bindsym $mod+numbersign exec i3-sensible-terminal -e ranger ~/Daten &
 
 # start ikhal
-bindsym $mod+c exec i3-sensible-terminal -e ikhal
+bindsym $mod+c exec i3-sensible-terminal -e ikhal &
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+Tab exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -font 'SFNS Display 24' -show combi -window-command 'pwd'"
+bindsym $mod+Tab exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -font 'SFNS Display 24' -show combi -window-command 'pwd'" &
 
 # change focus
 bindsym $mod+h focus left
@@ -102,15 +102,15 @@ bindsym $mod+f focus mode_toggle
 bindsym $mod+a focus parent
 
 # Screenshots with Print Screen
-bindsym --release Print exec ~/bin/screenshot.sh
+bindsym --release Print exec ~/bin/screenshot.sh &
 
 # focus the child container
 #bindsym $mod+d focus child
 
 # Switch screen layouts
-bindsym $mod+F1 exec "~/.screenlayout/nb.sh"
-bindsym $mod+F7 exec "~/.screenlayout/beamer.sh"
-bindsym $mod+F2 exec "~/.screenlayout/home.sh"
+bindsym $mod+F1 exec "~/.screenlayout/nb.sh" &
+bindsym $mod+F7 exec "~/.screenlayout/beamer.sh" &
+bindsym $mod+F2 exec "~/.screenlayout/home.sh" &
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -147,12 +147,12 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'" &
 
 # lock screen
-bindsym $mod+Shift+w exec "i3lock -e -c 000000"
+bindsym $mod+Shift+w exec "i3lock -e -c 000000" &
 # suspend
-bindsym $mod+Shift+s exec "systemctl suspend"
+bindsym $mod+Shift+s exec "systemctl suspend" &
 
 # resize window (you can also use the mouse for that)
 mode "layout" {
@@ -196,14 +196,14 @@ focus_follows_mouse no
 #         tray_output primary
 # }
 
-exec_always --no-startup-id sleep 5; xmodmap -e "clear lock" #disable caps lock switch
-exec_always --no-startup-id sleep 6; xmodmap -e "keycode 0x42  = Escape" #set caps_lock as escape
+exec_always --no-startup-id sleep 5; xmodmap -e "clear lock" & #disable caps lock switch
+exec_always --no-startup-id sleep 6; xmodmap -e "keycode 0x42  = Escape" & #set caps_lock as escape
 
-exec --no-startup-id dropbox start
-exec --no-startup-id nm-applet
+exec --no-startup-id dropbox start &
+exec --no-startup-id nm-applet &
 
 # FIX firefox sound issue, see https://support.mozilla.org/en-US/kb/no-sound-firefox-59-linux
-exec_always --no-startup-id sleep 10;pulseaudio --start --exit-idle-time=-1
+exec_always --no-startup-id sleep 10;pulseaudio -k && pulseaudio --start --exit-idle-time=-1 &
 
 # switch monitors
 bindsym $mod+m move workspace to output left
@@ -213,7 +213,7 @@ workspace 2 output eDP1
 workspace 3 output eDP1
 workspace 4 output eDP1
 
-exec --no-startup-id compton
+exec --no-startup-id compton &
 
 
 # Terminal scratchpad
@@ -225,25 +225,25 @@ bindsym $mod+y scratchpad show
 bindsym $mod+Shift+y move to scratchpad
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% & #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% & #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle & # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 10 & # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 10 & # decrease screen brightness
 
 # Set minimum brightness to 1
-exec --no-startup-id light -Sc 1
+exec --no-startup-id light -Sc 1 &
 #
 #
 
-bindsym XF86Explorer exec toggle-pad.sh # Toggle mouse pad 
+bindsym XF86Explorer exec toggle-pad.sh & # Toggle mouse pad 
 # Hide mouse cursor when not used
-exec --no-startup-id unclutter -root
+exec --no-startup-id unclutter -root &
 
 # Enable tapping in touch pad (libinput)
-exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 &
 
 # Cam setup
 for_window [title="mpvfloat"] floating enable
@@ -255,15 +255,15 @@ no_focus [title="mpvfloat"]
 for_window [class="fs-uae"] floating enable
 
 # Toggle cam, start / stop recording
-bindsym $mod+p exec --no-startup-id camtoggle
-bindsym $mod+Shift+p exec --no-startup-id screencast
-bindsym $mod+Delete exec --no-startup-id killrecording
+bindsym $mod+p exec --no-startup-id camtoggle &
+bindsym $mod+Shift+p exec --no-startup-id screencast &
+bindsym $mod+Delete exec --no-startup-id killrecording &
 
 # FN-F11 to activate Screenkey
-bindsym XF86LaunchA exec --no-startup-id "killall screenkey || screenkey"
+bindsym XF86LaunchA exec --no-startup-id "killall screenkey || screenkey" &
 
 # wal support
-exec_always --no-startup-id wal -R
+exec_always --no-startup-id wal -R &
 
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
@@ -287,5 +287,5 @@ client.placeholder      $bg     $bg     $fg  $bg        $bg
 
 client.background       $bg
 
-exec_always --no-startup-id feh --bg-scale ~/dotfiles/bg.png
-exec_always --no-startup-id ~/dotfiles/bin/polybar_launch.sh
+exec_always --no-startup-id feh --bg-scale ~/dotfiles/bg.png &
+exec_always --no-startup-id ~/dotfiles/bin/polybar_launch.sh &

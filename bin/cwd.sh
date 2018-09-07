@@ -12,5 +12,5 @@ if [ -e "/proc/$PID/cwd" ]
 then
     urxvt -cd "$(readlink /proc/$PID/cwd)" &
 else
-    urxvt
+    urxvt &
 fi
