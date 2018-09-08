@@ -220,8 +220,8 @@ exec --no-startup-id compton &
 for_window [instance="vim_notes"] move to scratchpad, border 1pixel
 bindsym $mod+F12 exec ~/bin/togglenotes &
 
-bindsym $mod+y scratchpad show
-bindsym $mod+Shift+y move to scratchpad
+bindsym $mod+y [con_mark="scratch"] scratchpad show
+bindsym $mod+Shift+y mark scratch; move to scratchpad
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% & #increase sound volume
