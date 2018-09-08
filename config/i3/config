@@ -217,9 +217,8 @@ exec --no-startup-id compton &
 
 
 # Terminal scratchpad
-#for_window [title="vim_notes"] move to scratchpad, border 1pixel
-#bindsym $mod+Shift+n [title="vim_notes"] scratchpad show
-#exec i3-sensible-terminal -e trap 'echo -ne "\e]0;vim_notes\007"' DEBUG; vim ~/Dropbox/Notizen/index.md
+for_window [instance="vim_notes"] move to scratchpad, border 1pixel
+bindsym $mod+F12 exec ~/bin/togglenotes &
 
 bindsym $mod+y scratchpad show
 bindsym $mod+Shift+y move to scratchpad
