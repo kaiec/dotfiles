@@ -147,7 +147,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'" &
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'" 
 
 # lock screen
 bindsym $mod+Shift+w exec "i3lock -e -c 000000" &
@@ -196,8 +196,8 @@ focus_follows_mouse no
 #         tray_output primary
 # }
 
-exec_always --no-startup-id sleep 5; xmodmap -e "clear lock" & #disable caps lock switch
-exec_always --no-startup-id sleep 6; xmodmap -e "keycode 0x42  = Escape" & #set caps_lock as escape
+exec_always --no-startup-id sleep 5; xmodmap -e "clear lock"  #disable caps lock switch
+exec_always --no-startup-id sleep 6; xmodmap -e "keycode 0x42  = Escape"  #set caps_lock as escape
 
 exec --no-startup-id dropbox start &
 exec --no-startup-id nm-applet &
