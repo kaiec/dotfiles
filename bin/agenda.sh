@@ -8,3 +8,8 @@ echo "------- TODO --------"
 echo "---------------------"
 echo
 echo "Mails in Inbox: " $(notmuch count folder:hdm/INBOX tag:unread)"/"$(notmuch count folder:hdm/INBOX)
+TOBESENT=$(msmtp-queue | grep -c id=)
+if [ $TOBESENT -ne 0 ]
+then
+	echo "Mails to be sent: " $TOBESENT 
+fi
