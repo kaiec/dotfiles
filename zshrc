@@ -154,3 +154,5 @@ add-zsh-hook precmd prmptcmd
 # wal support
 (cat ~/.cache/wal/sequences &)
 source ~/.cache/wal/colors-tty.sh
+
+stty -ixon
