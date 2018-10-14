@@ -1,0 +1,2 @@
+#!/bin/bash
+pgrep i3lock || i3lock -e -c 666666

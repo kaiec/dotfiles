@@ -5,9 +5,11 @@ After=sleep.target
 
 [Service]
 User=%i
-Type=forking
+Type=simple
 Environment=DISPLAY=:1
 ExecStart=/home/kai/dotfiles/bin/run-when-suspend.sh
+ExecStartPost=/bin/sleep 5
 
 [Install]
 WantedBy=sleep.target
+WantedBy=suspend.target
