@@ -1,15 +1,13 @@
 [Unit]
 Description=My suspend script
-
-After=sleep.target
+Before=suspend.target
 
 [Service]
-User=%i
-Type=simple
+User=kai
+Type=forking
 Environment=DISPLAY=:1
 ExecStart=/home/kai/dotfiles/bin/run-when-suspend.sh
 ExecStartPost=/bin/sleep 5
 
 [Install]
-WantedBy=sleep.target
 WantedBy=suspend.target
