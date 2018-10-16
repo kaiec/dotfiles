@@ -117,6 +117,10 @@ alias t="todo.sh -a -t"
 alias todo=todotxt-machine
 alias plan="todo.sh pom plan"
 alias start="date;todo.sh pom start"
+export POMODORO_SECONDS=1500 # 25*60
+export POMODORO_SIG_SIGNAL=3
+export POMODORO_SIG_PROCESS=i3blocks
+
 
 # gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)
 if ! [ -e ~/.is_presentation ]
@@ -130,6 +134,8 @@ alias gst='git status'
 alias gpu='git push'
 alias gca='git commit -a'
 alias ga='git add'
+alias v=vim
+
 
 # Change to last directory.
 # Should work as follows:

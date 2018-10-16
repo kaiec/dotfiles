@@ -208,6 +208,14 @@ au FileType py
 
 let g:python_host_prog = '~/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
+
+""" Ruby
+au FileType rb
+    \ setlocal tabstop=2
+    \ setlocal softtabstop=2
+    \ setlocal shiftwidth=2
+    \ setlocal expandtab
+
 """ Clipboard
 vnoremap <leader>c :!xclip -i -f<cr> 
 nnoremap <leader>v :r!xclip -o<cr>

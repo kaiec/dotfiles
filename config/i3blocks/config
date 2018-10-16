@@ -25,12 +25,50 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 command=~/dotfiles/config/i3blocks/scripts/$BLOCK_NAME
-separator_block_width=30
+separator_block_width=20
 markup=none
+
+[pomodoro]
+command=/home/kai/dotfiles/bin/i3b-pomodoro
+interval=once
+signal=3
 
 [nextdate]
 command=/home/kai/dotfiles/bin/i3b-nextdate
 interval=600
+signal=2
+
+# CPU usage
+#
+# The script may be called with -w and -c switches to specify thresholds,
+# see the script for details.
+[cpu_usage]
+label=
+interval=10
+min_width= 100.00%
+#separator=false
+
+# Battery indicator
+#
+# The battery instance defaults to 0.
+[battery_1]
+name=battery
+instance=0
+interval=30
+min_width= 100%
+
+[battery_2]
+command=~/dotfiles/config/i3blocks/scripts/battery
+instance=1
+interval=30
+min_width=X 100%
+
+# Date Time
+#
+[time]
+command=date '+ %H:%M'
+interval=60
+min_width= 88:88X
 
 
 # Volume indicator
@@ -89,38 +127,9 @@ interval=600
 # #instance=eth0
 # interval=5
 
-# CPU usage
-#
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-[cpu_usage]
-label=
-interval=10
-min_width= 100.00%
-#separator=false
-
 #[load_average]
 #interval=10
 
-# Battery indicator
-#
-# The battery instance defaults to 0.
-[battery_1]
-name=battery
-instance=0
-interval=30
-
-[battery_2]
-command=~/dotfiles/config/i3blocks/scripts/battery
-instance=1
-interval=30
-
-# Date Time
-#
-[time]
-command=date '+%Y-%m-%d %H:%M:%S'
-interval=5
-min_width=8888-88-88 88:88:88X
 
 # Generic media player support
 #
