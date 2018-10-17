@@ -64,6 +64,8 @@ filetype plugin indent on    " required
 syntax on
 filetype plugin indent on
 set showcmd
+set autochdir
+
 set laststatus=2
 " set statusline=[%n]\ %t
 function! GitBranch()
@@ -128,6 +130,7 @@ let NERDTreeQuitOnOpen=1
 " vimwiki with markdown support
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 " helppage -> :h vimwiki-syntax 
+let g:vimwiki_list = [{'path': '~/Dropbox/Notizen/', 'ext': '.md', 'syntax': 'markdown'}]
 
 " vim-instant-markdown - Instant Markdown previews from Vim
 " https://github.com/suan/vim-instant-markdown
