@@ -64,7 +64,8 @@ filetype plugin indent on    " required
 syntax on
 filetype plugin indent on
 set showcmd
-set laststatus=3
+set laststatus=2
+set statusline=[%n]\ %t
 " backspace behaves normal
 set backspace=indent,eol,start
 " Cursor moves over beginning and end of lines
