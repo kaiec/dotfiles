@@ -65,7 +65,30 @@ syntax on
 filetype plugin indent on
 set showcmd
 set laststatus=2
-set statusline=[%n]\ %t
+" set statusline=[%n]\ %t
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=%{StatuslineGit()}
+set statusline+=%#CursorColumn#
+set statusline+=\ %f
+set statusline+=\ %m
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ [%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\ 
 " backspace behaves normal
 set backspace=indent,eol,start
 " Cursor moves over beginning and end of lines
@@ -207,14 +230,14 @@ au FileType py
     \ setlocal autoindent |
     \ setlocal fileformat=unix
 
-let g:python_host_prog = '~/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = '/home/kai/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/home/kai/.pyenv/versions/neovim3/bin/python'
 
 """ Ruby
 au FileType rb
-    \ setlocal tabstop=2
-    \ setlocal softtabstop=2
-    \ setlocal shiftwidth=2
+    \ setlocal tabstop=2 |
+    \ setlocal softtabstop=2 |
+    \ setlocal shiftwidth=2 |
     \ setlocal expandtab
 
 """ Clipboard
