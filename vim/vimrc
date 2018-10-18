@@ -224,6 +224,12 @@ endfunction
 set colorcolumn=81
 highlight ColorColumn ctermbg=4 ctermfg=255
 
+""" Warn color in insert mode
+
+highlight  CursorLine ctermbg=124 ctermfg=None
+autocmd InsertEnter * set cursorline 
+autocmd InsertLeave * set nocursorline 
+
 """ Folding 
 " Enable folding with the spacebar
 nnoremap <tab> za
