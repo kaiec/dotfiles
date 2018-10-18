@@ -178,3 +178,5 @@ PROMPT_COMMAND="pwd > ${XDG_RUNTIME_DIR}/.cwd; $PROMPT_COMMAND"
 
 # Change to saved working dir
 [[ -f "${XDG_RUNTIME_DIR}/.cwd" ]] && [[ $PWD == ~ ]] && cd "$(< ${XDG_RUNTIME_DIR}/.cwd)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

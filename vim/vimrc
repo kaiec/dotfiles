@@ -14,6 +14,7 @@ set t_Co=256
 """ Plugins
 " set the runtime path to include Vundle and initialize
 set rtp+=~/dotfiles/vim/bundle/Vundle.vim
+set rtp+=~/.fzf
 filetype off                  " required by vundle
 
 "--------------------------------------------
@@ -39,6 +40,7 @@ Plugin 'maksimr/vim-jsbeautify'			" Javascript Formatting
 Plugin 'dylanaraps/wal.vim'			" WAL color schem
 Plugin 'ap/vim-css-color'			" Show CSS colors
 Plugin 'junegunn/goyo.vim'			" Zen mode
+Plugin 'junegunn/fzf.vim'			" Fuzzy Find
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -141,6 +143,7 @@ map <leader>md :InstantMarkdownPreview<CR>
 nmap <F12> :NERDTree ~/Dropbox/Notizen<CR>
 " F24 should be S-F12
 nmap <F24> :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
+nnoremap <F36> :cd ~/Dropbox/Notizen<cr>:Ag<space>
 map <LEADER>d :put=strftime('%Y-%m-%d')<CR>10la
 
 
@@ -171,6 +174,9 @@ vnoremap > >gv
 
 " Rewrap current paragraph without moving cursor
 nnoremap Q gwip
+
+" FZF, Search
+nnoremap <C-B> :Buffers<cr>
 
 " clear search highlight with esc
 " nnoremap <esc> :noh<return><esc>

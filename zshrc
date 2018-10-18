@@ -162,3 +162,5 @@ add-zsh-hook precmd prmptcmd
 source ~/.cache/wal/colors-tty.sh
 
 stty -ixon
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
