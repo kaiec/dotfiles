@@ -28,6 +28,10 @@ command=~/dotfiles/config/i3blocks/scripts/$BLOCK_NAME
 separator_block_width=20
 markup=none
 
+[spotify]
+command=spotifycli --status | sed "s/spotify is off//"
+interval=10
+
 [pomodoro]
 command=/home/kai/dotfiles/bin/i3b-pomodoro
 interval=once
