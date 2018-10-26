@@ -24,6 +24,7 @@ ln -sTf ~/dotfiles/bin/screenshot.sh ~/bin/screenshot.sh
 ln -sTf ~/dotfiles/bin/cwd.sh ~/bin/cwd.sh
 ln -sTf ~/dotfiles/bin/toggle-pad.sh ~/bin/toggle-pad.sh
 ln -sTf ~/dotfiles/bin/caps.sh ~/bin/caps.sh
+ln -sTf ~/dotfiles/bin/nocaps ~/bin/nocaps
 ln -sTf ~/dotfiles/bin/beamer-optimizer.sh ~/bin/beamer-optimizer.sh
 ln -sTf ~/dotfiles/bin/mutt-mailboxes.py ~/bin/mutt-mailboxes.py
 ln -sTf ~/dotfiles/muttrc ~/.muttrc
