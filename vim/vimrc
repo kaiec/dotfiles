@@ -1,23 +1,15 @@
-:set encoding=utf-8
-:set fileencoding=utf-8
+set encoding=utf-8
+set fileencoding=utf-8
 
 set nocompatible
 let mapleader = "ä"
 
-set background=dark
-set t_Co=256
-
-"" vim:fdm=expr:fdl=0
-"" vim:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
-
-
-""" Plugins
+" -------------------- Plugins --------------------{{{1
 " set the runtime path to include Vundle and initialize
 set rtp+=~/dotfiles/vim/bundle/Vundle.vim
 set rtp+=~/.fzf
 filetype off                  " required by vundle
 
-"--------------------------------------------
 " call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 call vundle#begin('~/dotfiles/vim/bundle')
@@ -29,6 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive' 			" GIT support
 Plugin 'kien/ctrlp.vim'				" quick file browser
 Plugin 'scrooloose/nerdtree'			" file tree
+Plugin 'nelstrom/vim-markdown-folding'		" Markdown Folding
 Plugin 'vimwiki/vimwiki'			" Wiki style markdown
 Plugin 'davidhalter/jedi-vim'			" auto completion
 Plugin 'mhartington/oceanic-next'		" color scheme
@@ -44,7 +37,6 @@ Plugin 'junegunn/fzf.vim'			" Fuzzy Find
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-"--------------------------------------------
 
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -60,7 +52,7 @@ filetype plugin indent on    " required
 " SEE :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-""" Common Stuff
+" -------------------- Common Stuff --------------------{{{1
 
 
 syntax on
@@ -68,15 +60,16 @@ filetype plugin indent on
 set showcmd
 set autochdir
 
+" -------------------- Status line --------------------{{{1
 set laststatus=2
 " set statusline=[%n]\ %t
 function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
 
 function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+   let l:branchname = GitBranch()
+   return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
 endfunction
 
 set statusline=
@@ -93,6 +86,9 @@ set statusline+=\ [%{&fileformat}\]
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ 
+
+" -------------------- Sane defaults --------------------{{{1 
+
 " backspace behaves normal
 set backspace=indent,eol,start
 " Cursor moves over beginning and end of lines
@@ -103,51 +99,24 @@ nnoremap  <buffer> <silent> <Down> gj
 inoremap <expr> <buffer> <silent> <Up> pumvisible() ? '<C-P>' : '<C-O>gk'
 inoremap <expr> <buffer> <silent> <Down> pumvisible() ? '<C-N>' : '<C-O>gj' 
 
-
+" -------------------- Cursor --------------------{{{1
+"
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
 autocmd BufReadPost *
-  \ if line("'\"") >= 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
+         \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+         \   exe "normal! g`\"" |
+         \ endif
 
 " Different cursor shapes in different modes.
 let &guicursor = 'n-v-c-sm:block-blinkwait1000-blinkon500-blinkoff500,'
-        \          . 'i-c-ci-ve:ver25-blinkwait1000-blinkon500-blinkoff500,'
-        \          . 'r-cr-o:hor20-blinkwait1000-blinkon500-blinkoff500'
-
-""" Markdown
-	
-" Markdown support for .md files
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-
-" NERDTree toggle
-map <C-n> :NERDTreeFind<CR>
-let NERDTreeQuitOnOpen=1
-
-" vimwiki - Personal Wiki for Vim
-" https://github.com/vimwiki/vimwiki
-
-" vimwiki with markdown support
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-" helppage -> :h vimwiki-syntax 
-let g:vimwiki_list = [{'path': '~/Dropbox/Notizen/', 'ext': '.md', 'syntax': 'markdown'}]
-
-" vim-instant-markdown - Instant Markdown previews from Vim
-" https://github.com/suan/vim-instant-markdown
-let g:instant_markdown_autostart = 0	" disable autostart
-map <leader>md :InstantMarkdownPreview<CR>
-
-" Notizen
-nmap <F12> :NERDTree ~/Dropbox/Notizen<CR>
-" F24 should be S-F12
-nmap <F24> :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
-nnoremap <F36> :cd ~/Dropbox/Notizen<cr>:Ag<space>
-map <LEADER>d :put=strftime('%Y-%m-%d')<CR>10la
+         \          . 'i-c-ci-ve:ver25-blinkwait1000-blinkon500-blinkoff500,'
+         \          . 'r-cr-o:hor20-blinkwait1000-blinkon500-blinkoff500'
 
 
-""" Key Mappings
+
+" -------------------- Key Mappings --------------------{{{1
 
 nnoremap ö :
 nnoremap Ö :
@@ -187,96 +156,97 @@ nnoremap <C-B> :Buffers<cr>
 map <C-c> "+y<CR>
 
 if has("nvim")
-    tnoremap <Esc> <C-\><C-n>
+   tnoremap <Esc> <C-\><C-n>
 endif
 
-""" Color Scheme
+" -------------------- Nerdtree --------------------{{{1
+
+" NERDTree toggle
+map <C-n> :NERDTreeFind<CR>
+let NERDTreeQuitOnOpen=1
+
+" -------------------- Vimwiki --------------------{{{1
+
+" vimwiki - Personal Wiki for Vim
+" https://github.com/vimwiki/vimwiki
+
+" vimwiki with markdown support
+" let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+" helppage -> :h vimwiki-syntax 
+let g:vimwiki_list = [{'path': '~/Dropbox/Notizen/', 'ext': '.md', 'syntax': 'markdown'}]
+" No vimiwiki support for md files outside the wiki
+let g:vimwiki_global_ext = 0
+
+
+" Notizen
+nmap <F12> :NERDTree ~/Dropbox/Notizen<CR>
+" F24 should be S-F12
+nmap <F24> :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
+nnoremap <F36> :cd ~/Dropbox/Notizen<cr>:Ag<space>
+map <LEADER>d :put=strftime('%Y-%m-%d')<CR>10la
+
+" -------------------- Color Scheme --------------------{{{1
+set background=dark
+set t_Co=256
 " Theme
 syntax enable
 colorscheme wal
 
 
 
-""" Line Numbers
+" -------------------- Line Numbers --------------------{{{1
 let g:numbertoggle=1
 set number relativenumber
 " https://jeffkreeftmeijer.com/vim-number/
 function! RelNum ()
-	if g:numbertoggle
-		set relativenumber
-	endif
+   if g:numbertoggle
+      set relativenumber
+   endif
 endfunction
 function! AbsNum ()
-	if g:numbertoggle
-		set norelativenumber
-	endif
+   if g:numbertoggle
+      set norelativenumber
+   endif
 endfunction
 
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * :call RelNum() 
-:  autocmd BufLeave,FocusLost,InsertEnter   * :call AbsNum()
-:augroup END
+augroup numbertoggle
+   autocmd!
+   autocmd BufEnter,FocusGained,InsertLeave * :call RelNum() 
+   autocmd BufLeave,FocusLost,InsertEnter   * :call AbsNum()
+augroup END
 " highlight LineNr ctermfg=5 ctermbg=4
 " highlight CursorLineNr ctermfg=5 ctermbg=4
 
-""" Line Limit
-set colorcolumn=81
-highlight ColorColumn ctermbg=4 ctermfg=255
+" -------------------- Line Limit --------------------{{{1
 
-""" Warn color in insert mode
+call matchadd('ColorColumn', '\%81v', 100)
+highlight ColorColumn ctermbg=208 ctermfg=black
+"                                                         This is how it looks: foo
+
+" -------------------- Warn color in insert mode --------------------{{{1
 
 highlight  CursorLine ctermbg=124 ctermfg=None
 autocmd InsertEnter * set cursorline 
 autocmd InsertLeave * set nocursorline 
 
-""" Folding 
+" -------------------- Folding  --------------------{{{1
 " Enable folding with the spacebar
 nnoremap <tab> za
 nnoremap <S-tab> zM
 
-""" Python 
-au FileType py
-    \ setlocal tabstop=4 |
-    \ setlocal softtabstop=4 |
-    \ setlocal shiftwidth=4 |
-    \ setlocal textwidth=79 |
-    \ setlocal expandtab |
-    \ setlocal autoindent |
-    \ setlocal fileformat=unix
-
-let g:python_host_prog = '/home/kai/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/home/kai/.pyenv/versions/neovim3/bin/python'
-
-""" Ruby
-au FileType rb
-    \ setlocal tabstop=2 |
-    \ setlocal softtabstop=2 |
-    \ setlocal shiftwidth=2 |
-    \ setlocal expandtab
-
-""" Clipboard
-vnoremap <leader>c :!xclip -i -f<cr> 
-nnoremap <leader>v :r!xclip -o<cr>
-""" HTML, CSS
-let g:editorconfig_Beautifier = '~/dotfiles/vim/.editorconfig'
-au FileType javascript,html,css
-    \ setlocal tabstop=2 softtabstop=2 shiftwidth=2
-
-au FileType javascript
-    \ noremap <buffer> <c-f> :call JsBeautify()<cr>
 
 
-""" Misc 
+
+" -------------------- Misc  --------------------{{{1
 command! VRC :e ~/dotfiles/vim/vimrc
 
-""" Mail
+" Mail
 " Add format option 'w' to add trailing white space, indicating that paragraph
 " continues on next line. This is to be used with mutt's 'text_flowed' option.
 augroup mail_trailing_whitespace " {
-    autocmd!
-    autocmd FileType mail setlocal formatoptions+=w
-    autocmd FileType mail setlocal textwidth=72
+   autocmd!
+   autocmd FileType mail setlocal formatoptions+=w
+   autocmd FileType mail setlocal textwidth=72
 augroup END " }
 
 " Transparent Background
@@ -293,8 +263,8 @@ set undodir=~/.vimundo/
 
 " completion
 " http://vim.wikia.com/wiki/VimTip1386
-:set completeopt=longest,menuone
-:inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Syntastic Syntax Checking
 set statusline+=%#warningmsg#
@@ -307,17 +277,17 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
-" Goyo, Zen Mode
+" -------------------- Goyo, Zen Mode --------------------{{{1 
 function! s:goyo_enter()
-	let g:numbertoggle=0
-	set nonumber norelativenumber
-	set linebreak
+   let g:numbertoggle=0
+   set nonumber norelativenumber
+   set linebreak
 endfunction
 
 function! s:goyo_leave()
-	let g:numbertoggle=1
-	set number relativenumber
-	set nolinebreak
+   let g:numbertoggle=1
+   set number relativenumber
+   set nolinebreak
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
