@@ -1,0 +1,9 @@
+#!/bin/bash
+function regex { gawk 'match($0,/'$1'/, ary) {print ary['${2:-'0'}']}'; }
+
+# Message-ID:<20fa3480-0eb1-a3f8-10d8-4e8a8ee3f229@hdm-stuttgart.de> 
+todo=$(todo.sh | egrep "^0*${1} ")
+msgid=$(echo $todo | regex 'Message-.*<([^>]*)>' 1)
+if [[ $msgid ]]; then
+	~/dotfiles/mutt/muttjump $msgid
+fi

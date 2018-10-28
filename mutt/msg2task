@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Message-ID:<20fa3480-0eb1-a3f8-10d8-4e8a8ee3f229@hdm-stuttgart.de> 
+msgid=$(egrep -A1 -i '^Message-ID|^Message-id' $* | paste -s |sed 's/[ \t][ \t]*//g' | sed -e 's/^\(M.*>\)[A-Z].*/\1/g')
+todotext=$(dialog --output-fd 1 --title "INPUT BOX" --inputbox "New Task:" 8 51)
+if [[ $? -eq 0 ]]; then
+	todo.sh a $todotext $msgid
+fi

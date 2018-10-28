@@ -2,7 +2,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 set nocompatible
-let mapleader = "ä"
+let mapleader = ","
 
 " -------------------- Plugins --------------------{{{1
 " set the runtime path to include Vundle and initialize
@@ -184,6 +184,9 @@ nmap <F12> :NERDTree ~/Dropbox/Notizen<CR>
 nmap <F24> :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
 nnoremap <F36> :cd ~/Dropbox/Notizen<cr>:Ag<space>
 map <LEADER>d :put=strftime('%Y-%m-%d')<CR>10la
+
+" Call mutt with current line, hopefully containing a message id
+map <leader>m yy:terminal ~/dotfiles/mutt/muttjumpwrapper '<c-r><c-o>"'<enter>
 
 " -------------------- Color Scheme --------------------{{{1
 set background=dark

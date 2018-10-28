@@ -120,6 +120,7 @@ alias start="date;todo.sh pom start"
 export POMODORO_SECONDS=1500 # 25*60
 export POMODORO_SIG_SIGNAL=3
 export POMODORO_SIG_PROCESS=i3blocks
+alias mailt=~/dotfiles/mutt/todo2mail
 
 
 # gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)

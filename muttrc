@@ -71,6 +71,16 @@ macro index <F8> \
           "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" \
           "search and reconstruct owning thread (using notmuch)"
 
+# Jump to original message in search results
+macro generic ,j "<enter-command>push <pipe-message>~/dotfiles/mutt/muttjump-same<enter><enter><enter-command>source ~/.muttjump<enter>" "jump to original message"
+
+# Copy msg id to clipboard
+macro generic ,c "<enter-command>push <pipe-message>~/dotfiles/mutt/msg2clip<enter><enter>" "Copy msgid to clipboard"
+
+# Create new task/todo from message
+macro generic ,t "<enter-command>push <pipe-message>~/dotfiles/mutt/msg2task<enter><enter>" "Create new task from message"
+
+
 set realname="Kai Eckert"
 set from="eckert@hdm-stuttgart.de"
 set use_from=yes
