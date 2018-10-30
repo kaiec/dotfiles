@@ -4,5 +4,5 @@
 vimfile=$1
 todotext=$(dialog --output-fd 1 --title "INPUT BOX" --inputbox "New Task:" 8 51)
 if [[ $? -eq 0 ]]; then
-	todo.sh a $todotext $vimfile
+	todo.sh -a -t a $todotext $vimfile
 fi
