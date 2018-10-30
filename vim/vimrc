@@ -59,6 +59,7 @@ syntax on
 filetype plugin indent on
 set showcmd
 set autochdir
+set nomodeline
 
 " -------------------- Status line --------------------{{{1
 set laststatus=2
@@ -186,7 +187,11 @@ nnoremap <F36> :cd ~/Dropbox/Notizen<cr>:Ag<space>
 map <LEADER>d :put=strftime('%Y-%m-%d')<CR>10la
 
 " Call mutt with current line, hopefully containing a message id
-map <leader>m yy:terminal ~/dotfiles/mutt/muttjumpwrapper '<c-r><c-o>"'<enter>
+nnoremap <leader>m yy:terminal ~/dotfiles/mutt/muttjumpwrapper '<c-r><c-o>"'<enter>
+
+" Create a new todo
+nnoremap <leader>tf :call system("~/dotfiles/bin/vim2task 'vim:<" . expand("%:p") . ">'")<enter>:redraw!<enter>
+nnoremap <leader>tn :call system("~/dotfiles/bin/vim2task")<enter>:redraw!<enter>
 
 " -------------------- Color Scheme --------------------{{{1
 set background=dark
