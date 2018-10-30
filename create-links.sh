@@ -51,3 +51,10 @@ ln -sTf ~/dotfiles/bin/remotevim ~/bin/remotevim
 ln -sTf ~/dotfiles/bin/vfat ~/bin/vfat
 ln -sTf ~/dotfiles/bin/togglenotes ~/bin/togglenotes
 ln -sTf ~/dotfiles/compton.conf ~/.config/compton.conf
+# Task warrior
+mkdir ~/.timewarrior
+ln -sTf ~/dotfiles/task/hooks ~/Dropbox/Notizen/tasks/hooks
+ln -sTf ~/dotfiles/task/taskrc ~/.taskrc
+ln -sTf ~/dotfiles/task/taskopenrc ~/.taskopenrc
+ln -sTf ~/dotfiles/task/timewarrior/timewarrior.cfg ~/.timewarrior/timewarrior.cfg
+ln -sTf ~/dotfiles/task/timewarrior/extensions ~/.timewarrior/extensions
