@@ -20,7 +20,7 @@ data.location=~/Dropbox/Notizen/tasks
 #include /usr/share/taskwarrior/dark-256.theme
 #include /usr/share/taskwarrior/dark-red-256.theme
 #include /usr/share/taskwarrior/dark-green-256.theme
-#include /usr/share/taskwarrior/dark-blue-256.theme
+include /usr/share/taskwarrior/dark-blue-256.theme
 #include /usr/share/taskwarrior/dark-violets-256.theme
 #include /usr/share/taskwarrior/dark-yellow-green.theme
 #include /usr/share/taskwarrior/dark-gray-256.theme
@@ -31,3 +31,6 @@ data.location=~/Dropbox/Notizen/tasks
 
 uda.blocks.label=Blocks
 uda.blocks.type=string
+
+report.next.columns=id,start.age,entry.age,depends,priority,recur,scheduled.countdown,due.relative,until.remaining,description.count,project,tags,urgency
+report.next.labels=ID,Active,Age,Deps,P,Recur,S,Due,Until,Description,Project,Tag,Urg

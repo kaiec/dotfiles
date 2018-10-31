@@ -1,5 +1,5 @@
 #!/bin/bash
-task=$(timew | grep "^Tracking \".*\"" | sed "s/^Tracking \"//" | sed "s/\"$"//)
+task=$(timew | grep "^Tracking .*" | sed "s/^Tracking //" | sed "s/\"//g")
 time=$(timew | grep "^  Total" | sed "s/  Total[ ]*//")
 if [[ $task ]]
 then
