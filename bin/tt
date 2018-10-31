@@ -1,8 +1,10 @@
 #!/bin/bash
 if [ $# -eq 0 ]
 then
-	~/dotfiles/bin/todo.sh lsp A
+	task pri:H
+	# ~/dotfiles/bin/todo.sh lsp A
 else
-	task=$(todo.sh -a -t a "$@" | head -n1 | cut -d" " -f1 )
-	~/dotfiles/bin/todo.sh pri $task A
+	task add $@ pri:H
+	# task=$(todo.sh -a -t a "$@" | head -n1 | cut -d" " -f1 )
+	# ~/dotfiles/bin/todo.sh pri $task A
 fi

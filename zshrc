@@ -113,13 +113,14 @@ HISTIGNORE="$HISTIGNORE:jrnl *"
 HISTIGNORE="$HISTIGNORE:t a*"
 
 export TODOTXT_DEFAULT_ACTION=ls
-alias t="todo.sh -a -t"
-alias todo=todotxt-machine
-alias plan="todo.sh pom plan"
-alias start="date;todo.sh pom start"
-export POMODORO_SECONDS=1500 # 25*60
-export POMODORO_SIG_SIGNAL=3
-export POMODORO_SIG_PROCESS=i3blocks
+alias t="task"
+# alias todo=todotxt-machine
+# alias plan="todo.sh pom plan"
+alias start="task start"
+alias stop="task stop"
+# export POMODORO_SECONDS=1500 # 25*60
+# export POMODORO_SIG_SIGNAL=3
+# export POMODORO_SIG_PROCESS=i3blocks
 alias tmail=~/dotfiles/mutt/todo2mail
 alias tvim=~/dotfiles/bin/todo2vim
 
