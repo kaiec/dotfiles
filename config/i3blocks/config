@@ -32,10 +32,9 @@ markup=none
 command=spotifycli --status | sed "s/spotify is off//"
 interval=10
 
-[pomodoro]
-command=/home/kai/dotfiles/bin/i3b-pomodoro
-interval=once
-signal=3
+[task]
+command=/home/kai/dotfiles/bin/i3b-task
+interval=10
 
 [nextdate]
 command=/home/kai/dotfiles/bin/i3b-nextdate
@@ -74,6 +73,11 @@ command=date '+ %H:%M'
 interval=60
 min_width= 88:88X
 
+
+# [pomodoro]
+# command=/home/kai/dotfiles/bin/i3b-pomodoro
+# interval=once
+# signal=3
 
 # Volume indicator
 #

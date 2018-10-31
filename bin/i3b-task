@@ -1,0 +1,9 @@
+#!/bin/bash
+task=$(timew | grep "^Tracking \".*\"" | sed "s/^Tracking \"//" | sed "s/\"$"//)
+time=$(timew | grep "^  Total" | sed "s/  Total[ ]*//")
+if [[ $task ]]
+then
+	echo -n  $task \| $time
+else
+	echo ""
+fi
