@@ -58,3 +58,4 @@ ln -sTf ~/dotfiles/task/taskrc ~/.taskrc
 ln -sTf ~/dotfiles/task/taskopenrc ~/.taskopenrc
 ln -sTf ~/dotfiles/task/timewarrior/timewarrior.cfg ~/.timewarrior/timewarrior.cfg
 ln -sTf ~/dotfiles/task/timewarrior/extensions ~/.timewarrior/extensions
+ln -sTf ~/dotfiles/bin/ttime ~/bin/ttime
