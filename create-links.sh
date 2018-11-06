@@ -42,6 +42,7 @@ ln -sTf ~/dotfiles/bin/mail ~/bin/mail
 ln -sTf ~/dotfiles/bin/reveal ~/bin/reveal
 ln -sTf ~/dotfiles/bin/poll-stuff.sh ~/bin/poll-stuff.sh
 ln -sTf ~/dotfiles/bin/today ~/bin/today
+ln -sTf ~/dotfiles/bin/soon ~/bin/soon
 ln -sTf ~/dotfiles/bin/printics ~/bin/printics
 ln -sTf ~/dotfiles/bin/camtoggle ~/bin/camtoggle
 ln -sTf ~/dotfiles/bin/screencast ~/bin/screencast

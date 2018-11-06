@@ -1,10 +1,10 @@
 #!/bin/bash
 if [ $# -eq 0 ]
 then
-	task pri:H
+	task pri:H or pri:M
 else
 	for task in $@
 	do
-		task $task modify pri:H
+		task $task modify pri:M
 	done
 fi
