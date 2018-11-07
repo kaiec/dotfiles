@@ -48,6 +48,7 @@ ln -sTf ~/dotfiles/bin/camtoggle ~/bin/camtoggle
 ln -sTf ~/dotfiles/bin/screencast ~/bin/screencast
 ln -sTf ~/dotfiles/bin/killrecording ~/bin/killrecording
 ln -sTf ~/dotfiles/bin/tt ~/bin/tt
+ln -sTf ~/dotfiles/bin/start ~/bin/start
 ln -sTf ~/dotfiles/bin/remotevim ~/bin/remotevim
 ln -sTf ~/dotfiles/bin/vfat ~/bin/vfat
 ln -sTf ~/dotfiles/bin/togglenotes ~/bin/togglenotes
