@@ -22,6 +22,8 @@ Plugin 'tpope/vim-fugitive' 			" GIT support
 Plugin 'kien/ctrlp.vim'				" quick file browser
 Plugin 'scrooloose/nerdtree'			" file tree
 Plugin 'nelstrom/vim-markdown-folding'		" Markdown Folding
+Plugin 'vim-pandoc/vim-pandoc'		" Markdown Pandoc
+Plugin 'vim-pandoc/vim-pandoc-syntax'		" Markdown Pandoc
 Plugin 'vimwiki/vimwiki'			" Wiki style markdown
 Plugin 'davidhalter/jedi-vim'			" auto completion
 Plugin 'mhartington/oceanic-next'		" color scheme
@@ -191,8 +193,7 @@ nnoremap <leader>m yy:terminal ~/dotfiles/mutt/muttjumpwrapper '<c-r><c-o>"'<ent
 
 " Create a new todo
 " for todo.txt: nnoremap <leader>tf :call system("~/dotfiles/bin/vim2task 'vim:<" . expand("%:p") . ">'")<enter>:redraw!<enter>
-nnoremap <leader>tf :call system("~/dotfiles/bin/vim2task '" . expand("%:p") ."'")<enter>:redraw!<enter>
-nnoremap <leader>tn :call system("~/dotfiles/bin/vim2task")<enter>:redraw!<enter>
+nnoremap <leader>t :call system("~/dotfiles/bin/vim2task '" . expand("%:p") ."'")<enter>:redraw!<enter>
 
 " -------------------- Color Scheme --------------------{{{1
 set background=dark
