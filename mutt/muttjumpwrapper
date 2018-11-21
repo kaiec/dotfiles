@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "$1" | ~/dotfiles/mutt/muttjump
+echo "$1" | sed 's/.*\(Message.*>\).*/\1/' | ~/dotfiles/mutt/muttjump
