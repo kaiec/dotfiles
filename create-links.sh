@@ -8,6 +8,7 @@ ln -sTf ~/dotfiles/config/i3status ~/.config/i3status
 ln -sTf ~/dotfiles/config/rofi ~/.config/rofi
 ln -sTf ~/dotfiles/config/flake8 ~/.config/flake8
 ln -sTf ~/dotfiles/config/powerline-shell ~/.config/powerline-shell
+ln -sTf ~/dotfiles/config/mimeapps.list ~/.config/mimeapps.list
 ln -sTf ~/dotfiles/vimrc ~/.vimrc
 ln -sTf ~/dotfiles/bashrc ~/.bashrc
 ln -sTf ~/dotfiles/zshrc ~/.zshrc

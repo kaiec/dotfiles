@@ -191,9 +191,13 @@ map <LEADER>d :put=strftime('%Y-%m-%d')<CR>10la
 " Call mutt with current line, hopefully containing a message id
 nnoremap <leader>m yy:terminal ~/dotfiles/mutt/muttjumpwrapper '<c-r><c-o>"'<enter>
 
+
 " Create a new todo
 " for todo.txt: nnoremap <leader>tf :call system("~/dotfiles/bin/vim2task 'vim:<" . expand("%:p") . ">'")<enter>:redraw!<enter>
 nnoremap <leader>t :call system("~/dotfiles/bin/vim2task '" . expand("%:p") ."'")<enter>:redraw!<enter>
+
+" Copy current file path to clipboard
+nnoremap <leader>c :let @+=expand("%:p")<CR>
 
 " -------------------- Color Scheme --------------------{{{1
 set background=dark
