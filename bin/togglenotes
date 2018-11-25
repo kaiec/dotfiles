@@ -6,7 +6,7 @@ then
 	i3-msg \[instance=\"vim_notes\"\] scratchpad show
 	exit 0
 else
-	urxvt -name vim_notes -e zsh -c "(cat ~/.cache/wal/sequences &);vim ~/Dropbox/Notizen/index.md" &
+	kitty --name vim_notes zsh -c "(cat ~/.cache/wal/sequences &);vim ~/Dropbox/Notizen/index.md" &
 	sleep 1
 	i3-msg \[instance=\"vim_notes\"\] scratchpad show 
 fi
