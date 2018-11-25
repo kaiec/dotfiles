@@ -29,6 +29,7 @@ Plugin 'davidhalter/jedi-vim'			" auto completion
 Plugin 'mhartington/oceanic-next'		" color scheme
 Plugin 'dhruvasagar/vim-table-mode'		" edit tables
 Plugin 'vim-syntastic/syntastic'		" Syntax checker
+Plugin 'tell-k/vim-autopep8'		" Autopep8
 Plugin 'sotte/presenting.vim'			" Presentations
 Plugin 'moll/vim-node'				" Node.js
 Plugin 'maksimr/vim-jsbeautify'			" Javascript Formatting
@@ -239,7 +240,7 @@ highlight ColorColumn ctermbg=208 ctermfg=black
 
 " -------------------- Warn color in insert mode --------------------{{{1
 
-highlight  CursorLine ctermbg=124 ctermfg=None
+highlight  CursorLine ctermbg=124 ctermfg=15
 autocmd InsertEnter * set cursorline 
 autocmd InsertLeave * set nocursorline 
 

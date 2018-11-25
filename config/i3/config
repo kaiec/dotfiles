@@ -46,7 +46,7 @@ floating_modifier $mod
 bindsym $mod+Return exec cwd.sh &
 
 # start ranger
-bindsym $mod+numbersign exec i3-sensible-terminal -e ranger ~/Daten &
+bindsym $mod+numbersign exec i3-sensible-terminal -e python3 ~/software/ranger/ranger.py ~/Daten &
 
 # start ikhal
 bindsym $mod+c exec i3-sensible-terminal -e ikhal &

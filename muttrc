@@ -34,10 +34,10 @@ set mark_old=no
 set sort=threads
 set sort_aux=last-date-received
 
-bind index,pager <C-Up> sidebar-prev
-bind index,pager <C-Down> sidebar-next
-bind index,pager <C-Right> sidebar-open
-bind index,pager <C-Left> sidebar-toggle-visible
+bind index,pager \e[1\;5A sidebar-prev
+bind index,pager \e[1\;5B sidebar-next
+bind index,pager \e[1\;5C  sidebar-open
+bind index,pager \e[1\;5D sidebar-toggle-visible
 
 bind pager <Up> previous-line
 bind pager <Down> next-line
@@ -92,35 +92,37 @@ set sendmail_wait = -1
 
 set text_flowed
 
-color normal  white default
-color attachment brightyellow default
-color hdrdefault cyan default
-color indicator black cyan
-color markers brightred default
-color quoted  green default
-color signature cyan default
-color status  brightgreen blue
-color tilde blue default
-color tree  red default
+source ~/.mutt/solarized-dark-256.muttrc
 
-color index brightblack default "~R" # read messages
-color index blue default ~P # from me
-color index brightblue default ~p # to me
-color index red default ~D # deleted
-color index magenta default ~T # tagged
-color index white default "~U" # unread messages
-
-color header brightgreen default ^From:
-color header brightcyan default ^To:
-color header brightcyan default ^Reply-To:
-color header brightcyan default ^Cc:
-color header brightblue default ^Subject:
-
-color body  brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
-# identifies email addresses
-
-color body  brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
-# identifies URLs
+# color normal  white default
+# color attachment brightyellow default
+# color hdrdefault cyan default
+# color indicator black cyan
+# color markers brightred default
+# color quoted  green default
+# color signature cyan default
+# color status  brightgreen blue
+# color tilde blue default
+# color tree  red default
+# 
+# color index cccccc default "~R" # read messages
+# color index white default "~U" # unread messages
+# color index blue default ~P # from me
+# color index brightblue default ~p # to me
+# color index red default ~D # deleted
+# color index magenta default ~T # tagged
+# 
+# color header brightgreen default ^From:
+# color header brightcyan default ^To:
+# color header brightcyan default ^Reply-To:
+# color header brightcyan default ^Cc:
+# color header brightblue default ^Subject:
+# 
+# color body  brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+# # identifies email addresses
+# 
+# color body  brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+# # identifies URLs
 
 set editor='vim'
 

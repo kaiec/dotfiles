@@ -20,7 +20,7 @@ fi
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 export EDITOR=vim
-export TERMINAL=urxvt
+export TERMINAL=kitty
 
 export QT_SCALE_FACTOR=1.5
 # Should fix Skype audio issues
