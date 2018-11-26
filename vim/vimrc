@@ -27,6 +27,7 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'		" Markdown Pandoc
 Plugin 'vimwiki/vimwiki'			" Wiki style markdown
 Plugin 'davidhalter/jedi-vim'			" auto completion
 Plugin 'mhartington/oceanic-next'		" color scheme
+Plugin 'altercation/vim-colors-solarized'   " solarized
 Plugin 'dhruvasagar/vim-table-mode'		" edit tables
 Plugin 'vim-syntastic/syntastic'		" Syntax checker
 Plugin 'tell-k/vim-autopep8'		" Autopep8
@@ -205,7 +206,7 @@ set background=dark
 set t_Co=256
 " Theme
 syntax enable
-colorscheme wal
+colorscheme solarized 
 
 
 

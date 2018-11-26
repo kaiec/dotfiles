@@ -92,7 +92,7 @@ set sendmail_wait = -1
 
 set text_flowed
 
-source ~/.mutt/solarized-dark-256.muttrc
+source ~/.mutt/gruvbox-transparent.conf
 
 # color normal  white default
 # color attachment brightyellow default
