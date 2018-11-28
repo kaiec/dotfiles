@@ -203,12 +203,19 @@ nnoremap <leader>c :let @+=expand("%:p")<CR>
 
 " -------------------- Color Scheme --------------------{{{1
 set background=dark
-set t_Co=256
+set termguicolors
 " Theme
 syntax enable
-colorscheme solarized 
+colorscheme OceanicNext 
+set nospell
+set conceallevel=0
 
-
+" Transparent Background
+hi Normal guibg=none ctermbg=none
+hi NonText guibg=none ctermbg=none
+hi EndOfBuffer guibg=none ctermbg=none
+hi Folded guibg=none ctermbg=none 
+hi LineNr guibg=none ctermbg=none 
 
 " -------------------- Line Numbers --------------------{{{1
 let g:numbertoggle=1
@@ -235,8 +242,8 @@ augroup END
 
 " -------------------- Line Limit --------------------{{{1
 
-call matchadd('ColorColumn', '\%81v', 100)
-highlight ColorColumn ctermbg=208 ctermfg=black
+" call matchadd('ColorColumn', '\%81v', 100)
+" highlight ColorColumn ctermbg=208 ctermfg=black
 "                                                         This is how it looks: foo
 
 " -------------------- Warn color in insert mode --------------------{{{1
@@ -265,10 +272,6 @@ augroup mail_trailing_whitespace " {
    autocmd FileType mail setlocal textwidth=72
 augroup END " }
 
-" Transparent Background
-hi Normal guibg=none ctermbg=none
-hi NonText guibg=none ctermbg=none
-hi EndOfBuffer guibg=none ctermbg=none
 
 " persistent undo
 " tell it to use an undo file
