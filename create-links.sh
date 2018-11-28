@@ -31,6 +31,7 @@ ln -sTf ~/dotfiles/bin/mutt-mailboxes.py ~/bin/mutt-mailboxes.py
 ln -sTf ~/dotfiles/muttrc ~/.muttrc
 mkdir ~/.mutt
 ln -sTf ~/dotfiles/mutt/gpg.rc ~/.mutt/gpg.rc
+ln -sTf ~/dotfiles/mutt/gruvbox-transparent.conf ~/.mutt/gruvbox-transparent.conf
 ln -sTf ~/dotfiles/offlineimaprc ~/.offlineimaprc
 mkdir ~/.offlineimap
 ln -sTf ~/dotfiles/offlineimap/confhelpers.py ~/.offlineimap/confhelpers.py
