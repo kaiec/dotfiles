@@ -2,3 +2,4 @@
 touch ~/.is_presentation
 ~/bin/beamer-optimizer.sh
 i3-msg restart
+echo 16 > ~/.term-font-size

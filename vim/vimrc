@@ -187,7 +187,7 @@ let g:vimwiki_global_ext = 0
 nmap <F12> :NERDTree ~/Dropbox/Notizen<CR>
 " F24 should be S-F12
 nmap <F24> :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
-nnoremap <F36> :cd ~/Dropbox/Notizen<cr>:Ag<space>
+nnoremap <C-F12> :cd ~/Dropbox/Notizen<cr>:Ag<space>
 map <LEADER>d :put=strftime('%Y-%m-%d')<CR>10la
 
 " Call mutt with current line, hopefully containing a message id

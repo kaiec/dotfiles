@@ -10,7 +10,7 @@ ID=$(xdpyinfo | grep focus | cut -f4 -d " ")
 PID=$(($(xprop -id $ID | grep -m 1 PID | cut -d " " -f 3) + 2))
 if [ -e "/proc/$PID/cwd" ]
 then
-    kitty -d "$(readlink /proc/$PID/cwd)" &
+    kitty -1 -d "$(readlink /proc/$PID/cwd)" &
 else
-    kitty &
+    kitty -1 &
 fi
