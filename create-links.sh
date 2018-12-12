@@ -13,6 +13,8 @@ ln -sTf ~/dotfiles/vimrc ~/.vimrc
 ln -sTf ~/dotfiles/bashrc ~/.bashrc
 ln -sTf ~/dotfiles/zshrc ~/.zshrc
 ln -sTf ~/dotfiles/urxvt ~/.urxvt
+ln -sTf ~/dotfiles/xonshrc ~/.xonshrc
+ln -sTf ~/dotfiles/config/xonsh/ ~/.config/xonsh
 ln -sTf ~/dotfiles/Xdefaults ~/.Xdefaults
 ln -sTf ~/dotfiles/mailcap ~/.mailcap
 mkdir ~/.todo
