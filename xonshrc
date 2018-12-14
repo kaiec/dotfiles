@@ -9,6 +9,7 @@ aliases['gpu'] = ['git', 'push']
 aliases['gca'] = ['git', 'commit', '-a']
 aliases['ga'] = ['git', 'add']
 aliases['v'] = ['vim']
+aliases['..'] = ['cd','..'] 
 
 if not Path("~/.is_presentation").expanduser().exists():
 	~/dotfiles/bin/agenda.sh
