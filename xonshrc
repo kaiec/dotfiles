@@ -3,6 +3,7 @@ from pathlib import Path
 $XONSH_COLOR_STYLE="native"
 
 aliases['a'] = ['~/dotfiles/bin/agenda.sh']
+aliases['t'] = ['task']
 aliases['gst'] = ['git', 'status']
 aliases['gpu'] = ['git', 'push']
 aliases['gca'] = ['git', 'commit', '-a']
@@ -12,4 +13,4 @@ aliases['v'] = ['vim']
 if not Path("~/.is_presentation").expanduser().exists():
 	~/dotfiles/bin/agenda.sh
 
-stty -ixon
+# stty -ixon

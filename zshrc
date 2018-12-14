@@ -140,6 +140,7 @@ alias gpu='git push'
 alias gca='git commit -a'
 alias ga='git add'
 alias v=vim
+alias p=xonsh
 
 
 # Change to last directory.

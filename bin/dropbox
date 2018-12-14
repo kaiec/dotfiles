@@ -1,0 +1,15 @@
+#!/bin/bash
+mount /home/kai/Dropbox/
+sleep 3
+dropbox start &
+
+### Create the loopback directory:
+# mkdir /home/kai/Dropbox
+# dd if=/dev/zero of=/home/kai/.dropbox/storage bs=1M count=25000 
+# mkfs.ext4 /home/kai/.dropbox/storage  
+# sudo chattr +i Dropbox  
+#
+###
+### Add this to fstab
+## Stupid Dropbox workaround...
+# /home/kai/.dropbox/storage /home/kai/Dropbox ext4 defaults,user_xattr,loop,user,noauto 0 0

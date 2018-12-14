@@ -221,7 +221,7 @@ bar {
 exec_always --no-startup-id sleep 5; xmodmap -e "clear lock"  #disable caps lock switch
 exec_always --no-startup-id sleep 6; xmodmap -e "keycode 0x42  = Escape"  #set caps_lock as escape
 
-exec --no-startup-id dropbox start
+exec --no-startup-id "~/dotfiles/bin/dropbox"
 exec --no-startup-id nm-applet
 
 # FIX firefox sound issue, see https://support.mozilla.org/en-US/kb/no-sound-firefox-59-linux
