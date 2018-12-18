@@ -1,3 +1,5 @@
+# vi: ft=python
+
 from pathlib import Path
 
 $XONSH_COLOR_STYLE="native"
@@ -15,3 +17,16 @@ if not Path("~/.is_presentation").expanduser().exists():
 	~/dotfiles/bin/agenda.sh
 
 # stty -ixon
+
+
+$PATH.append("~/.fzf/bin")
+
+import subprocess
+
+def fzf_cd():
+    d = subprocess.run(["/home/kai/.fzf/bin/fzf", "--height", "20"], stdout=subprocess.PIPE, input=$(cat ~/dirs).encode("utf-8"))
+    dir = d.stdout.decode("utf-8").strip()
+    cd @(dir)
+
+aliases['fcd'] = fzf_cd
+	
