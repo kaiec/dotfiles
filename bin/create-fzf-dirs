@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "/home/kai" > ~/dirs
+find /home/kai/dotfiles -type d >> ~/dirs
+find /home/kai/Daten -type d >> ~/dirs
+find /home/kai/Dropbox -type d >> ~/dirs
+find /home/kai/daten-linux -type d >> ~/dirs
+
+sed -i '/venv/d ; /\/\./d; /node_modules/d; /site-packages/d' dirs
+

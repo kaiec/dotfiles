@@ -253,7 +253,7 @@ autocmd InsertEnter * set cursorline
 autocmd InsertLeave * set nocursorline 
 
 " -------------------- Folding  --------------------{{{1
-" Enable folding with the spacebar
+" Enable folding with tab
 nnoremap <tab> za
 nnoremap <S-tab> zM
 

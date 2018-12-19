@@ -1,4 +1,4 @@
-# vi: ft=python
+# vi: ft=xonsh
 
 from pathlib import Path
 
@@ -19,14 +19,23 @@ if not Path("~/.is_presentation").expanduser().exists():
 # stty -ixon
 
 
+# Fuzzy change directory {{{
 $PATH.append("~/.fzf/bin")
-
 import subprocess
 
-def fzf_cd():
-    d = subprocess.run(["/home/kai/.fzf/bin/fzf", "--height", "20"], stdout=subprocess.PIPE, input=$(cat ~/dirs).encode("utf-8"))
+def fzf_cd(args, stdin=None):
+    fzf_command = ["/home/kai/.fzf/bin/fzf", "--height", "20"]
+    if len(args) > 0:
+       fzf_command.extend(["-q", " ".join(args)]) 
+    d = subprocess.run(fzf_command, stdout=subprocess.PIPE, input=$(cat ~/dirs).encode("utf-8"))
     dir = d.stdout.decode("utf-8").strip()
     cd @(dir)
 
 aliases['fcd'] = fzf_cd
-	
+# }}}
+
+# All applications that are interactive and use the full terminal:
+# Also applications that spawn these, e.g. open the editor.
+#
+
+__xonsh__.commands_cache.threadable_predictors['taskopen'] = lambda args: False
