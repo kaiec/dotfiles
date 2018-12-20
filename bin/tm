@@ -1,0 +1,4 @@
+#!/bin/bash
+t=$1
+shift
+task $t modify $@

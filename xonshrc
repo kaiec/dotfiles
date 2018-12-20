@@ -18,6 +18,13 @@ if not Path("~/.is_presentation").expanduser().exists():
 
 # stty -ixon
 
+# Vox, Python virtual environments {{{
+xontrib load vox
+$VIRTUALENV_HOME="/home/kai/.pyenv/versions"
+# xontrib load avox
+# xontrib load vox_tabcomplete 
+
+# }}}
 
 # Fuzzy change directory {{{
 $PATH.append("~/.fzf/bin")
