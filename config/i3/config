@@ -48,8 +48,6 @@ bindsym $mod+Return exec cwd.sh
 # start ranger
 bindsym $mod+numbersign exec i3-sensible-terminal -e python3 ~/software/ranger/ranger.py ~/Daten
 
-# start ikhal
-bindsym $mod+c exec i3-sensible-terminal -e ikhal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -89,7 +87,7 @@ bindsym $mod+space fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -237,11 +235,15 @@ workspace 4 output eDP1
 
 exec --no-startup-id compton
 
+# Calendar
+for_window [instance="float_cal"] move to scratchpad, border 1pixel
+bindsym $mod+c exec ~/dotfiles/bin/togglecal
 
-# Terminal scratchpad
+# Notes
 for_window [instance="vim_notes"] move to scratchpad, border 1pixel
 bindsym $mod+F12 exec ~/bin/togglenotes
 
+# Terminal scratchpad
 bindsym $mod+y [con_mark="scratch"] scratchpad show
 bindsym $mod+Shift+y mark scratch; move to scratchpad
 

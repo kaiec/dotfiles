@@ -1,0 +1,12 @@
+#!/bin/bash
+pgrep -f float_cal
+RUNNING=$?
+if [ $RUNNING -eq 0 ]
+then
+	i3-msg \[instance=\"float_cal\"\] scratchpad show
+	exit 0
+else
+	kitty --name float_cal zsh -c "(cat ~/.cache/wal/sequences &);ikhal" &
+	sleep 1
+	i3-msg \[instance=\"float_cal\"\] scratchpad show 
+fi
