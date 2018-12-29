@@ -1,0 +1,6 @@
+#!/bin/sh
+i3-msg "mark w1"
+i3-msg "focus $1"
+i3-msg "swap container with mark w1"
+i3-msg '[con_mark="w1"] focus'
+i3-msg "unmark w1"

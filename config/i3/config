@@ -72,6 +72,12 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+#
+# swap focused window
+bindsym $mod+Control+Left exec ~/dotfiles/config/i3/swap left
+bindsym $mod+Control+Right exec ~/dotfiles/config/i3/swap right
+bindsym $mod+Control+Up exec ~/dotfiles/config/i3/swap up
+bindsym $mod+Control+Down exec ~/dotfiles/config/i3/swap down
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
