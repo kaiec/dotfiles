@@ -1,0 +1,6 @@
+#!/bin/bash
+offsetx=$(xrandr | sed -n -e "s/ /+/g; /eDP-1/ s/.*1920x1080*//p;" | cut -d+ -f2)
+offsety=$(xrandr | sed -n -e "s/ /+/g; /eDP-1/ s/.*1920x1080*//p;" | cut -d+ -f3)
+cd $(dirname $1)
+file=$(basename $1)
+conky -c <(sed "s/OFFSETX/$offsetx/;s/OFFSETY/$offsety/" $file)

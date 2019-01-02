@@ -1,0 +1,4 @@
+1. Extract '.clock_rings.lua' '.conkyrc_clock' '.marks.lua' to the home folder. (/home/USER/)
+2. Extract folder .conky to the home folder.
+3. In the .conky folder, make uptime.sh executable. (chmod 777 ~/.conky/uptime.sh)
+4. Run conky   (conky -c ~/.conkyrc)

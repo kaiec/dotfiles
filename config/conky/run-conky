@@ -1,0 +1,5 @@
+#!/bin/bash
+killall conky
+cd ~/.config/conky
+./nb-conky clock/clock.conf &
+./nb-conky date/date.conf &
