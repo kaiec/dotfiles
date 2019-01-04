@@ -1,6 +1,9 @@
 # vi: ft=xonsh
 
 from pathlib import Path
+from prompt_toolkit.keys import Keys
+from prompt_toolkit.filters import Condition, EmacsInsertMode, ViInsertMode
+from datetime import datetime
 
 $XONSH_COLOR_STYLE="native"
 
@@ -40,6 +43,33 @@ def fzf_cd(args, stdin=None):
     cd @(dir)
 
 aliases['fcd'] = fzf_cd
+
+# add dir within command
+
+@events.on_ptk_create
+def custom_keybindings(bindings, **kw):
+    # prompt_toolkit 1.x
+    # handler = bindings.registry.add_binding
+    # prompt_toolkit 2.x
+    handler = bindings.add
+
+    @handler(Keys.ControlP)
+    def fzf_dir(event):
+        fzf_command = ["/home/kai/.fzf/bin/fzf", "--height", "20"]
+        d = subprocess.run(fzf_command, stdout=subprocess.PIPE, input=$(cat ~/dirs).encode("utf-8"))
+        dir = d.stdout.decode("utf-8").strip()
+        event.current_buffer.insert_text(dir)
+
+
+# }}}
+
+# Prompt {{{
+#
+
+$DYNAMIC_CWD_WIDTH='60%'
+$PROMPT_FIELDS["time"] = lambda: datetime.now().strftime("%H:%M:%S") 
+$PROMPT = '{#444}── {time}\n{env_name:{}}{BOLD_BLUE}┌─ {cwd}{branch_color}{curr_branch: {}}{NO_COLOR}\n{BOLD_BLUE}└─ {prompt_end} {NO_COLOR}'
+
 # }}}
 
 # All applications that are interactive and use the full terminal:
@@ -48,3 +78,5 @@ aliases['fcd'] = fzf_cd
 
 __xonsh__.commands_cache.threadable_predictors['taskopen'] = lambda args: False
 __xonsh__.commands_cache.threadable_predictors['to'] = lambda args: False
+
+
