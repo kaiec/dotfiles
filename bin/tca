@@ -1,0 +1,23 @@
+#!/usr/bin/env xonsh
+import json
+import sys
+
+if len(sys.argv) < 3:
+    print("Usage: tca TARGET FILTER...")
+    sys.exit(1)
+targets = json.loads($(task @($ARGS[1]) export))
+if len(targets)==0:
+    print("Target task does not exist!")
+    sys.exit(1)
+target = targets[0]
+print("Adding annotations to task {}: {}".format(target["id"], target["description"]))
+tasks = json.loads($(task @($ARGS[2:]) export))
+for t in  tasks:
+    if "annotations" in t:
+        for a in t["annotations"]:
+            print(a["description"])
+            answer = input("Add to task? (Y/n) ")
+            if answer == "" or answer.lower() == "y":
+                print($(task @(target["id"]) annotate @(a["description"])))
+    else:
+        print("No annotations found.")

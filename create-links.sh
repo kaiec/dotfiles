@@ -68,3 +68,4 @@ ln -sTf ~/dotfiles/task/timewarrior/extensions ~/.timewarrior/extensions
 ln -sTf ~/dotfiles/bin/ttime ~/bin/ttime
 ln -sTf ~/dotfiles/bin/create-fzf-dirs ~/bin/create-fzf-dirs
 ln -sTf ~/dotfiles/bin/tm ~/bin/tm
+ln -sTf ~/dotfiles/bin/tca ~/bin/tca

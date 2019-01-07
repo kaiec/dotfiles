@@ -78,5 +78,7 @@ $PROMPT = '{#444}── {time}\n{env_name:{}}{BOLD_BLUE}┌─ {cwd}{branch_colo
 
 __xonsh__.commands_cache.threadable_predictors['taskopen'] = lambda args: False
 __xonsh__.commands_cache.threadable_predictors['to'] = lambda args: False
+__xonsh__.commands_cache.threadable_predictors['task'] = lambda args: False
+__xonsh__.commands_cache.threadable_predictors['t'] = lambda args: False
 
 
