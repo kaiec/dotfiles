@@ -29,7 +29,10 @@ import sys
 import email
 import re
 import subprocess
+import datetime
+import locale
 
+log = open("/home/kai/.checkmail.log", "a", encoding="utf-8")
 
 orig_msg = sys.stdin.read()
 msg = email.message_from_string(orig_msg)
@@ -90,7 +93,10 @@ def is_recipient(recipient, msg):
     """
     Checks, if the given recipient is a recipient of this mail.
     """
-    return recipient in msg["To"] or recipient in msg["Cc"] or recipient in msg["Bcc"]
+    for field in ["To", "Cc", "Bcc"]:
+        if field in msg and recipient in msg[field]:
+            return True
+    return False
 
 
 #
@@ -102,6 +108,7 @@ regex = re.compile(trigger, re.IGNORECASE)
 if not has_no_attachment_header(msg) and check_text(msg, regex) and count_attachments(msg) == 0:
     cont = rofi_ask("Attachment vergessen?", ["ja", "nein"])
     if cont == "ja":
+        log.close()
         sys.exit(9)
 
 
@@ -119,12 +126,15 @@ for recipient in lists:
     if is_recipient(recipient, msg):
         cont = rofi_ask("Wirklich an {} senden?".format(recipient), ["ja", "nein"])
         if cont == "nein":
+            log.close()
             sys.exit(9)
 
 
 
 sendmail = subprocess.Popen(sys.argv[1:], stdin=subprocess.PIPE)
-sendmail.communicate(input=orig_msg.encode("utf-8"))
+sendmail.communicate(input=orig_msg.encode(locale.getpreferredencoding()))
+log.write("{} - {}: {} ({})\n".format(datetime.datetime.now(), msg["To"], msg["Subject"], sendmail.returncode))
+log.close()
 sys.exit(sendmail.returncode)
 
 # ----------------------------------------------------------------------------
