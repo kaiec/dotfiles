@@ -49,6 +49,8 @@ bindsym $mod+Control+Return split horizontal; exec cwd.sh
 
 # start ranger
 bindsym $mod+numbersign exec i3-sensible-terminal -e python3 ~/software/ranger/ranger.py ~/Daten
+bindsym $mod+Shift+numbersign split vertical; exec i3-sensible-terminal -e python3 ~/software/ranger/ranger.py ~/Daten
+bindsym $mod+Control+numbersign split horizontal; exec i3-sensible-terminal -e python3 ~/software/ranger/ranger.py ~/Daten
 
 
 # kill focused window
