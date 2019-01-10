@@ -44,6 +44,8 @@ floating_modifier $mod
 
 # start a terminal, ideally in our current directory
 bindsym $mod+Return exec cwd.sh
+bindsym $mod+Shift+Return split vertical; exec cwd.sh
+bindsym $mod+Control+Return split horizontal; exec cwd.sh
 
 # start ranger
 bindsym $mod+numbersign exec i3-sensible-terminal -e python3 ~/software/ranger/ranger.py ~/Daten
@@ -54,6 +56,8 @@ bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+Tab exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -show combi -window-command 'pwd'"
+bindsym $mod+Shift+Tab split vertical; exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -show combi -window-command 'pwd'"
+bindsym $mod+Control+Tab split horizontal; exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -show combi -window-command 'pwd'"
 
 # change focus
 bindsym $mod+h focus left
