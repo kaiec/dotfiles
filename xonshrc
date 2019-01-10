@@ -68,7 +68,7 @@ def custom_keybindings(bindings, **kw):
 
 $DYNAMIC_CWD_WIDTH='60%'
 $PROMPT_FIELDS["time"] = lambda: datetime.now().strftime("%H:%M:%S") 
-$PROMPT = '{#444}── {time}\n{env_name:{}}{BOLD_BLUE}┌─ {cwd}{branch_color}{curr_branch: {}}{NO_COLOR}\n{BOLD_BLUE}└─ {prompt_end} {NO_COLOR}'
+$PROMPT = '{#444}── {time}\n{BOLD_BLUE}┌─ {env_name:{}}{cwd}{branch_color}{curr_branch: {}}{NO_COLOR}\n{BOLD_BLUE}└─ {prompt_end} {NO_COLOR}'
 
 # }}}
 
