@@ -1,5 +1,6 @@
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
 ln -sTf ~/dotfiles/config/nvim ~/.config/nvim
+ln -sTf ~/dotfiles/config/kitty ~/.config/kitty
 ln -sTf ~/dotfiles/config/i3 ~/.config/i3
 ln -sTf ~/dotfiles/config/i3blocks ~/.config/i3blocks
 ln -sTf ~/dotfiles/config/polybar ~/.config/polybar
