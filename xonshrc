@@ -66,9 +66,12 @@ def custom_keybindings(bindings, **kw):
 # Prompt {{{
 #
 
+path_copy = str($PATH)
+
 $DYNAMIC_CWD_WIDTH='60%'
 $PROMPT_FIELDS["time"] = lambda: datetime.now().strftime("%H:%M:%S") 
-$PROMPT = '{#444}── {time}\n{BOLD_BLUE}┌─ {env_name:{}}{cwd}{branch_color}{curr_branch: {}}{NO_COLOR}\n{BOLD_BLUE}└─ {prompt_end} {NO_COLOR}'
+$PROMPT_FIELDS["path_changed"] = lambda: "PATH CHANGED!" if str($PATH) != path_copy else ""
+$PROMPT = '{BOLD_RED}{path_changed}{#444}── {time}\n{BOLD_BLUE}┌─ {env_name:{}}{cwd}{branch_color}{curr_branch: {}}{NO_COLOR}\n{BOLD_BLUE}└─ {prompt_end} {NO_COLOR}'
 
 # }}}
 
@@ -80,5 +83,7 @@ __xonsh__.commands_cache.threadable_predictors['taskopen'] = lambda args: False
 __xonsh__.commands_cache.threadable_predictors['to'] = lambda args: False
 __xonsh__.commands_cache.threadable_predictors['task'] = lambda args: False
 __xonsh__.commands_cache.threadable_predictors['t'] = lambda args: False
+__xonsh__.commands_cache.threadable_predictors['xdg-open'] = lambda args: False
+__xonsh__.commands_cache.threadable_predictors['vim.desktop'] = lambda args: False
 
 
