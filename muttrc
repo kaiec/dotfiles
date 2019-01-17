@@ -50,7 +50,7 @@ bind pager <PageUp> previous-page
 bind pager <PageDown> next-page
 bind generic,pager <Left> exit
 
-macro index,pager f "unset wait_key<enter><pipe-message>cat > ~/fwdtest<enter>!~/dotfiles/mutt/forward-mail.py -d ~/fwdtest<enter>set wait_key<enter>"
+macro index,pager f "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><shell-escape>~/dotfiles/mutt/forward-mail.py -d ~/fwdtest<enter><enter-command>set wait_key<enter>"
 
 bind index r reply
 bind index \Cr group-reply
