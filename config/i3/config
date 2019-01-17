@@ -332,4 +332,4 @@ exec_always --no-startup-id feh --bg-scale ~/dotfiles/bg.png
 # exec_always --no-startup-id ~/dotfiles/bin/polybar_launch.sh
 #
 
-exec_always --no-startup-id ~/.config/conky/run-conky
+# exec_always --no-startup-id ~/.config/conky/run-conky
