@@ -1,0 +1,15 @@
+set colored-completion-prefix on
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
+set show-all-if-unmodified on
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+set completion-ignore-case on
+set completion-map-case on
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+set bell-style none
+set echo-control-characters off
+
+
+

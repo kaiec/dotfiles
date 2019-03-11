@@ -1,108 +1,74 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+stty -ixon
 
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+COLOR_RED="\033[0;31m"
+COLOR_GREEN="\033[0;32m"	
+COLOR_YELLOW="\033[0;33m"
+COLOR_BLUE="\033[0;34m"
+COLOR_RESET="\033[0m"
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
+__git_branch() {
+	local status=$(git status 2> /dev/null)
+	if [[ -z $status ]]; then return 0; fi
 
-# append to the history file, don't overwrite it
-shopt -s histappend
+	local re_branch="On branch ([^${IFS}]*)"
+	local re_commit="HEAD detached at ([^${IFS}]*)"
+	local re_dirty="Changes not staged for commit"
+	local re_ahead="Your branch is ahead of '[^${IFS}]*' by ([^${IFS}]*) commit."
+	local re_clean="nothing to commit, working tree clean"
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+	if [[ $status =~ $re_dirty ]]; then
+		local color=$COLOR_RED
+	elif [[ $status =~ $re_ahead ]]; then
+		local ahead=${BASH_REMATCH[1]}\
+		local color=$COLOR_YELLOW
+	elif [[ $status =~ $re_clean ]]; then
+		local color=$COLOR_GREEN
+	fi	
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
-
-# if [ "$color_prompt" = yes ]; then
-#     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-# else
-#     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-# fi
-# unset color_prompt force_color_prompt
-
-# Powerline-Shell Setup
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
+	if [[ $status =~ $re_branch ]]; then
+	    	local branch=${BASH_REMATCH[1]}
+	    	echo -e " $1($color$branch$1)"
+	elif [[ $status =~ $re_commit ]]; then
+	    	local commit=${BASH_REMATCH[1]}
+	    	echo -e " $1($color$commit$1)"
+	fi
 }
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1  && $EUID -ne 0 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+__python_env() {
+	if [[ ! -z $VIRTUAL_ENV ]]; then
+		echo -e " $1[${VIRTUAL_ENV##*/}]"
+	fi
+}
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+export PS1="$COLOR_BLUE┌─ \w\$(__python_env '$COLOR_BLUE')\$(__git_branch '$COLOR_BLUE')\n└─ \\$ \[$COLOR_RESET\]"
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # pyenv support
 export PATH="/home/kai/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# Save current working dir
+PROMPT_COMMAND="pwd > ${XDG_RUNTIME_DIR}/.cwd; $PROMPT_COMMAND"
 
 
-# some more ls aliases
+# Aliases
+alias gst='git status'
+alias gpu='git push'
+alias gca='git commit -a'
+alias ga='git add'
+
+alias v=vim
+alias p=xonsh
+alias t="task"
+alias stop="task stop"
+alias tmail=~/dotfiles/mutt/todo2mail
+alias tvim=~/dotfiles/bin/todo2vim
+alias a=~/dotfiles/bin/agenda.sh
+alias m="notmuch search folder:hdm/INBOX tag:unread | cut -f 3- -d ' '"
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -114,69 +80,26 @@ alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
 alias 5..='cd ../../../../..'
 
-alias gst='git status'
-alias gpu='git push'
-alias gca='git commit -a'
-alias ga='git add'
+# FZF
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+fzf_cd () {
+    local fzf_command="/home/kai/.fzf/bin/fzf --height 20"
+    if [ $# -gt 0 ]
+    then
+	    local dir=$(cat ~/dirs | $fzf_command -q $@)
+    else
+	    local dir=$(cat ~/dirs | $fzf_command)
+    fi
+    cd $dir
+}
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+alias fcd=fzf_cd
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+# Autostart
 
-stty -ixon
-
-export EDITOR=nvim
-HISTIGNORE="$HISTIGNORE:jrnl *"
-HISTIGNORE="$HISTIGNORE:t a*"
-
-export TODOTXT_DEFAULT_ACTION=ls
-alias t="todo.sh -a -t"
-alias todo=todotxt-machine
-alias plan="todo.sh pom plan"
-alias start="date;todo.sh pom start"
-
-# gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)
 if ! [ -e ~/.is_presentation ]
 then
-	~/dotfiles/bin/agenda.sh
+        ~/dotfiles/bin/agenda.sh
 fi
-alias a=~/dotfiles/bin/agenda.sh
-alias m="notmuch search folder:hdm/INBOX tag:unread | cut -f 3- -d ' '"
-
-# Change to last directory.
-# Should work as follows:
-# In i3 for a new terminal cwd.sh is invoked which tries to find
-# the cwd of the currently focussed terminal window if any.
-# if this does not work, i.e., the terminal is in home directory,
-# the last saved cwd is used based on this approach:
-# 
-# https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/%3C/p%3E.html
-# 
-# 
-# Save current working dir
-PROMPT_COMMAND="pwd > ${XDG_RUNTIME_DIR}/.cwd; $PROMPT_COMMAND"
-
-# Change to saved working dir
-[[ -f "${XDG_RUNTIME_DIR}/.cwd" ]] && [[ $PWD == ~ ]] && cd "$(< ${XDG_RUNTIME_DIR}/.cwd)"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

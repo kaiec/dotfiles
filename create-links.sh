@@ -13,6 +13,7 @@ ln -sTf ~/dotfiles/config/powerline-shell ~/.config/powerline-shell
 ln -sTf ~/dotfiles/config/mimeapps.list ~/.config/mimeapps.list
 ln -sTf ~/dotfiles/vimrc ~/.vimrc
 ln -sTf ~/dotfiles/bashrc ~/.bashrc
+ln -sTf ~/dotfiles/inputrc ~/.inputrc
 ln -sTf ~/dotfiles/zshrc ~/.zshrc
 ln -sTf ~/dotfiles/urxvt ~/.urxvt
 ln -sTf ~/dotfiles/xonshrc ~/.xonshrc

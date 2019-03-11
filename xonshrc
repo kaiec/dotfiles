@@ -17,8 +17,8 @@ aliases['ga'] = ['git', 'add']
 aliases['v'] = ['vim']
 aliases['..'] = ['cd','..'] 
 
-if not Path("~/.is_presentation").expanduser().exists():
-	~/dotfiles/bin/agenda.sh
+# if not Path("~/.is_presentation").expanduser().exists():
+#	~/dotfiles/bin/agenda.sh
 
 # stty -ixon
 
@@ -71,7 +71,7 @@ path_copy = str($PATH)
 $DYNAMIC_CWD_WIDTH='60%'
 $PROMPT_FIELDS["time"] = lambda: datetime.now().strftime("%H:%M:%S") 
 $PROMPT_FIELDS["path_changed"] = lambda: "PATH CHANGED!" if str($PATH) != path_copy else ""
-$PROMPT = '{BOLD_RED}{path_changed}{#444}── {time}\n{BOLD_BLUE}┌─ {env_name:{}}{cwd}{branch_color}{curr_branch: {}}{NO_COLOR}\n{BOLD_BLUE}└─ {prompt_end} {NO_COLOR}'
+$PROMPT = '{BOLD_RED}{path_changed}{#444}── {time}\n{BOLD_BLUE}┌─ XONSH {env_name:{}}{cwd}{branch_color}{curr_branch: {}}{NO_COLOR}\n{BOLD_BLUE}└─ {prompt_end} {NO_COLOR}'
 
 # }}}
 
@@ -85,5 +85,8 @@ __xonsh__.commands_cache.threadable_predictors['task'] = lambda args: False
 __xonsh__.commands_cache.threadable_predictors['t'] = lambda args: False
 __xonsh__.commands_cache.threadable_predictors['xdg-open'] = lambda args: False
 __xonsh__.commands_cache.threadable_predictors['vim.desktop'] = lambda args: False
+__xonsh__.commands_cache.threadable_predictors['wpm'] = lambda args: False
+__xonsh__.commands_cache.threadable_predictors['sieve-connect'] = lambda args: False
+
 
 

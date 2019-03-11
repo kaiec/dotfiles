@@ -128,10 +128,10 @@ alias tmail=~/dotfiles/mutt/todo2mail
 alias tvim=~/dotfiles/bin/todo2vim
 
 # gcalcli agenda --military $(date +%D) $(date -d '1 days' +%D)
-if ! [ -e ~/.is_presentation ]
-then
-	~/dotfiles/bin/agenda.sh
-fi
+# if ! [ -e ~/.is_presentation ]
+# then
+# 	~/dotfiles/bin/agenda.sh
+# fi
 alias a=~/dotfiles/bin/agenda.sh
 alias m="notmuch search folder:hdm/INBOX tag:unread | cut -f 3- -d ' '"
 
