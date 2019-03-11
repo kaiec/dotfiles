@@ -1,0 +1,86 @@
+// Nils Toedtmann  https://github.com/nilstoedtmann  2017-01-25
+//
+// Add German letters (diaereses/umlauts and Eszett) and currency
+// signs to selected English keyboard layouts on level3 (<AltGr>)
+//
+// Save as /usr/share/X11/xkb/symbols/deng. To load:
+//
+//         setxkbmap  deng       # US-based
+//         setxkbmap 'deng(gb)'  # UK-based
+//
+// In order to get listed in Gnome's/Unity's keyboard settings dialog,
+// add the layout 'deng' and its flavour 'gb' to
+// /usr/share/X11/xkb/rules/evdev.{lst,xml} and restart X. See 
+// https://gist.github.com/nilstoedtmann/e9de2394194a6c8381a4daaf13b79919 
+// for details.
+//
+// Tested with Ubuntu 16.04, X.org 7.7 and Unity 7.
+
+
+default  partial alphanumeric_keys
+xkb_symbols "basic" {
+    include "us(basic)"
+    name[Group1]= "English (US, with German umlauts and currency signs via AltGr)";
+    include "deng(umlauts-on-latin-keys)"
+    include "deng(umlauts-on-german-keys)"
+    include "deng(currency)"
+    include "deng(nocaps)"
+    include "deng(esctilde)"
+    include "deng(yzswitch)"
+    include "level3(ralt_switch)"
+};
+
+
+partial alphanumeric_keys
+xkb_symbols "gb" {
+    include "gb(basic)"
+    name[Group1]= "English (UK, with German umlauts and currency signs via AltGr)";
+    include "deng(umlauts-on-latin-keys)"
+    include "deng(umlauts-on-german-keys)"
+    include "deng(currency)"
+    include "level3(ralt_switch)"
+};
+
+
+partial
+xkb_symbols "umlauts-on-latin-keys" {
+    key <AC01>  { [ NoSymbol, NoSymbol, adiaeresis, Adiaeresis ] };
+    key <AD09>  { [ NoSymbol, NoSymbol, odiaeresis, Odiaeresis ] };
+    key <AD07>  { [ NoSymbol, NoSymbol, udiaeresis, Udiaeresis ] };
+    key <AC02>  { [ NoSymbol, NoSymbol, ssharp,     section    ] };
+};
+
+
+partial
+xkb_symbols "umlauts-on-german-keys" {
+    key <AC11>  { [ NoSymbol, NoSymbol, adiaeresis, Adiaeresis ] };
+    key <AC10>  { [ NoSymbol, NoSymbol, odiaeresis, Odiaeresis ] };
+    key <AD11>  { [ NoSymbol, NoSymbol, udiaeresis, Udiaeresis ] };
+    key <AE11>  { [ NoSymbol, NoSymbol, ssharp,     section    ] };
+};
+
+
+partial
+xkb_symbols "currency" {
+    key <AD03>  { [ NoSymbol, NoSymbol, EuroSign,   cent       ] };
+    key <AC09>  { [ NoSymbol, NoSymbol, sterling,   NoSymbol   ] };
+    key <AD06>  { [ NoSymbol, NoSymbol, yen,        NoSymbol   ] };
+};
+
+
+partial
+xkb_symbols "nocaps" {
+    key <CAPS> {         [       Escape ] };
+};
+
+partial
+xkb_symbols "esctilde" {
+    key <ESC> { [ grave, asciitilde ] };
+};
+
+
+partial
+xkb_symbols "yzswitch" {
+    key <AD06> {         [       z, Z     ] };
+    key <AB01> {         [       y, Y     ] };
+};
