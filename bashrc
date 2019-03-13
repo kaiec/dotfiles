@@ -97,6 +97,21 @@ fzf_cd () {
 
 alias fcd=fzf_cd
 
+# History
+
+shopt -s histappend
+shopt -s extglob
+
+HISTFILESIZE=1000000
+HISTSIZE=1000000
+HISTCONTROL="ignoreboth:erasedups"
+HISTTIMEFORMAT='%F %T '
+HISTIGNORE='@(?|??|???):ls -l:ls -la:ls -lh:ls -lah:clear:history:exit:t *'
+
+shopt -s cmdhist
+
+
+
 # Autostart
 
 if ! [ -e ~/.is_presentation ]
