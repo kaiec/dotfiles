@@ -8,13 +8,6 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
 
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
@@ -26,3 +19,11 @@ export QT_SCALE_FACTOR=1.5
 # Should fix Skype audio issues
 # https://answers.microsoft.com/en-us/skype/forum/skype_linux-skype_callms-skype_audioms/loose-contact-between-skype-and-pulseaudio/aa686d77-8dc4-4f54-aaeb-bee723d2493a
 export PULSE_LATENCY_MSEC=300
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+    fi
+fi

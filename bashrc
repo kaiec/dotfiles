@@ -1,4 +1,10 @@
-stty -ixon
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 
 COLOR_RED="\033[0;31m"
 COLOR_GREEN="\033[0;32m"	
@@ -53,6 +59,33 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # Save current working dir
 PROMPT_COMMAND="pwd > ${XDG_RUNTIME_DIR}/.cwd; $PROMPT_COMMAND"
 
+# Change to saved working dir
+[[ -f "${XDG_RUNTIME_DIR}/.cwd" ]] && [[ $PWD == ~ ]] && cd "$(< ${XDG_RUNTIME_DIR}/.cwd)"
+
+# check the window size after each command and, 
+# if necessary, update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# Bash Completion
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
 
 # Aliases
 alias gst='git status'
@@ -81,7 +114,7 @@ alias 4..='cd ../../../..'
 alias 5..='cd ../../../../..'
 
 # FZF
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 
 fzf_cd () {
@@ -106,15 +139,16 @@ HISTFILESIZE=1000000
 HISTSIZE=1000000
 HISTCONTROL="ignoreboth:erasedups"
 HISTTIMEFORMAT='%F %T '
-HISTIGNORE='@(?|??|???):ls -l:ls -la:ls -lh:ls -lah:clear:history:exit:t *'
+HISTIGNORE='@(?|??|???):ls -l:ls -la:ls -lh:ls -lah:clear:history:exit:t *:cd ..'
 
 shopt -s cmdhist
 
-
+# this must only be done in interactive shells.
+stty -ixon
 
 # Autostart
-
 if ! [ -e ~/.is_presentation ]
 then
-        ~/dotfiles/bin/agenda.sh
+	~/dotfiles/bin/agenda.sh
 fi
+
