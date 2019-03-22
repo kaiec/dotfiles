@@ -1,5 +1,5 @@
 #include "/usr/share/rofi/themes//glue_pro_blue.theme"
 # rofi.theme: /usr/local/share/rofi/themes/glue_pro_blue.rasi
 # wal support
-rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
+rofi.theme: ~/.cache/rofi/colors-rofi-dark.rasi
 rofi.font: SFNS Display 24
