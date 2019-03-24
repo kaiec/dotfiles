@@ -1,4 +1,7 @@
-dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
+#!/bin/bash
+
+mkdir -p ~/bin
+
 ln -sTf ~/dotfiles/config/nvim ~/.config/nvim
 ln -sTf ~/dotfiles/config/kitty ~/.config/kitty
 ln -sTf ~/dotfiles/config/i3 ~/.config/i3
@@ -20,7 +23,7 @@ ln -sTf ~/dotfiles/xonshrc ~/.xonshrc
 ln -sTf ~/dotfiles/config/xonsh/ ~/.config/xonsh
 ln -sTf ~/dotfiles/Xdefaults ~/.Xdefaults
 ln -sTf ~/dotfiles/mailcap ~/.mailcap
-mkdir ~/.todo
+mkdir -p ~/.todo
 ln -sTf ~/dotfiles/todo.conf ~/.todo/config
 ln -sTf ~/dotfiles/bin/todo.sh ~/bin/todo.sh
 ln -sTf ~/dotfiles/todotxt-machinerc ~/.todotxt-machinerc
@@ -34,17 +37,17 @@ ln -sTf ~/dotfiles/bin/nocaps ~/bin/nocaps
 ln -sTf ~/dotfiles/bin/beamer-optimizer.sh ~/bin/beamer-optimizer.sh
 ln -sTf ~/dotfiles/bin/mutt-mailboxes.py ~/bin/mutt-mailboxes.py
 ln -sTf ~/dotfiles/muttrc ~/.muttrc
-mkdir ~/.mutt
+mkdir -p ~/.mutt
 ln -sTf ~/dotfiles/mutt/gpg.rc ~/.mutt/gpg.rc
 ln -sTf ~/dotfiles/mutt/gruvbox-transparent.conf ~/.mutt/gruvbox-transparent.conf
 ln -sTf ~/dotfiles/offlineimaprc ~/.offlineimaprc
-mkdir ~/.offlineimap
+mkdir -p ~/.offlineimap
 ln -sTf ~/dotfiles/offlineimap/confhelpers.py ~/.offlineimap/confhelpers.py
 ln -sTf ~/dotfiles/msmtprc ~/.msmtprc
 ln -sTf ~/dotfiles/notmuch-config ~/.notmuch-config
-mkdir ~/.msmtp.queue
+mkdir -p ~/.msmtp.queue
 chmod 0700 ~/.msmtp.queue
-mkdir ~/log
+mkdir -p ~/log
 ln -sTf ~/dotfiles/bin/mail ~/bin/mail
 ln -sTf ~/dotfiles/bin/reveal ~/bin/reveal
 ln -sTf ~/dotfiles/bin/poll-stuff.sh ~/bin/poll-stuff.sh
@@ -61,8 +64,13 @@ ln -sTf ~/dotfiles/bin/vfat ~/bin/vfat
 ln -sTf ~/dotfiles/bin/togglenotes ~/bin/togglenotes
 ln -sTf ~/dotfiles/compton.conf ~/.config/compton.conf
 # Task warrior
-mkdir ~/.timewarrior
-ln -sTf ~/dotfiles/task/hooks ~/Dropbox/Notizen/tasks/hooks
+command -v task >/dev/null || echo "Task Warrior is not installed"
+mkdir -p ~/.timewarrior
+if [ -f ~/Dropbox/Notiyen/tasks ]; then
+	ln -sTf ~/dotfiles/task/hooks ~/Dropbox/Notizen/tasks/hooks
+else
+	echo "No Dropbox files, could not install taskwarrior hooks."
+fi
 ln -sTf ~/dotfiles/task/taskrc ~/.taskrc
 ln -sTf ~/dotfiles/task/taskopenrc ~/.taskopenrc
 ln -sTf ~/dotfiles/task/timewarrior/timewarrior.cfg ~/.timewarrior/timewarrior.cfg
@@ -71,3 +79,5 @@ ln -sTf ~/dotfiles/bin/ttime ~/bin/ttime
 ln -sTf ~/dotfiles/bin/create-fzf-dirs ~/bin/create-fzf-dirs
 ln -sTf ~/dotfiles/bin/tm ~/bin/tm
 ln -sTf ~/dotfiles/bin/tca ~/bin/tca
+
+hash pyenv 2>/dev/null || echo "Pyenv is not installed"

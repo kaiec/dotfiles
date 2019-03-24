@@ -12,7 +12,7 @@
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
-export EDITOR=vim
+export EDITOR=nvim
 export TERMINAL=kitty
 
 export QT_SCALE_FACTOR=1.5

@@ -6,7 +6,14 @@ then
 	i3-msg \[instance=\"vim_notes\"\] scratchpad show
 	exit 0
 else
-	kitty --name vim_notes zsh -c "(cat ~/.cache/wal/sequences &);vim ~/Dropbox/Notizen/index.md" &
+	if [[ -f ~/.cache/wal/sequences ]]; then
+		echo "WAL support"
+		colors="(cat ~/.cache/wal/sequences &);"
+	else
+		echo "No WAL"
+		colors=""
+	fi
+	kitty --name vim_notes bash -c "$colors nvim ~/Dropbox/Notizen/index.md" &
 	sleep 1
 	i3-msg \[instance=\"vim_notes\"\] scratchpad show 
 fi

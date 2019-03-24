@@ -51,10 +51,12 @@ export PS1="$COLOR_BLUE┌─ \w\$(__python_env '$COLOR_BLUE')\$(__git_branch '$
 
 
 # pyenv support
-export PATH="/home/kai/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+if hash pyenv 2> /dev/null; then
+	export PATH="/home/kai/.pyenv/bin:$PATH"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+fi
 
 # Save current working dir
 PROMPT_COMMAND="pwd > ${XDG_RUNTIME_DIR}/.cwd; $PROMPT_COMMAND"
@@ -93,6 +95,7 @@ alias gpu='git push'
 alias gca='git commit -a'
 alias ga='git add'
 
+command -v nvim > /dev/null && alias vim=nvim
 alias v=vim
 alias p=xonsh
 alias t="task"
@@ -139,7 +142,7 @@ HISTFILESIZE=1000000
 HISTSIZE=1000000
 HISTCONTROL="ignoreboth:erasedups"
 HISTTIMEFORMAT='%F %T '
-HISTIGNORE='@(?|??|???):ls -l:ls -la:ls -lh:ls -lah:clear:history:exit:t *:cd ..'
+HISTIGNORE='@(?|??|???):ls -l:ls -la:ls -lh:ls -lah:clear:history*:exit:t *:cd ..'
 
 shopt -s cmdhist
 
