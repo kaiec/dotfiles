@@ -14,3 +14,16 @@ Run
 While traveling, the time zone can be changed like this:
 
     timedatectl set-timezone Europe/Paris
+
+## Setting up mail
+Install:
+   - neomutt
+   - notmuch
+   - notmuch-mutt
+   - msmtp
+   - offlineimap
+
+From other computer:
+   - Import GPG Keys
+   - Copy folder with encrypted passwords
+   - Copy ~/.mailboxes with default mailboxes

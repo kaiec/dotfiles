@@ -15,7 +15,10 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export EDITOR=nvim
 export TERMINAL=kitty
 
-export QT_SCALE_FACTOR=1.5
+export QT_SCALE_FACTOR=1
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_AUTO_SCREEN_SCALE_FACTOR=0 
+
 # Should fix Skype audio issues
 # https://answers.microsoft.com/en-us/skype/forum/skype_linux-skype_callms-skype_audioms/loose-contact-between-skype-and-pulseaudio/aa686d77-8dc4-4f54-aaeb-bee723d2493a
 export PULSE_LATENCY_MSEC=300

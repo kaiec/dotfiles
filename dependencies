@@ -6,4 +6,11 @@ kitty
 rofi
 otf-font-awesome
 light
-
+compton
+neomutt
+notmuch
+msmtp
+notmuch-mutt
+offlineimap
+task
+keepass

@@ -38,12 +38,15 @@ ln -sTf ~/dotfiles/bin/beamer-optimizer.sh ~/bin/beamer-optimizer.sh
 ln -sTf ~/dotfiles/bin/mutt-mailboxes.py ~/bin/mutt-mailboxes.py
 ln -sTf ~/dotfiles/muttrc ~/.muttrc
 mkdir -p ~/.mutt
+touch ~/.mutt/aliases
 ln -sTf ~/dotfiles/mutt/gpg.rc ~/.mutt/gpg.rc
 ln -sTf ~/dotfiles/mutt/gruvbox-transparent.conf ~/.mutt/gruvbox-transparent.conf
 ln -sTf ~/dotfiles/offlineimaprc ~/.offlineimaprc
 mkdir -p ~/.offlineimap
 ln -sTf ~/dotfiles/offlineimap/confhelpers.py ~/.offlineimap/confhelpers.py
 ln -sTf ~/dotfiles/msmtprc ~/.msmtprc
+ln -sTf /usr/share/doc/msmtp/msmtpq/msmtp-queue ~/bin/msmtp-queue
+ln -sTf /usr/share/doc/msmtp/msmtpq/msmtpq ~/bin/msmtpq
 ln -sTf ~/dotfiles/notmuch-config ~/.notmuch-config
 mkdir -p ~/.msmtp.queue
 chmod 0700 ~/.msmtp.queue
@@ -66,7 +69,7 @@ ln -sTf ~/dotfiles/compton.conf ~/.config/compton.conf
 # Task warrior
 command -v task >/dev/null || echo "Task Warrior is not installed"
 mkdir -p ~/.timewarrior
-if [ -f ~/Dropbox/Notiyen/tasks ]; then
+if [ -f ~/Dropbox/Notizen/tasks ]; then
 	ln -sTf ~/dotfiles/task/hooks ~/Dropbox/Notizen/tasks/hooks
 else
 	echo "No Dropbox files, could not install taskwarrior hooks."
