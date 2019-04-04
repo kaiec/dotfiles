@@ -94,7 +94,7 @@ set use_from=yes
 set use_envelope_from = yes
 set signature="~/dotfiles/hdm-signature.sig"
 
-set sendmail="/home/kai/dotfiles/mutt/checkmail.py /usr/local/bin/msmtpq"
+set sendmail="/home/kai/dotfiles/mutt/checkmail.py /home/kai/bin/msmtpq"
 set sendmail_wait = -1
 
 set text_flowed
@@ -131,7 +131,7 @@ source ~/.mutt/gruvbox-transparent.conf
 # color body  brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
 # # identifies URLs
 
-set editor='vim'
+set editor='nvim'
 
 auto_view text/html
 alternative_order text/enriched text/plain text/html text
