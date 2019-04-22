@@ -45,6 +45,7 @@ ln -sTf ~/dotfiles/mutt/gruvbox-transparent.conf ~/.mutt/gruvbox-transparent.con
 ln -sTf ~/dotfiles/offlineimaprc ~/.offlineimaprc
 mkdir -p ~/.offlineimap
 ln -sTf ~/dotfiles/offlineimap/confhelpers.py ~/.offlineimap/confhelpers.py
+ln -sTf ~/dotfiles/mbsynrc ~/.mbsyncrc
 ln -sTf ~/dotfiles/msmtprc ~/.msmtprc
 ln -sTf /usr/share/doc/msmtp/msmtpq/msmtp-queue ~/bin/msmtp-queue
 ln -sTf /usr/share/doc/msmtp/msmtpq/msmtpq ~/bin/msmtpq

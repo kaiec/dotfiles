@@ -1,0 +1,59 @@
+# Hallo {{{
+
+IMAPAccount hallo-account
+Host imap.gmail.com
+User hallo@kaiec.de
+Port 993
+PassCmd "gpg --no-tty -q -d ~/.kak/hallo.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+
+IMAPStore hallo-remote
+Account hallo-account
+
+MaildirStore hallo-local
+Subfolders Verbatim
+Path ~/Maildir/hallo/
+Inbox ~/Maildir/hallo/Inbox
+Flatten "."
+
+Channel hallo
+Master :hallo-remote:
+Slave :hallo-local:
+Patterns * ![Gmail]*
+Create Both
+Expunge Both
+SyncState *
+
+# }}}
+
+# Gen {{{
+
+IMAPAccount gen-account
+Host imap.gmail.com
+User gen@kaiec.de
+Port 993
+PassCmd "gpg --no-tty -q -d ~/.kak/gen.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+
+IMAPStore gen-remote
+Account gen-account
+
+MaildirStore gen-local
+Subfolders Verbatim
+Path ~/Maildir/gen/
+Inbox ~/Maildir/gen/Inbox
+Flatten "."
+
+Channel gen
+Master :gen-remote:
+Slave :gen-local:
+Patterns * ![Gmail]*
+Create Both
+Expunge Both
+SyncState *
+
+# }}}
