@@ -1,0 +1,11 @@
+#!/bin/bash
+if [[ -d $1 ]]; then
+	DIR=$1
+else
+	DIR="/home/kai/Maildir/$1"
+fi
+if [[ -d $DIR ]]; then
+	find "$DIR" -type f -name '[^.]*' | grep -vE ',[^,]*S[^,]*$' | wc -l
+else
+	echo Mailbox not found.
+fi

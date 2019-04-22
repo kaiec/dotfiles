@@ -27,3 +27,8 @@ From other computer:
    - Import GPG Keys
    - Copy folder with encrypted passwords
    - Copy ~/.mailboxes with default mailboxes
+
+### Encrypt passwords
+   - Encrypt: gpg -c > ~/.kak/hallo.gpg
+   - Decrypt: gpg --no-tty -q -d ~/.kak/hallo.gpg
+

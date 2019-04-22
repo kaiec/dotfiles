@@ -128,7 +128,7 @@ fzf_cd () {
     else
 	    local dir=$(cat ~/dirs | $fzf_command)
     fi
-    cd $dir
+    cd "$dir"
 }
 
 alias fcd=fzf_cd
