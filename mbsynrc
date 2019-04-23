@@ -57,3 +57,64 @@ Expunge Both
 SyncState *
 
 # }}}
+
+
+# KE-P {{{
+
+IMAPAccount kep-account
+Host imap.gmail.com
+User kai.eckert@ke-p.de
+Port 993
+PassCmd "gpg --no-tty -q -d ~/.kak/kep.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+
+IMAPStore kep-remote
+Account kep-account
+
+MaildirStore kep-local
+Subfolders Verbatim
+Path ~/Maildir/kep/
+Inbox ~/Maildir/kep/Inbox
+Flatten "."
+
+Channel kep
+Master :kep-remote:
+Slave :kep-local:
+Patterns * ![Gmail]*
+Create Both
+Expunge Both
+SyncState *
+
+# }}}
+
+# Flo-Kai {{{
+
+IMAPAccount flokai-account
+Host imap.gmail.com
+User brautpaar@fam-eckert.net
+Port 993
+PassCmd "gpg --no-tty -q -d ~/.kak/flokai.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+
+IMAPStore flokai-remote
+Account flokai-account
+
+MaildirStore flokai-local
+Subfolders Verbatim
+Path ~/Maildir/flokai/
+Inbox ~/Maildir/flokai/Inbox
+Flatten "."
+
+Channel flokai
+Master :flokai-remote:
+Slave :flokai-local:
+Patterns * ![Gmail]*
+Create Both
+Expunge Both
+SyncState *
+
+# }}}

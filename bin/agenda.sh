@@ -23,6 +23,10 @@ function __showmail {
 	then
 		echo "Mails to be sent: " $TOBESENT 
 	fi
+	echo "KE-P: " `unread kep`
+	echo "Privat 1: " `unread hallo/Inbox`
+	echo "Privat 2: " `unread flokai/Inbox`
+	echo "Gen: " `unread gen/Inbox`
 
 }
 
