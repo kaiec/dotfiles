@@ -131,9 +131,13 @@ for recipient in lists:
 
 
 
-sendmail = subprocess.Popen(sys.argv[1:], stdin=subprocess.PIPE)
-sendmail.communicate(input=orig_msg.encode(locale.getpreferredencoding()))
-log.write("{} - {}: {} ({})\n".format(datetime.datetime.now(), msg["To"], msg["Subject"], sendmail.returncode))
+try:
+    sendmail = subprocess.Popen(sys.argv[1:], stdin=subprocess.PIPE)
+    sendmail.communicate(input=orig_msg.encode(locale.getpreferredencoding()))
+    log.write("{} - {}: {} ({})\n".format(datetime.datetime.now(), msg["To"], msg["Subject"], sendmail.returncode))
+except Exception as e:
+    log.write("{} - {}: {} ({})\n".format(datetime.datetime.now(), msg["To"], msg["Subject"], e))
+
 log.close()
 sys.exit(sendmail.returncode)
 

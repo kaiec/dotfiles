@@ -116,6 +116,9 @@ alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
 alias 5..='cd ../../../../..'
 
+alias mgen='mutt -F ~/.muttrc-gen'
+alias mhallo='mutt -F ~/.muttrc-hallo'
+
 # FZF
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
