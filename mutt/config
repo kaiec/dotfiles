@@ -1,0 +1,136 @@
+#   __  __       _   _      _____             __ _       
+#  |  \/  |     | | | |    / ____|           / _(_)      
+#  | \  / |_   _| |_| |_  | |     ___  _ __ | |_ _  __ _ 
+#  | |\/| | | | | __| __| | |    / _ \| '_ \|  _| |/ _` |
+#  | |  | | |_| | |_| |_  | |___| (_) | | | | | | | (_| |
+#  |_|  |_|\__,_|\__|\__|  \_____\___/|_| |_|_| |_|\__, |
+#                                                   __/ |
+#                                                  |___/ 
+
+set realname="Kai Eckert"
+set use_from=yes
+set use_envelope_from = yes
+
+set text_flowed
+
+set mbox_type=Maildir
+set sidebar_short_path                  # Shorten mailbox names
+set sidebar_delim_chars="/."
+set sidebar_visible
+set sidebar_format = "%B%* %?N?%N?"
+set sidebar_width = 14
+set mail_check_stats
+set mark_old=no
+set sort=threads
+set sort_aux=last-date-received
+
+# bind index,pager \e[1\;5A sidebar-prev
+# bind index,pager \e[1\;5B sidebar-next
+# bind index,pager \e[1\;5C  sidebar-open
+# bind index,pager \e[1\;5D sidebar-toggle-visible
+
+bind index,pager <C-Up> sidebar-prev
+bind index,pager <C-Down> sidebar-next
+bind index,pager <C-Right>  sidebar-open
+bind index,pager <C-Left> sidebar-toggle-visible
+
+bind pager <Up> previous-line
+bind pager <Down> next-line
+bind pager <PageUp> previous-page
+bind pager <PageDown> next-page
+bind generic,pager <Left> exit
+
+macro index,pager f "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><shell-escape>~/dotfiles/mutt/forward-mail.py -d ~/fwdtest<enter><enter-command>set wait_key<enter>"
+
+bind index r reply
+bind index \Cr group-reply
+bind index R list-reply
+bind index <Right> display-message
+bind index <Left> noop
+bind pager <Right> view-attachments
+bind index,pager \Cq quit
+
+macro index d ":set confirmappend=no delete=yes resolve=no\n<clear-flag>N<tag-prefix><delete-message>:set confirmappend=yes delete=ask-yes resolve=yes\n<next-undeleted>"
+macro index <Delete> "d" 
+
+macro index S "<Esc>t;s"
+
+# Open Mail in less for copy / paste
+macro index,pager \Cl "<view-attachments><search>text/plain<enter><pipe-entry>less<enter><exit>"
+# https://demu.red/blog/2017/11/neomutt-macro-opening-texthtml-attachment-from-the-index-view/
+# macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
+
+# notmuch integration
+macro index <F8> \
+          "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \
+          "search mail (using notmuch)"
+    macro index <F9> \
+          "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" \
+          "search and reconstruct owning thread (using notmuch)"
+
+# Jump to original message in search results
+macro generic ,j "<enter-command>push <pipe-message>~/dotfiles/mutt/muttjump-same<enter><enter><enter-command>source ~/.muttjump<enter>" "jump to original message"
+
+# Copy msg id to clipboard
+macro generic,index,pager ,c "<enter-command>push <pipe-message>~/dotfiles/mutt/msg2clip<enter><enter>" "Copy msgid to clipboard"
+
+# Create new task/todo from message
+macro generic,index,pager ,t "<enter-command>push <pipe-message>~/dotfiles/mutt/msg2task<enter><enter>" "Create new task from message"
+
+
+
+source ~/.mutt/gruvbox-transparent.conf
+
+# color normal  white default
+# color attachment brightyellow default
+# color hdrdefault cyan default
+# color indicator black cyan
+# color markers brightred default
+# color quoted  green default
+# color signature cyan default
+# color status  brightgreen blue
+# color tilde blue default
+# color tree  red default
+# 
+# color index cccccc default "~R" # read messages
+# color index white default "~U" # unread messages
+# color index blue default ~P # from me
+# color index brightblue default ~p # to me
+# color index red default ~D # deleted
+# color index magenta default ~T # tagged
+# 
+# color header brightgreen default ^From:
+# color header brightcyan default ^To:
+# color header brightcyan default ^Reply-To:
+# color header brightcyan default ^Cc:
+# color header brightblue default ^Subject:
+# 
+# color body  brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+# # identifies email addresses
+# 
+# color body  brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+# # identifies URLs
+
+set editor='nvim'
+
+auto_view text/html
+alternative_order text/enriched text/plain text/html text
+
+set alias_file=~/.mutt/aliases
+set sort_alias=alias
+set reverse_alias
+source $alias_file
+
+# notmuch address completion
+# https://github.com/neomutt/neomutt/issues/629
+# https://gitlab.com/muttmua/mutt/wikis/QueryCommand
+ 
+set query_command = "echo ''; notmuch address --deduplicate=address from:%s | sort"
+set query_format = "%4c %t %-70.70a %-70.70n %?e?(%e)?"
+# bind editor <Tab> complete-query
+
+
+# Remove temp files from opening attachmnts
+set my_ignore_this = `rm -rf /tmp/mutt/*`
+
+
