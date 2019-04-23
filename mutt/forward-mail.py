@@ -77,13 +77,12 @@ elif len(sys.argv) == 3:
             msgfile = sys.argv[2]
 
 
-with open(msgfile, "r") as fp:
-    orig_msg = fp.read()
+with open(msgfile, "rb") as fp:
+    old_msg = email.message_from_binary_file(fp, policy=email.policy.default)
 
 if delete:
     os.remove(msgfile)
 
-old_msg = email.message_from_string(orig_msg, policy=email.policy.default)
 
 new_msg = email.message.EmailMessage()
 

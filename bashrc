@@ -51,12 +51,10 @@ export PS1="$COLOR_BLUE┌─ \w\$(__python_env '$COLOR_BLUE')\$(__git_branch '$
 
 
 # pyenv support
-if hash pyenv 2> /dev/null; then
-	export PATH="/home/kai/.pyenv/bin:$PATH"
-	eval "$(pyenv init -)"
-	eval "$(pyenv virtualenv-init -)"
-	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-fi
+export PATH="/home/kai/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # Save current working dir
 PROMPT_COMMAND="pwd > ${XDG_RUNTIME_DIR}/.cwd; $PROMPT_COMMAND"
