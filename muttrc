@@ -1,4 +1,4 @@
-source ~/.mutt/config
+source ~/dotfiles/mutt/config
 
 # Automatically log in to this mailbox at startup
 set spoolfile="~/Maildir/hdm/INBOX"

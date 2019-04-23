@@ -1,0 +1,109 @@
+#   __  __       _   _      _____             __ _       
+#  |  \/  |     | | | |    / ____|           / _(_)      
+#  | \  / |_   _| |_| |_  | |     ___  _ __ | |_ _  __ _ 
+#  | |\/| | | | | __| __| | |    / _ \| '_ \|  _| |/ _` |
+#  | |  | | |_| | |_| |_  | |___| (_) | | | | | | | (_| |
+#  |_|  |_|\__,_|\__|\__|  \_____\___/|_| |_|_| |_|\__, |
+#                                                   __/ |
+#                                                  |___/ 
+
+# Automatically log in to this mailbox at startup
+set spoolfile="imaps://mail.hdm-stuttgart.de/INBOX"
+set imap_user="eckert"
+set imap_pass="`/usr/bin/gpg2 -d .kak/hdm.gpg`"
+# Define the = shortcut, and the entry point for the folder browser (c?)
+set folder="imaps://mail.hdm-stuttgart.de"
+
+mailboxes +INBOX 
+
+
+set folder="imaps://mail.hdm-stuttgart.de/INBOX"
+
+set record="="
+set postponed="=Drafts"
+set mbox="=archive"
+
+mailboxes +biprofs +moodle +hdm-alle +iaf +leuchtturm +verwaltung +hiwi
+mailboxes +dws +dcmi +dclisten +dfg 
+mailboxes +Mailinglisten.bahn +Mailinglisten.foerderung 
+mailboxes +Mailinglisten.inetbib +archive
+mailboxes +betreuung +praktikum
+mailboxes +s7gamejam +w7kslod +w7web +s8cdv +s8mdm +s8kssuma +s8tutoren +s8web
+mailboxes +p3 +springer +judaica +locdb
+
+set sidebar_short_path                  # Shorten mailbox names
+set sidebar_delim_chars="/."
+set sidebar_visible
+set sidebar_format = "%B%* %?N?%N?"
+set sidebar_width = 14
+set mail_check_stats
+set mark_old=no
+
+bind index,pager <C-Up> sidebar-prev
+bind index,pager <C-Down> sidebar-next
+bind index,pager <C-Right> sidebar-open
+bind index,pager <C-Left> sidebar-toggle-visible
+
+bind pager <Up> previous-line
+bind pager <Down> next-line
+bind pager <PageUp> previous-page
+bind pager <PageDown> next-page
+bind generic,pager <Left> exit
+
+bind index r reply
+bind index \Cr group-reply
+bind index R list-reply
+bind index <Right> display-message
+bind index <Left> noop
+bind pager <Right> view-attachments
+bind index,pager \Cq quit
+
+macro index d ":set confirmappend=no delete=yes resolve=no\n<clear-flag>N<tag-prefix><delete-message>:set confirmappend=yes delete=ask-yes resolve=yes\n<next-undeleted>"
+macro index <Delete> "d" 
+
+macro index S "<Esc>t;s"
+
+set realname="Kai Eckert"
+set from="eckert@hdm-stuttgart.de"
+set use_from=yes
+set use_envelope_from = yes
+set signature="~/dotfiles/hdm-signature.sig"
+
+set sendmail="/usr/bin/msmtp"
+
+set text_flowed
+
+color normal  white default
+color attachment brightyellow default
+color hdrdefault cyan default
+color indicator black cyan
+color markers brightred default
+color quoted  green default
+color signature cyan default
+color status  brightgreen blue
+color tilde blue default
+color tree  red default
+
+color index brightblack default "~R" # read messages
+color index blue default ~P # from me
+color index brightblue default ~p # to me
+color index red default ~D # deleted
+color index magenta default ~T # tagged
+color index white default "~U" # unread messages
+
+color header brightgreen default ^From:
+color header brightcyan default ^To:
+color header brightcyan default ^Reply-To:
+color header brightcyan default ^Cc:
+color header brightblue default ^Subject:
+
+color body  brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+# identifies email addresses
+
+color body  brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+# identifies URLs
+
+set editor='vim'
+
+auto_view text/html
+

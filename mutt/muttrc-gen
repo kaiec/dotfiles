@@ -1,0 +1,21 @@
+source ~/dotfiles/mutt/config
+
+# Automatically log in to this mailbox at startup
+set spoolfile="~/Maildir/gen/Inbox"
+# Define the = shortcut, and the entry point for the folder browser (c?)
+set folder="~/Maildir/gen"
+
+mailboxes +Inbox +absolventum  +bank    +dropbox  +gitarre  +hosteurope  +outfittery  +telefon  +twitter +amazon       +Drafts  +ebay     +github   +notgen        +social      +Trash    +zeit +rzl
+
+
+set record="=Inbox"
+set postponed="=Drafts"
+# set mbox="=archive"
+set trash="=Trash"
+
+set from="gen@kaiec.de"
+# set signature="~/dotfiles/hdm-signature.sig"
+
+set sendmail="/home/kai/dotfiles/mutt/checkmail.py msmtpq -a gen"
+set sendmail_wait = -1
+

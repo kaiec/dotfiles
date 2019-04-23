@@ -114,10 +114,10 @@ alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
 alias 5..='cd ../../../../..'
 
-alias mgen='mutt -F ~/.muttrc-gen'
-alias mhallo='mutt -F ~/.muttrc-hallo'
-alias mkep='mutt -F ~/.muttrc-kep'
-alias mflokai='mutt -F ~/.muttrc-flokai'
+alias mgen='mutt -F ~/dotfiles/mutt/muttrc-gen'
+alias mhallo='mutt -F ~/dotfiles/mutt/muttrc-hallo'
+alias mkep='mutt -F ~/dotfiles/mutt/muttrc-kep'
+alias mflokai='mutt -F ~/dotfiles/mutt/muttrc-flokai'
 
 # FZF
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -1,0 +1,20 @@
+source ~/dotfiles/mutt/config
+
+# Automatically log in to this mailbox at startup
+set spoolfile="~/Maildir/kep/Inbox"
+# Define the = shortcut, and the entry point for the folder browser (c?)
+set folder="~/Maildir/kep"
+
+mailboxes +Inbox 
+
+set record="=Inbox"
+set postponed="=Drafts"
+# set mbox="=archive"
+set trash="=Trash"
+
+set from="kai.eckert@ke-p.de"
+# set signature="~/dotfiles/hdm-signature.sig"
+
+set sendmail="/home/kai/dotfiles/mutt/checkmail.py msmtpq -a kep"
+set sendmail_wait = -1
+
