@@ -1,7 +1,7 @@
 #!/bin/bash
 function __showcal {
 	echo "------- AGENDA ------"
-	khal list
+	khal list `date +"%Y-%m-%d"` `date --date="1 days" +"%Y-%m-%d"`
 	# ~/dotfiles/bin/todo.sh due 3
 	#task due.before:3d 2>/dev/null
 	echo

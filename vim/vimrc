@@ -17,6 +17,7 @@ Plug 'nelstrom/vim-markdown-folding'		" Markdown Folding
 Plug 'vim-pandoc/vim-pandoc'		" Markdown Pandoc
 Plug 'vim-pandoc/vim-pandoc-syntax'		" Markdown Pandoc
 Plug 'vimwiki/vimwiki'			" Wiki style markdown
+Plug 'tbabej/taskwiki'			" Taskwarrior integration
 Plug 'davidhalter/jedi-vim'			" auto completion
 Plug 'mhartington/oceanic-next'		" color scheme
 Plug 'altercation/vim-colors-solarized'   " solarized
@@ -159,7 +160,7 @@ let NERDTreeQuitOnOpen=1
 let g:vimwiki_list = [{'path': '~/Dropbox/Notizen/', 'ext': '.md', 'syntax': 'markdown'}]
 " No vimiwiki support for md files outside the wiki
 let g:vimwiki_global_ext = 0
-
+let g:taskwiki_markup_syntax = 'markdown'  
 
 " Notizen
 nmap <F10> :NERDTree ~/Dropbox/Notizen<CR>
@@ -273,7 +274,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-
+" Python support
+let g:python_host_prog = '/home/kai/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/home/kai/.pyenv/versions/neovim3/bin/python'
 " -------------------- Goyo, Zen Mode --------------------{{{1 
 function! s:goyo_enter()
    let g:numbertoggle=0
