@@ -1,3 +1,32 @@
+# HdM {{{
+
+IMAPAccount hdm-account
+Host mail.hdm-stuttgart.de
+User eckert
+Port 993
+PassCmd "gpg --no-tty -q -d ~/.kak/hdm.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+
+IMAPStore hdm-remote
+Account hdm-account
+
+MaildirStore hdm-local
+Subfolders Verbatim
+Path ~/Maildir/hdm/
+Inbox ~/Maildir/hdm/Inbox
+Flatten "."
+
+Channel hdm
+Master :hdm-remote:
+Slave :hdm-local:
+Patterns * 
+Create Both
+Expunge Both
+SyncState *
+
+# }}}
 # Hallo {{{
 
 IMAPAccount hallo-account

@@ -1,4 +1,4 @@
 #!/bin/bash
 msmtp-queue -r
-offlineimap
 mbsync -a
+notmuch new

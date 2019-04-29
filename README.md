@@ -29,6 +29,6 @@ From other computer:
    - Copy ~/.mailboxes with default mailboxes
 
 ### Encrypt passwords
-   - Encrypt: gpg -c > ~/.kak/hallo.gpg
+   - Encrypt: gpg -r pw@local -e > ~/.kak/hallo.gpg
    - Decrypt: gpg --no-tty -q -d ~/.kak/hallo.gpg
 
