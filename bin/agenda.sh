@@ -17,7 +17,7 @@ function __showtasks {
 
 function __showmail {
 	echo
-	echo "Mails in Inbox: " $(notmuch count folder:hdm/INBOX tag:unread)"/"$(notmuch count folder:hdm/INBOX)
+	echo "Mails in Inbox: " $(notmuch count folder:hdm/Inbox tag:unread)"/"$(notmuch count folder:hdm/Inbox)
 	TOBESENT=$(msmtp-queue | grep -c id=)
 	if [ $TOBESENT -ne 0 ]
 	then

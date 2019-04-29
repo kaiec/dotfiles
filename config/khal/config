@@ -1,0 +1,23 @@
+[calendars]
+
+[[kai]]
+path = /home/kai/.calendars/bh8gpg9q1aiiki19krh1f2j6pk@group.calendar.google.com
+type = calendar
+
+[[flo]]
+path = /home/kai/.calendars/n302hnkbrb4s3376mflj1teggg@group.calendar.google.com
+type = calendar
+
+[locale]
+timeformat = %H:%M
+dateformat = %Y-%m-%d
+longdateformat = %Y-%m-%d
+datetimeformat = %Y-%m-%d %H:%M
+longdatetimeformat = %Y-%m-%d %H:%M
+weeknumbers = 'right'
+
+[view]
+dynamic_days = False
+
+[default]
+timedelta=7d
