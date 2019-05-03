@@ -97,12 +97,14 @@ command -v nvim > /dev/null && alias vim=nvim
 alias v=vim
 alias p=xonsh
 alias t="task"
+alias in="task add +inbox"
 alias stop="task stop"
 alias tmail=~/dotfiles/mutt/todo2mail
 alias tvim=~/dotfiles/bin/todo2vim
 alias a=~/dotfiles/bin/agenda.sh
 alias m="notmuch search folder:hdm/INBOX tag:unread | cut -f 3- -d ' '"
 
+alias ls='ls --group-directories-first'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -120,7 +122,7 @@ alias mkep='mutt -F ~/dotfiles/mutt/muttrc-kep'
 alias mflokai='mutt -F ~/dotfiles/mutt/muttrc-flokai'
 
 # FZF
-# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 
 fzf_cd () {

@@ -1,4 +1,9 @@
 #!/bin/bash
-msmtp-queue -r
-mbsync -a
+msmtp-queue -r &
+mbsync hdm &
+mbsync gen &
+mbsync hallo &
+mbsync kep &
+mbsync flokai &
+wait
 notmuch new

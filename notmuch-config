@@ -48,7 +48,7 @@ primary_email=eckert@hdm-stuttgart.de
 #
 [new]
 tags=
-ignore=.uidvalidity;.mbsyncstate
+ignore=.uidvalidity;.mbsyncstate;.mbsyncstate.lock;.mbsyncstate.new;.mbsyncstate.journal
 
 # Search configuration
 #

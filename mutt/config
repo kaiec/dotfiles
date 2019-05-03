@@ -50,6 +50,9 @@ bind index <Left> noop
 bind pager <Right> view-attachments
 bind index,pager \Cq quit
 
+macro index = "<Esc>c=Inbox<enter>"
+macro index + "<Esc>c=Inbox<enter>"
+
 macro index d ":set confirmappend=no delete=yes resolve=no\n<clear-flag>N<tag-prefix><delete-message>:set confirmappend=yes delete=ask-yes resolve=yes\n<next-undeleted>"
 macro index <Delete> "d" 
 

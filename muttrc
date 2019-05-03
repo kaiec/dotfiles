@@ -9,7 +9,7 @@ mailboxes +Inbox
 
 set folder="~/Maildir/hdm"
 
-set record="="
+set record="=Inbox"
 set postponed="=Drafts"
 set mbox="=archive"
 set trash="=trash"

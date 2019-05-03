@@ -149,6 +149,14 @@ endif
 map <C-n> :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen=1
 
+" -------------------- Folding  --------------------{{{1
+" Enable folding with tab
+nnoremap <tab> za
+nnoremap <S-tab> zM
+
+
+
+
 " -------------------- Vimwiki --------------------{{{1
 
 " vimwiki - Personal Wiki for Vim
@@ -161,12 +169,19 @@ let g:vimwiki_list = [{'path': '~/Dropbox/Notizen/', 'ext': '.md', 'syntax': 'ma
 " No vimiwiki support for md files outside the wiki
 let g:vimwiki_global_ext = 0
 let g:taskwiki_markup_syntax = 'markdown'  
+let g:vimwiki_folding = 'expr'
+" Give back tab key for folding...
+nmap <Leader>wn <Plug>VimwikiNextLink 
+nmap <Leader>wp <Plug>VimwikiPrevLink 
+
+" Do not create pages just by using return
+:nmap <Leader>wf <Plug>VimwikiFollowLink
 
 " Notizen
-nmap <F10> :NERDTree ~/Dropbox/Notizen<CR>
+nmap <Leader>n :cd ~/Dropbox/Notizen<cr>:e index.md<cr>
 " F24 should be S-F12
-nmap <F20> :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
-nnoremap <C-F10> :cd ~/Dropbox/Notizen<cr>:Ag<space>
+nmap <Leader>nn :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
+nnoremap <Leader>n/ :cd ~/Dropbox/Notizen<cr>:Ag<space>
 map <LEADER>d :put=strftime('%Y-%m-%d')<CR>10la
 
 " Call mutt with current line, hopefully containing a message id
@@ -230,14 +245,6 @@ augroup END
 highlight  CursorLine ctermbg=124 ctermfg=15
 autocmd InsertEnter * set cursorline 
 autocmd InsertLeave * set nocursorline 
-
-" -------------------- Folding  --------------------{{{1
-" Enable folding with tab
-nnoremap <tab> za
-nnoremap <S-tab> zM
-
-
-
 
 " -------------------- Misc  --------------------{{{1
 command! VRC :e ~/dotfiles/vim/vimrc

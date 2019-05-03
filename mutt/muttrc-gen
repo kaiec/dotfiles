@@ -5,7 +5,7 @@ set spoolfile="~/Maildir/gen/Inbox"
 # Define the = shortcut, and the entry point for the folder browser (c?)
 set folder="~/Maildir/gen"
 
-mailboxes +Inbox +absolventum  +bank    +dropbox  +gitarre  +hosteurope  +outfittery  +telefon  +twitter +amazon       +Drafts  +ebay     +github         +social      +Trash    +zeit +rzl +kanada
+mailboxes +Inbox +absolventum  +bank    +dropbox  +gitarre  +hosteurope  +outfittery  +telefon  +twitter +amazon       +Drafts  +ebay     +github         +social      +Trash    +zeit +rzl +kanada +nas
 
 
 set record="=Inbox"
