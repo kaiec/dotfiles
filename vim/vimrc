@@ -11,6 +11,7 @@ filetype off
 
 call plug#begin('~/dotfiles/vim/bundle')
 Plug 'tpope/vim-fugitive' 			" GIT support
+Plug 'tpope/vim-surround' 			" GIT support
 Plug 'kien/ctrlp.vim'				" quick file browser
 Plug 'scrooloose/nerdtree'			" file tree
 Plug 'nelstrom/vim-markdown-folding'		" Markdown Folding
@@ -28,9 +29,11 @@ Plug 'sotte/presenting.vim'			" Presentations
 Plug 'moll/vim-node'				" Node.js
 Plug 'maksimr/vim-jsbeautify'			" Javascript Formatting
 Plug 'dylanaraps/wal.vim'			" WAL color schem
-Plug 'ap/vim-css-color'			" Show CSS colors
 Plug 'junegunn/goyo.vim'			" Zen mode
 Plug 'junegunn/fzf.vim'			" Fuzzy Find
+Plug 'SirVer/ultisnips'       " Snippets
+Plug 'honza/vim-snippets'     " Collection of default snippets
+Plug 'ap/vim-css-color'       " Hex Color highlighting.
 call plug#end()
 
 filetype plugin indent on    " required
@@ -70,7 +73,7 @@ set statusline+=\ [%{&fileformat}\]
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ 
-
+      
 " -------------------- Sane defaults --------------------{{{1 
 
 " backspace behaves normal
@@ -102,9 +105,9 @@ let &guicursor = 'n-v-c-sm:block-blinkwait1000-blinkon500-blinkoff500,'
 
 " -------------------- Key Mappings --------------------{{{1
 
-nnoremap ö :
+nnoremap ö ;
 nnoremap Ö :
-vnoremap ö :
+vnoremap ö ;
 vnoremap Ö :
 
 nnoremap <C-H> <C-W>h
@@ -148,14 +151,6 @@ endif
 " NERDTree toggle
 map <C-n> :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen=1
-
-" -------------------- Folding  --------------------{{{1
-" Enable folding with tab
-nnoremap <tab> za
-nnoremap <S-tab> zM
-
-
-
 
 " -------------------- Vimwiki --------------------{{{1
 
@@ -280,6 +275,17 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Snippets
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+let g:UltiSnipsExpandTrigger="<tab>"
+" Prevent Vimwiki from using Tab in insert mode
+let g:vimwiki_table_mappings = 0
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " Python support
 let g:python_host_prog = '/home/kai/.pyenv/versions/neovim2/bin/python'

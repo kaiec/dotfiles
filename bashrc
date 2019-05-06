@@ -104,6 +104,12 @@ alias tvim=~/dotfiles/bin/todo2vim
 alias a=~/dotfiles/bin/agenda.sh
 alias m="notmuch search folder:hdm/INBOX tag:unread | cut -f 3- -d ' '"
 
+n() {
+	pushd ~/Dropbox/Notizen/
+	vim $1.md
+	popd
+}
+
 alias ls='ls --group-directories-first'
 alias ll='ls -alF'
 alias la='ls -A'
