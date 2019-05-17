@@ -40,6 +40,7 @@ ln -sTf ~/dotfiles/bin/nocaps ~/bin/nocaps
 ln -sTf ~/dotfiles/bin/beamer-optimizer.sh ~/bin/beamer-optimizer.sh
 ln -sTf ~/dotfiles/bin/mutt-mailboxes.py ~/bin/mutt-mailboxes.py
 ln -sTf ~/dotfiles/bin/unread ~/bin/unread
+ln -sTf ~/dotfiles/bin/pad-lines ~/bin/pad-lines
 ln -sTf ~/dotfiles/muttrc ~/.muttrc
 mkdir -p ~/.mutt
 touch ~/.mutt/aliases

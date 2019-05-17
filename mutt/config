@@ -19,6 +19,7 @@ set sidebar_delim_chars="/."
 set sidebar_visible
 set sidebar_format = "%B%* %?N?%N?"
 set sidebar_width = 14
+set sidebar_divider_char = '│'
 set mail_check_stats
 set mark_old=no
 set sort=threads

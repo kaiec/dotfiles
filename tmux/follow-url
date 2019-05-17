@@ -1,0 +1,2 @@
+#!/bin/sh
+sed -r 's/.*│\+?//g' | tr -d '\n' | grep -aEo '((http|https)://|www\\.)[ia-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?=_-]*' | uniq | sed 's#^www.#http://www\\.#g' | rofi -dmenu -p 'Follow which url?' -l 10 | xargs -r xdg-open

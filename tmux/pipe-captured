@@ -1,0 +1,2 @@
+#!/bin/sh
+tmux capture-pane -p | pad-lines | $1
