@@ -32,3 +32,5 @@ From other computer:
    - Encrypt: gpg -r pw@local -e > ~/.kak/hallo.gpg
    - Decrypt: gpg --no-tty -q -d ~/.kak/hallo.gpg
 
+### Fingerprints for TLS
+   - msmtp -a flokai --serverinfo --tls --tls-certcheck=off --tls-fingerprint=

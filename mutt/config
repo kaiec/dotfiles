@@ -24,15 +24,15 @@ set mark_old=no
 set sort=threads
 set sort_aux=last-date-received
 
-# bind index,pager \e[1\;5A sidebar-prev
-# bind index,pager \e[1\;5B sidebar-next
-# bind index,pager \e[1\;5C  sidebar-open
-# bind index,pager \e[1\;5D sidebar-toggle-visible
+bind index,pager \e[1\;5A sidebar-prev
+bind index,pager \e[1\;5B sidebar-next
+bind index,pager \e[1\;5C  sidebar-open
+bind index,pager \e[1\;5D sidebar-toggle-visible
 
-bind index,pager <C-Up> sidebar-prev
-bind index,pager <C-Down> sidebar-next
-bind index,pager <C-Right>  sidebar-open
-bind index,pager <C-Left> sidebar-toggle-visible
+# bind index,pager <C-Up> sidebar-prev
+# bind index,pager <C-Down> sidebar-next
+# bind index,pager <C-Right>  sidebar-open
+# bind index,pager <C-Left> sidebar-toggle-visible
 
 bind pager <Up> previous-line
 bind pager <Down> next-line

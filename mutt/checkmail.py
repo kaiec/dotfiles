@@ -26,6 +26,7 @@
 # -----------------------------------------------------------------------------
 
 import sys
+import os
 import email
 import re
 import subprocess
@@ -34,13 +35,16 @@ import locale
 
 log = open("/home/kai/.checkmail.log", "a", encoding="utf-8")
 
-orig_msg = sys.stdin.read()
-msg = email.message_from_string(orig_msg)
-
+def logmsg(text):
+    log.write("{}: {}\n".format(datetime.datetime.now(), text))
 
 def rofi_ask(question, answers):
-    out = subprocess.run(["rofi", "-dmenu", "-p", question], stdout=subprocess.PIPE, input="\n".join(answers).encode("utf-8"))
-    return out.stdout.decode("utf-8").strip()
+    try:
+        out = subprocess.run(["rofi", "-dmenu", "-p", question], stdout=subprocess.PIPE, input="\n".join(answers).encode("utf-8"))
+        return out.stdout.decode("utf-8").strip()
+    except Exception as e:
+        log.write("{} - {}: {} ({})\n".format(datetime.datetime.now(), msg["To"], msg["Subject"], e))
+
 
 
 def count_attachments(msg):
@@ -99,46 +103,61 @@ def is_recipient(recipient, msg):
     return False
 
 
-#
-# Check for forgotten attachments
-#
-trigger = u'attach|anhang|anh\.|anhänge|anbei|hängt|haeng'
-regex = re.compile(trigger, re.IGNORECASE)
+try:
 
-if not has_no_attachment_header(msg) and check_text(msg, regex) and count_attachments(msg) == 0:
-    cont = rofi_ask("Attachment vergessen?", ["ja", "nein"])
-    if cont == "ja":
-        log.close()
-        sys.exit(9)
+    logmsg("New message, Process ID: {}".format(os.getpid()))
+    try:
+        orig_msg = sys.stdin.buffer.read()
+    except Exception as e:
+        logmsg('WTF {}'.format(e))
+    logmsg('Message read from stdin...')
+    msg = email.message_from_bytes(orig_msg)
+    logmsg('Message Subject: {}'.format(msg['Subject']))
 
+    #
+    # Check for forgotten attachments
+    #
+    trigger = u'attach|anhang|anh\.|anhänge|anbei|hängt|haeng'
+    regex = re.compile(trigger, re.IGNORECASE)
 
-#
-# Check for "dangerous" recipients
-#
-lists = [
-            "hdm-alle@hdm-stuttgart.de",
-            "hdm-professoren@hdm-stuttgart.de",
-            "hdm-beschaeftigte@hdm-stuttgart.de",
-            "f3-professoren@hdm-stuttgart.de",
-        ]
-
-for recipient in lists:
-    if is_recipient(recipient, msg):
-        cont = rofi_ask("Wirklich an {} senden?".format(recipient), ["ja", "nein"])
-        if cont == "nein":
+    if not has_no_attachment_header(msg) and check_text(msg, regex) and count_attachments(msg) == 0:
+        cont = rofi_ask("Attachment vergessen?", ["ja", "nein"])
+        if cont == "ja":
+            log.write("{} - {}: {} ({})\n".format(datetime.datetime.now(), msg["To"], msg["Subject"], "User abort"))
             log.close()
             sys.exit(9)
 
+    logmsg('Attachment checked.')
+
+    #
+    # Check for "dangerous" recipients
+    #
+    lists = [
+                "hdm-alle@hdm-stuttgart.de",
+                "hdm-professoren@hdm-stuttgart.de",
+                "hdm-beschaeftigte@hdm-stuttgart.de",
+                "f3-professoren@hdm-stuttgart.de",
+            ]
+
+    for recipient in lists:
+        if is_recipient(recipient, msg):
+            cont = rofi_ask("Wirklich an {} senden?".format(recipient), ["ja", "nein"])
+            if cont == "nein":
+                log.write("{} - {}: {} ({})\n".format(datetime.datetime.now(), msg["To"], msg["Subject"], "User abort"))
+                log.close()
+                sys.exit(9)
 
 
-try:
+    logmsg('Recipients checked.')
+
     sendmail = subprocess.Popen(sys.argv[1:], stdin=subprocess.PIPE)
-    sendmail.communicate(input=orig_msg.encode(locale.getpreferredencoding()))
+    sendmail.communicate(input=orig_msg)
     log.write("{} - {}: {} ({})\n".format(datetime.datetime.now(), msg["To"], msg["Subject"], sendmail.returncode))
+    log.close()
+    sys.exit(sendmail.returncode)
 except Exception as e:
     log.write("{} - {}: {} ({})\n".format(datetime.datetime.now(), msg["To"], msg["Subject"], e))
-
-log.close()
-sys.exit(sendmail.returncode)
+    log.close()
+    sys.exit(1)
 
 # ----------------------------------------------------------------------------
