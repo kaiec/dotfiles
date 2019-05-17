@@ -160,6 +160,13 @@ shopt -s cmdhist
 # this must only be done in interactive shells.
 stty -ixon
 
+
+# TMUX
+if which tmux >/dev/null 2>&1; then
+    #if not inside a tmux session, and if no session is started, start a new session
+    test -z "$TMUX" && { exec tmux new-session && exit 0; }
+fi
+
 # Autostart
 if ! [ -e ~/.is_presentation ]
 then

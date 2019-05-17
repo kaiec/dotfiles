@@ -1,9 +1,12 @@
 #!/bin/bash
-msmtp-queue -r &
+msmtp-queue -r
 mbsync hdm &
 mbsync gen &
 mbsync hallo &
 mbsync kep &
 mbsync flokai &
+vdirsyncer sync &
 wait
 notmuch new
+vdirsyncer sync
+~/dotfiles/bin/agenda.sh

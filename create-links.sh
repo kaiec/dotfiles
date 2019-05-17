@@ -22,6 +22,7 @@ ln -sTf ~/dotfiles/inputrc ~/.inputrc
 ln -sTf ~/dotfiles/zshrc ~/.zshrc
 ln -sTf ~/dotfiles/urxvt ~/.urxvt
 ln -sTf ~/dotfiles/xonshrc ~/.xonshrc
+ln -sTf ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -sTf ~/dotfiles/config/xonsh/ ~/.config/xonsh
 ln -sTf ~/dotfiles/Xdefaults ~/.Xdefaults
 ln -sTf ~/dotfiles/mailcap ~/.mailcap

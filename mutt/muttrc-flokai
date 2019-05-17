@@ -12,7 +12,7 @@ set postponed="=Drafts"
 # set mbox="=archive"
 set trash="=Trash"
 
-set from="flo-kai@fami-eckert.net"
+set from="flo-kai@fam-eckert.net"
 # set signature="~/dotfiles/hdm-signature.sig"
 
 set sendmail="/home/kai/dotfiles/mutt/checkmail.py msmtpq -a flokai"
