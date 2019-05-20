@@ -1,2 +1,11 @@
 #!/bin/sh
-sed -r 's/.*│\+?//g' | tr -d '\n' | grep -aEo '((http|https)://|www\\.)[ia-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?=_-]*' | uniq | sed 's#^www.#http://www\\.#g' | rofi -dmenu -p 'Follow which url?' -l 10 | xargs -r xdg-open
+url=$(sed -r 's/.*│\+?//g' | tr -d '\n' | grep -aEo '((http|https)://|www\\.)[ia-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?=_-]*' | uniq | sed 's#^www.#http://www\\.#g' | rofi -dmenu -p 'Follow which url?' -l 10 -kb-custom-1 Ctrl-c)
+
+ret=$?
+
+if [ $ret -eq 0 ]; then
+	echo $url | xargs -r xdg-open
+fi
+if [ $ret -eq 10 ]; then
+	echo $url | xclip -selection clipboard
+fi
