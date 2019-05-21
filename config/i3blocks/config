@@ -33,7 +33,8 @@ command=spotifycli --status | sed "s/spotify is off//"
 interval=10
 
 [task]
-command=/home/kai/dotfiles/bin/i3b-task
+command=/home/kai/dotfiles/bin/twtool status
+label=
 interval=10
 
 [nextdate]

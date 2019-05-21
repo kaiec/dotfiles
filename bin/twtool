@@ -86,6 +86,20 @@ doit() {
 
 }
 
+status() {
+	task=$(timew | grep "^Tracking .*" | sed "s/^Tracking //" | sed "s/\"//g" | sed "s/z:[^ ]*//")
+	started=$(timew | grep "^  Started" | sed "s/  Started[ ]*//")
+	d1=$(date -d "$started" +%s)
+	d2=$(date +%s)
+	ddiff=$(( (d2 - d1)))
+	if [[ $task ]]
+	then
+		echo $task \| $(TZ=UTC date -d "@${ddiff}" +%H:%M)
+	else
+		echo ""
+	fi
+}
+
 fun=$1
 shift
 $fun $@
