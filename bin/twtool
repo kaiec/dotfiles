@@ -1,0 +1,91 @@
+#!/bin/bash
+last-end() {
+	end=$(timew export | tail -2 | head -1 | jq '.end' | sed 's/"//g')
+	datestr=$( echo $end | sed -e 's/T/ /' -e 's/^\([0-9][0-9][0-9][0-9]\)\([0-9][0-9]\)/\1-\2-/' -e 's/ \([0-9][0-9]\)\([0-9][0-9]\)/ \1:\2:/' )
+	echo $datestr
+}
+
+active() {
+	task active | sed -n '4p' | sed 's/^ //' | cut -f1 -d' '
+}
+
+stop() {
+	act=$(active)
+	if [[ -z $act ]]; then
+		echo "No active task, stopping time tracking."
+		timew stop
+	else
+		task stop $act
+		echo "Task $act stopped."
+	fi
+	if [[ $# -eq 1 ]]
+	then
+		newend="$(date -d \"$(last-end)\" '+%Y-%m-%d') $1"
+		
+		d1=$(date -d "$newend" +%s)
+		d2=$(date -d "$(last-end)" +%s)
+		ddiff=$(( (d2 - d1)))
+        	timew @1 shorten "$ddiff secs"
+		echo "Last task end time set to $1"
+	fi
+}
+start() {
+	# $1 is task id, $2 is optional start time
+	act=$(active)
+	if [ -z $act ]; then
+		echo "No active task"
+	else
+		# stop running task now or at start time of new task
+		stop $2
+	fi
+	if [[ $1 =~ ^[0-9]+$ ]]; then
+		task start $1
+	else
+		timew start $1
+	fi
+	if [ $# -eq 2 ]
+	then
+		timew @1 move $2
+	fi
+}
+
+doit() {
+	task=$(task rofi | sed '3 r /home/kai/.mytasks' | sed '3 a STOP' | sed '1,3d;s/^ /0/;/^[^0-9]/s/^/.. /;s/ /\t\t/' | head -n -2 | rofi -dmenu -i -p "Los geht's mit" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-d)
+	ret=$?
+	if [ $ret -eq 1 ]; then
+		echo 'User escaped'
+		exit 1
+	elif [ $ret -eq 10 ]; then
+		echo 'Task done selected.'
+		taskdone=1
+	fi
+
+	echo "Task selected: $task"
+	taskid=$(echo "$task" | cut -f1)
+	tasktext=$(echo "$task" | cut -f3)
+	if [[ ! -z $tasktext ]]; then
+		task=$tasktext
+	fi
+	echo "Task ID: $taskid"
+
+	if [[ $taskid =~ ^[0-9]+$ ]]; then
+		if [ -z $taskdone ]; then
+			echo "Starting task $taskid"
+			start "$taskid"
+		else
+			echo 'Task done: $taskid'
+			task "done" "$taskid"
+		fi
+		exit 0
+	elif [[ $task =~ STOP ]]; then
+		stop
+	elif [[ ! -z $task && -z $taskdone ]]; then
+		stop
+		timew start "$task"
+	fi
+
+}
+
+fun=$1
+shift
+$fun $@

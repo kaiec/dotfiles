@@ -95,10 +95,15 @@ alias ga='git add'
 
 command -v nvim > /dev/null && alias vim=nvim
 alias v=vim
+
+# TASK WARRIOR
+
+
 alias p=xonsh
 alias t="task"
 alias in="task add +inbox"
-alias stop="task stop"
+alias stop='twtool stop'
+alias start='twtool start'
 alias tmail=~/dotfiles/mutt/todo2mail
 alias tvim=~/dotfiles/bin/todo2vim
 alias a=~/dotfiles/bin/agenda.sh
