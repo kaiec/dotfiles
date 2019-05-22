@@ -32,6 +32,11 @@ markup=none
 command=spotifycli --status | sed "s/spotify is off//"
 interval=10
 
+[timew]
+command=timew summary | tail -2 | head -1 | tr -d '[:space:]'
+label=
+interval=10
+
 [task]
 command=/home/kai/dotfiles/bin/twtool status
 label=
