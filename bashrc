@@ -96,6 +96,8 @@ alias ga='git add'
 command -v nvim > /dev/null && alias vim=nvim
 alias v=vim
 
+alias fspdf='~/daten/projekte/fspdf/fspdf-runner.py'
+
 # TASK WARRIOR
 
 

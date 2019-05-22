@@ -34,6 +34,7 @@ uda.blocks.type=string
 
 report.next.columns=id,start.age,entry.age,depends,priority,recur,scheduled.countdown,due.relative,until.remaining,description.count,project,tags,urgency
 report.next.labels=ID,Active,Age,Deps,P,Recur,S,Due,Until,Description,Project,Tag,Urg
+report.next.sort=start-,urgency-
 
 report.rofi.labels=
 report.rofi.columns=id,description.count

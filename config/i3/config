@@ -260,7 +260,7 @@ bindsym $mod+c exec ~/dotfiles/bin/togglecal
 
 # Notes
 for_window [instance="vim_notes"] move to scratchpad, border 1pixel
-bindsym $mod+F10 exec ~/bin/togglenotes
+bindsym $mod+n exec ~/bin/togglenotes
 
 # Terminal scratchpad
 bindsym $mod+z [con_mark="scratch"] scratchpad show
