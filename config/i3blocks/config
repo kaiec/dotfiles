@@ -33,7 +33,7 @@ markup=none
 # interval=10
 
 [timew]
-command=timew summary | tail -2 | head -1 | tr -d '[:space:]' | sed 's/No.*//'
+command=timew summary | tail -2 | head -1 | tr -d '[:space:]'| sed 's/:[0-9][0-9]$//' | sed 's/No.*//'
 label=
 interval=10
 

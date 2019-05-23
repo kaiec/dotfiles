@@ -50,7 +50,7 @@ start() {
 }
 
 doit() {
-	task=$(task rofi | sed '3 r /home/kai/.mytasks' | sed '3 a STOP' | sed '1,3d;s/^ /0/;/^[^0-9]/s/^/.. /;s/ /\t\t/' | head -n -2 | rofi -dmenu -i -p "Los geht's mit" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-d)
+	task=$(task rofi | sed '3 r /home/kai/.mytasks' | sed '3 a STOP\nCONTINUE' | sed '1,3d;s/^ /0/;/^[^0-9]/s/^/.. /;s/ /\t\t/' | head -n -2 | rofi -dmenu -i -p "Los geht's mit" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-d)
 	ret=$?
 	if [ $ret -eq 1 ]; then
 		echo 'User escaped'
@@ -79,6 +79,8 @@ doit() {
 		exit 0
 	elif [[ $task =~ STOP ]]; then
 		stop
+	elif [[ $task =~ CONTINUE ]]; then
+		timew continue
 	elif [[ ! -z $task && -z $taskdone ]]; then
 		stop
 		timew start "$task"
