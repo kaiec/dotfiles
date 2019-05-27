@@ -52,11 +52,6 @@ if ($percent < 20) {
 	$DIS="";
 }
 
-if ($percent < 5) {
-	exit(33);
-}
-
-
 if ($status eq 'Discharging') {
 	$full_text = "$DIS";
 } elsif ($status eq 'Charging') {
