@@ -32,15 +32,22 @@ markup=none
 # command=spotifycli --status | sed "s/spotify is off//"
 # interval=10
 
+[recording]
+command=record-stat
+interval=10
+signal=4
+
 [timew]
 command=timew summary | tail -2 | head -1 | tr -d '[:space:]'| sed 's/:[0-9][0-9]$//' | sed 's/No.*//'
 label=
 interval=10
+signal=3
 
 [task]
 command=/home/kai/dotfiles/bin/twtool status
 label=
 interval=10
+signal=3
 
 [nextdate]
 command=/home/kai/dotfiles/bin/i3b-nextdate
@@ -53,7 +60,7 @@ signal=2
 # see the script for details.
 [cpu_usage]
 label=
-interval=10
+interval=1
 min_width= 100.00%
 #separator=false
 

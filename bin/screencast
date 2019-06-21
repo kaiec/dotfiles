@@ -36,4 +36,4 @@ $filename ;}
 
 if [[ $(pgrep -x pulseaudio) ]]; then record_pulse; fi &
 # Updating i3blocks recording icon:
-# echo ⏺️ > ~/.recordingicon && pkill -RTMIN+9 i3blocks
+kill -RTMIN+4 i3blocks

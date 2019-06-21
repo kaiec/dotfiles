@@ -30,6 +30,10 @@ stop() {
 	fi
 }
 start() {
+	if [[ $# -eq 0 ]]; then
+		echo "Usage: start TASK [TIME]"
+		return
+	fi
 	# $1 is task id, $2 is optional start time
 	act=$(active)
 	if [ -z $act ]; then
