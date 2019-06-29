@@ -1,0 +1,21 @@
+#!/bin/bash
+
+email=$(notmuch address --deduplicate=address --output:recipients from:eckert@hdm-stuttgart.de | rofi -dmenu -i -p "E-Mail" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-c)
+
+ret=$?
+
+if [ $ret -eq 1 ]; then
+	echo 'User escaped'
+	exit 1
+elif [ $ret -eq 10 ]; then
+	copymode=1
+fi
+
+if [ -z $copymode ]; then
+	echo "$email"
+else
+	echo "$email" | xclip -selection clipboard
+fi
+
+
+
