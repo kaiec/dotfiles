@@ -30,6 +30,20 @@ function __showmail {
 
 }
 
+function __showunsaved {
+	swaps=$(find ~/.local/share/nvim/swap -type f -name '%home%kai%Dropbox%Notizen%*.sw?') 
+	if [[ -z $swaps ]]; then
+		return
+	fi
+	echo
+	echo -n 'Unsaved notes: '
+	echo $swaps| sed 's/.*Notizen%//' | sed 's#%#/#g;s/\.sw.$//' | uniq | paste -sd '%' - | sed 's/%/, /g'
+}
+
 command -v khal > /dev/null && __showcal
 command -v task > /dev/null && __showtasks
 command -v notmuch > /dev/null && __showmail
+
+if [[ -d ~/Dropbox/Notizen/ ]]; then
+	__showunsaved
+fi
