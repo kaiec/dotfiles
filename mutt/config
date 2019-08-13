@@ -59,6 +59,8 @@ macro index <Delete> "d"
 
 macro index S "<Esc>t;s"
 
+macro index \Cn "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all new as read" 
+
 # Open Mail in less for copy / paste
 macro index,pager \Cl "<view-attachments><search>text/plain<enter><pipe-entry>less<enter><exit>"
 # https://demu.red/blog/2017/11/neomutt-macro-opening-texthtml-attachment-from-the-index-view/
