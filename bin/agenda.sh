@@ -16,6 +16,7 @@ function __showtasks {
 }
 
 function __showmail {
+	notmuch new --quiet
 	echo
 	echo "Mails in Inbox: " $(notmuch count folder:hdm/Inbox tag:unread)"/"$(notmuch count folder:hdm/Inbox)
 	TOBESENT=$(msmtp-queue | grep -c id=)

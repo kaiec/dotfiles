@@ -43,12 +43,15 @@ start() {
 		stop $2
 	fi
 	if [[ $1 =~ ^[0-9]+$ ]]; then
+		echo "Starting task with number $1"
 		task start $1
 	else
+		echo "Starting new task: $1"
 		timew start $1
 	fi
 	if [ $# -eq 2 ]
 	then
+		echo "Starting task at $2"
 		timew @1 move $2
 	fi
 }
