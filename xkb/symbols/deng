@@ -28,6 +28,7 @@ xkb_symbols "basic" {
     include "deng(esctilde)"
     include "deng(yzswitch)"
     include "level3(ralt_switch)"
+    include "deng(cursor-on-hjkl)"
 };
 
 
@@ -65,6 +66,14 @@ xkb_symbols "currency" {
     key <AD03>  { [ NoSymbol, NoSymbol, EuroSign,   cent       ] };
     key <AC09>  { [ NoSymbol, NoSymbol, sterling,   NoSymbol   ] };
     key <AD06>  { [ NoSymbol, NoSymbol, yen,        NoSymbol   ] };
+};
+
+partial
+xkb_symbols "cursor-on-hjkl" {
+    key <AC06>  { [ h, H, Left, Left ] };
+    key <AC07>  { [ j, J, Down, Down ] };
+    key <AC08>  { [ k, K, Up, Up ] };
+    key <AC09>  { [ l, L, Right, Right    ] };
 };
 
 
