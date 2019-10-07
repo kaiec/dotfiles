@@ -34,6 +34,7 @@ Plug 'junegunn/fzf.vim'			" Fuzzy Find
 Plug 'SirVer/ultisnips'       " Snippets
 Plug 'honza/vim-snippets'     " Collection of default snippets
 Plug 'ap/vim-css-color'       " Hex Color highlighting.
+Plug 'mattn/emmet-vim'       " HTML auto competion magic.
 call plug#end()
 
 filetype plugin indent on    " required
@@ -128,8 +129,8 @@ inoremap <C-Q> <esc>:qa<cr>
 vnoremap < <gv
 vnoremap > >gv
 
-" Rewrap current paragraph without moving cursor
-nnoremap Q gwip
+inoremap jk <Esc>
+
 
 " FZF, Search
 nnoremap <C-B> :Buffers<cr>
