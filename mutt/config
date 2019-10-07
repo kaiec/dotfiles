@@ -24,34 +24,35 @@ set mail_check_stats
 set mark_old=no
 set sort=threads
 set sort_aux=last-date-received
+set pager_stop=yes
 
-bind index,pager \e[1\;5A sidebar-prev
-bind index,pager \e[1\;5B sidebar-next
-bind index,pager \e[1\;5C  sidebar-open
-bind index,pager \e[1\;5D sidebar-toggle-visible
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Cl  sidebar-open
+bind index,pager \Ch sidebar-toggle-visible
 
 # bind index,pager <C-Up> sidebar-prev
 # bind index,pager <C-Down> sidebar-next
 # bind index,pager <C-Right>  sidebar-open
 # bind index,pager <C-Left> sidebar-toggle-visible
 
-bind pager <Up> previous-line
-bind pager <Down> next-line
+bind index,attach k previous-entry
+bind index,attach j next-entry
+bind pager k previous-line
+bind pager j next-line
 bind pager <PageUp> previous-page
 bind pager <PageDown> next-page
-bind generic,pager <Left> exit
+bind generic,pager,attach h exit
 
 macro index,pager f "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><shell-escape>~/dotfiles/mutt/forward-mail.py -d ~/fwdtest<enter><enter-command>set wait_key<enter>"
 
 bind index r reply
 bind index \Cr group-reply
 bind index R list-reply
-bind index <Right> display-message
-bind index <Left> noop
-bind pager <Right> view-attachments
+bind index l display-message
+bind index h noop
+bind pager l view-attachments
 bind index,pager \Cq quit
-
-macro index = "c=Inbox<enter>"
 macro index + "c=Inbox<enter>"
 
 macro index d ":set confirmappend=no delete=yes resolve=no\n<clear-flag>N<tag-prefix><delete-message>:set confirmappend=yes delete=ask-yes resolve=yes\n<next-undeleted>"
@@ -62,7 +63,7 @@ macro index S "<Esc>t;s"
 macro index \Cn "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all new as read" 
 
 # Open Mail in less for copy / paste
-macro index,pager \Cl "<view-attachments><search>text/plain<enter><pipe-entry>less<enter><exit>"
+macro index,pager \Cu "<view-attachments><search>text/plain<enter><pipe-entry>less<enter><exit>"
 # https://demu.red/blog/2017/11/neomutt-macro-opening-texthtml-attachment-from-the-index-view/
 # macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
 
