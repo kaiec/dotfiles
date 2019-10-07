@@ -56,14 +56,14 @@ bindsym $mod+Control+backslash split horizontal; exec i3-sensible-terminal -e py
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym $alt+F4 kill
 
 # start rofi (a program launcher)
-bindsym $mod+Tab exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -show combi -window-command 'pwd'"
-bindsym $mod+Shift+Tab split vertical; exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -show combi -window-command 'pwd'"
-bindsym $mod+Control+Tab split horizontal; exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -show combi -window-command 'pwd'"
+bindsym $mod+d exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -show combi -window-command 'pwd'"
+bindsym $mod+Shift+d split vertical; exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -show combi -window-command 'pwd'"
+bindsym $mod+Control+d split horizontal; exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -show combi -window-command 'pwd'"
 
-bindcode 133 --release exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -show combi -window-command 'pwd'"
+# Activates app menu by simply pressing win key
+# bindcode 133 --release exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -show combi -window-command 'pwd'"
 
 # change focus
 bindsym $mod+h focus left
@@ -129,8 +129,10 @@ bindsym --release Print exec ~/bin/screenshot.sh
 
 # Switch screen layouts
 bindsym $mod+F1 exec "~/.screenlayout/nb"
-bindsym $mod+F7 exec "~/.screenlayout/beamer"
 bindsym $mod+F2 exec "~/dotfiles/bin/screenprofiles"
+
+# Various tools
+bindsym $mod+period exec "~/dotfiles/bin/tools"
 
 # Workspaces
 
@@ -303,15 +305,7 @@ no_focus [title="mpvfloat"]
 # FS-UAE
 for_window [class="fs-uae"] floating enable
 
-# Toggle cam, start / stop recording
-bindsym $mod+p exec --no-startup-id camtoggle
-bindsym $mod+Shift+p exec --no-startup-id screencast
-bindsym $mod+Delete exec --no-startup-id killrecording
-bindsym $mod+o exec --no-startup-id record-audio
 bindsym $mod+Control+s exec --no-startup-id i3lock -u -c 000000
-
-# FN-F11 to activate Screenkey
-bindsym XF86LaunchA exec --no-startup-id "killall screenkey || screenkey"
 
 # wal support
 exec_always --no-startup-id wal -R

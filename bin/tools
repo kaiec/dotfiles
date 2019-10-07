@@ -1,0 +1,12 @@
+#!/bin/bash
+declare -A tools
+tools["Screenkey"]="killall screenkey || screenkey"
+tools["Cam"]="camtoggle"
+tools["Screencast"]="screencast"
+tools["Stop Recording"]="killrecording"
+tools["Record Audio"]="record-audio"
+tools["Toggle Mousepad"]="toggle-pad.sh"
+
+P=$(printf '%s\n' "${!tools[@]}" |  rofi -dmenu -i -p "Tools")
+/bin/bash -c "${tools[$P]}"
+
