@@ -56,6 +56,11 @@ start() {
 	fi
 }
 
+asktime() {
+	echo -e `date "+%H:%M"`\\n`date "+%H:00"` | rofi -dmenu -i --select-row 1
+
+}
+
 doit() {
 	task=$(task rofi | sed '3 r /home/kai/.mytasks' | sed '3 a STOP\nCONTINUE' | sed '1,3d;s/^ /0/;/^[^0-9]/s/^/.. /;s/ /\t\t/' | head -n -2 | rofi -dmenu -i -p "Los geht's mit" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-d)
 	ret=$?
@@ -78,19 +83,22 @@ doit() {
 	if [[ $taskid =~ ^[0-9]+$ ]]; then
 		if [ -z $taskdone ]; then
 			echo "Starting task $taskid"
-			start "$taskid"
+			ttime=$(asktime)
+			start "$taskid" "$ttime"
 		else
 			echo 'Task done: $taskid'
 			task "done" "$taskid"
 		fi
 		exit 0
 	elif [[ $task =~ STOP ]]; then
-		stop
+		ttime=$(asktime)
+		stop $ttime
 	elif [[ $task =~ CONTINUE ]]; then
 		timew continue
 	elif [[ ! -z $task && -z $taskdone ]]; then
-		stop
-		timew start "$task"
+		ttime=$(asktime)
+		stop $ttime
+		timew start $ttime "$task"
 	fi
 
 }
