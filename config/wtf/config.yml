@@ -1,0 +1,60 @@
+
+wtf:
+  colors:
+    border:
+      focusable: darkslateblue
+      focused: orange
+      normal: gray
+  grid:
+    columns: [65, 64]
+    rows: [20, 20]
+  refreshInterval: 1
+  mods:
+        tasks:
+          args: ["__showtasks"]
+          cmd: "/home/kai/dotfiles/bin/agenda.sh"
+          enabled: true
+          position:
+            top: 0
+            left: 0
+            height: 1
+            width: 1
+          refreshInterval: 3
+          title: "Todo"
+          type: cmdrunner
+        calendar:
+          args: ["__showcal"]
+          cmd: "/home/kai/dotfiles/bin/agenda.sh"
+          enabled: true
+          position:
+            top: 0
+            left: 1
+            height: 1
+            width: 1
+          refreshInterval: 3
+          title: "Calendar"
+          type: cmdrunner
+        mails:
+          args: ["__showmail"]
+          cmd: "/home/kai/dotfiles/bin/agenda.sh"
+          enabled: true
+          position:
+            top: 1
+            left: 0
+            height: 1
+            width: 1
+          refreshInterval: 3
+          title: "Mails"
+          type: cmdrunner
+        unsaved:
+          args: ["__showunsaved"]
+          cmd: "/home/kai/dotfiles/bin/agenda.sh"
+          enabled: true
+          position:
+            top: 1
+            left: 1
+            height: 1
+            width: 1
+          refreshInterval: 3
+          title: "Unsaved Notes"
+          type: cmdrunner

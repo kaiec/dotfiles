@@ -16,6 +16,7 @@ ln -sTf ~/dotfiles/config/flake8 ~/.config/flake8
 ln -sTf ~/dotfiles/config/powerline-shell ~/.config/powerline-shell
 ln -sTf ~/dotfiles/config/mimeapps.list ~/.config/mimeapps.list
 ln -sTf ~/dotfiles/config/mimeapps.list ~/.local/share/applications/mimeapps.list
+ln -sTf ~/dotfiles/config/wtf ~/.config/wtf
 ln -sTf ~/dotfiles/vimrc ~/.vimrc
 ln -sTf ~/dotfiles/vim/UltiSnips ~/.vim/UltiSnips
 ln -sTf ~/dotfiles/bashrc ~/.bashrc

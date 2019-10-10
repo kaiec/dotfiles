@@ -1,23 +1,17 @@
 #!/bin/bash
 function __showcal {
-	echo "------- AGENDA ------"
 	khal list `date +"%Y-%m-%d"` `date --date="1 days" +"%Y-%m-%d"`
 	# ~/dotfiles/bin/todo.sh due 3
 	#task due.before:3d 2>/dev/null
-	echo
 }
 
 function __showtasks {
-	echo "------- TODO --------"
 	# ~/dotfiles/bin/todo.sh -pP lsp A
 	task next limit:10 2> /dev/null
-	echo "---------------------"
-
 }
 
 function __showmail {
 	notmuch new --quiet
-	echo
 	echo "Mails in Inbox: " $(notmuch count folder:hdm/Inbox tag:unread)"/"$(notmuch count folder:hdm/Inbox)
 	TOBESENT=$(msmtp-queue | grep -c id=)
 	if [ $TOBESENT -ne 0 ]
@@ -36,15 +30,24 @@ function __showunsaved {
 	if [[ -z $swaps ]]; then
 		return
 	fi
-	echo
 	echo -n 'Unsaved notes: '
 	echo $swaps| sed 's/.*Notizen%//' | sed 's#%#/#g;s/\.sw.$//' | uniq | paste -sd '%' - | sed 's/%/, /g'
 }
 
-command -v khal > /dev/null && __showcal
-command -v task > /dev/null && __showtasks
-command -v notmuch > /dev/null && __showmail
+if [[ -z $1 ]]; then
+	echo "------- AGENDA ------"
+	command -v khal > /dev/null && __showcal
+	echo
+	echo "------- TODO --------"
+	command -v task > /dev/null && __showtasks
+	echo "---------------------"
+	echo
+	command -v notmuch > /dev/null && __showmail
 
-if [[ -d ~/Dropbox/Notizen/ ]]; then
-	__showunsaved
+	if [[ -d ~/Dropbox/Notizen/ ]]; then
+		echo
+		__showunsaved
+	fi
+else
+	$1
 fi
