@@ -54,8 +54,8 @@ bind index r reply
 bind index \Cr group-reply
 bind index R list-reply
 bind index,pager \Cq quit
-macro index + "c=Inbox<enter>"
-macro index = "c=Inbox<enter>"
+macro index,pager + "c=Inbox<enter>"
+macro index,pager = "c=Inbox<enter>"
 
 macro index d ":set confirmappend=no delete=yes resolve=no\n<clear-flag>N<tag-prefix><delete-message>:set confirmappend=yes delete=ask-yes resolve=yes\n<next-undeleted>"
 macro index <Delete> "d" 
