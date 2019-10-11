@@ -6,8 +6,8 @@ wtf:
       focused: orange
       normal: gray
   grid:
-    columns: [65, 64]
-    rows: [20, 20]
+    columns: [20,20,42, 64,64]
+    rows: [10, 10, 7, 3, 50]
   refreshInterval: 1
   mods:
         tasks:
@@ -17,9 +17,9 @@ wtf:
           position:
             top: 0
             left: 0
-            height: 1
-            width: 1
-          refreshInterval: 3
+            height: 2
+            width: 3
+          refreshInterval: 10
           title: "Todo"
           type: cmdrunner
         calendar:
@@ -28,10 +28,10 @@ wtf:
           enabled: true
           position:
             top: 0
-            left: 1
+            left: 3
             height: 1
             width: 1
-          refreshInterval: 3
+          refreshInterval: 60
           title: "Calendar"
           type: cmdrunner
         mails:
@@ -39,22 +39,34 @@ wtf:
           cmd: "/home/kai/dotfiles/bin/agenda.sh"
           enabled: true
           position:
-            top: 1
+            top: 2
+            left: 0
+            height: 1
+            width: 1
+          refreshInterval: 60
+          title: "Mails"
+          type: cmdrunner
+        unsaved:
+          args: ["__showunsavedlist"]
+          cmd: "/home/kai/dotfiles/bin/agenda.sh"
+          enabled: true
+          position:
+            top: 3
             left: 0
             height: 1
             width: 1
           refreshInterval: 3
-          title: "Mails"
+          title: "Unsaved Notes"
           type: cmdrunner
-        unsaved:
-          args: ["__showunsaved"]
-          cmd: "/home/kai/dotfiles/bin/agenda.sh"
+        github:
+          args: ["wtf"]
+          cmd: "/home/kai/dotfiles/bin/githelper"
           enabled: true
           position:
             top: 1
-            left: 1
+            left: 3
             height: 1
             width: 1
-          refreshInterval: 3
-          title: "Unsaved Notes"
+          refreshInterval: 300
+          title: "Github"
           type: cmdrunner

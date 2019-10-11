@@ -5,6 +5,8 @@ case $- in
       *) return;;
 esac
 
+source ~/.env-secrets
+
 
 COLOR_RED="\033[0;31m"
 COLOR_GREEN="\033[0;32m"	

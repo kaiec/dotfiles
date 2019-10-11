@@ -1,0 +1,30 @@
+#!/bin/bash
+
+gh_issues() {
+	pushd $1 >/dev/null
+	hub issue | sed "s/^\s*/IS: /"
+	popd >/dev/null
+}
+
+gh_prs() {
+	pushd $1 >/dev/null
+	hub pr list | sed "s/^\s*/PR: /"
+	popd >/dev/null
+}
+
+wtf() {
+	echo "LOC-DB"
+	gh_issues ~/daten/projekte/locdb/loc-db/
+	gh_prs ~/daten/projekte/locdb/loc-db/
+	echo "Judaicalink"
+	gh_issues ~/daten-linux/judaicalink/judaicalink-site/
+	gh_prs ~/daten-linux/judaicalink/judaicalink-site/
+	echo "Deutsche Welle"
+	gh_issues ~/daten-linux/DeutscheWelle/Deutsche-Welle/
+	gh_prs ~/daten-linux/DeutscheWelle/Deutsche-Welle/
+}
+
+
+func=$1
+shift
+$func $@
