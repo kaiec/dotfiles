@@ -1,0 +1,46 @@
+#!/usr/bin/python3
+import subprocess
+import json
+from sarge import get_stdout
+
+def load_tasks(filter):
+    cmd = ['task', 'export']
+    cmd.extend(filter.split())
+    out = subprocess.run(cmd, stdout=subprocess.PIPE)
+    tasks = json.loads(str(out.stdout, encoding='utf8'))
+    return tasks
+
+def update_task(task):
+    subprocess.run(['task', 'rc.recurrence.confirmation=no', 'rc.confirmation=no', 'import'], input=json.dumps(task).encode('utf8'))
+
+
+tasks = load_tasks('status:pending Daily review')
+
+tasks.sort(key=lambda t: t['due'])
+
+
+def green(text):
+    print('\033[32m' + text + '\033[m')
+
+
+def red(text):
+    print('\033[31m' + text + '\033[m')
+
+
+if len(tasks) > 1:
+    for t in tasks[1:]:
+        t['status'] = 'deleted'
+        update_task(t)
+        red('Daily review   ( )')
+elif len(tasks) == 1:
+    red('Daily review   ( )')
+else:
+    green('Daily review   (X)')
+
+today = get_stdout('date +%Y%m%d').strip()
+lastmail = get_stdout('cat /home/kai/.mail.log | tail -n 1 | cut -f1 -d" "').strip()
+if today == lastmail:
+    green('Mails fetched  (X)')
+else:
+    red('Mails fetched  ( )')
+

@@ -8,7 +8,8 @@ wtf:
   grid:
     columns: [20,20,42, 64,64]
     rows: [10, 10, 7, 3, 50]
-  refreshInterval: 1
+  refreshInterval: 10
+  term: "xterm-256color"
   mods:
         tasks:
           args: ["__showtasks"]
@@ -55,8 +56,20 @@ wtf:
             left: 0
             height: 1
             width: 1
-          refreshInterval: 3
+          refreshInterval: 10
           title: "Unsaved Notes"
+          type: cmdrunner
+        daily:
+          args: ['']
+          cmd: "/home/kai/dotfiles/bin/dailytasks"
+          enabled: true
+          position:
+            top: 4
+            left: 0
+            height: 1
+            width: 1
+          refreshInterval: 10
+          title: "Daily tasks"
           type: cmdrunner
         github:
           args: ["wtf"]
@@ -69,4 +82,16 @@ wtf:
             width: 1
           refreshInterval: 300
           title: "Github"
+          type: cmdrunner
+        bahn:
+          args: []
+          cmd: "/home/kai/bin/bahn.sh"
+          enabled: true
+          position:
+            top: 2
+            left: 3
+            height: 3
+            width: 1
+          refreshInterval: 300
+          title: "Bahn"
           type: cmdrunner

@@ -9,4 +9,5 @@ vdirsyncer sync &
 wait
 notmuch new
 vdirsyncer sync
+date +%Y%m%d\ %H:%M >> ~/.mail.log
 ~/dotfiles/bin/agenda.sh
