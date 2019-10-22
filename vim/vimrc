@@ -25,6 +25,7 @@ Plug 'altercation/vim-colors-solarized'   " solarized
 Plug 'dhruvasagar/vim-table-mode'		" edit tables
 Plug 'vim-syntastic/syntastic'		" Syntax checker
 Plug 'tell-k/vim-autopep8'		" Autopep8
+Plug 'calviken/vim-gdscript3'
 Plug 'sotte/presenting.vim'			" Presentations
 Plug 'moll/vim-node'				" Node.js
 Plug 'maksimr/vim-jsbeautify'			" Javascript Formatting
@@ -128,6 +129,9 @@ nnoremap <C-Q> :qa<cr>
 inoremap <C-Q> <esc>:qa<cr>
 vnoremap < <gv
 vnoremap > >gv
+
+" Rewrap current paragraph without moving cursor
+nnoremap Q gwip
 
 inoremap jk <Esc>
 
