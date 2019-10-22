@@ -49,13 +49,13 @@ bindsym $mod+Shift+Return split vertical; exec cwd.sh
 bindsym $mod+Control+Return split horizontal; exec cwd.sh
 
 # start ranger
-bindsym $mod+backslash exec i3-sensible-terminal -e python3 ~/software/ranger/ranger.py ~/Daten
-bindsym $mod+Shift+backslash split vertical; exec i3-sensible-terminal -e python3 ~/software/ranger/ranger.py ~/Daten
-bindsym $mod+Control+backslash split horizontal; exec i3-sensible-terminal -e python3 ~/software/ranger/ranger.py ~/Daten
+bindsym $mod+backslash exec i3-sensible-terminal -e python3 ~/software/ranger/ranger.py ~/daten
+bindsym $mod+Shift+backslash split vertical; exec i3-sensible-terminal -e python3 ~/software/ranger/ranger.py ~/daten
+bindsym $mod+Control+backslash split horizontal; exec i3-sensible-terminal -e python3 ~/software/ranger/ranger.py ~/daten
 
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+Control+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec "rofi -modi combi,window,drun,run,ssh -combi-modi window,drun,run,ssh -show combi -window-command 'pwd'"
@@ -108,9 +108,8 @@ bindsym $mod+v split toggle
 bindsym $mod+space fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+s layout toggle
+bindsym $mod+Shift+s layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+f floating toggle
@@ -121,44 +120,40 @@ bindsym $mod+f focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# Screenshots with Print Screen
-bindsym --release Print exec ~/bin/screenshot.sh
-
 # focus the child container
 #bindsym $mod+d focus child
 
 # Switch screen layouts
-bindsym $mod+F1 exec "~/.screenlayout/nb"
-bindsym $mod+F2 exec "~/dotfiles/bin/screenprofiles"
+bindsym $mod+b exec "~/dotfiles/bin/screenprofiles"
 
 # Various tools
 bindsym $mod+period exec "~/dotfiles/bin/tools"
 
 # Workspaces
 
-set $ws1 "1:  1  "
-set $ws2 "2:  2  "
-set $ws3 "3:  3  "
-set $ws4 "4:  4  "
-set $ws5 "5:  5  "
-set $ws6 "6:  6  "
-set $ws7 "7:  7  "
-set $ws8 "8:  8  "
-set $ws9 "9:  9  "
-set $ws0 "0:  0  "
+set $ws1 "1:  Q  "
+set $ws2 "2:  W  "
+set $ws3 "3:  E  "
+set $ws4 "4:  R  "
+set $ws5 "5:  T  "
+set $ws6 "6:  Y  "
+set $ws7 "7:  U  "
+set $ws8 "8:  I  "
+set $ws9 "9:  O  "
+set $ws0 "0:  P  "
 
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws0
+bindsym $mod+q workspace $ws1
+bindsym $mod+w workspace $ws2
+bindsym $mod+e workspace $ws3
+bindsym $mod+r workspace $ws4
+bindsym $mod+t workspace $ws5
+bindsym $mod+y workspace $ws6
+bindsym $mod+u workspace $ws7
+bindsym $mod+i workspace $ws8
+bindsym $mod+o workspace $ws9
+bindsym $mod+p workspace $ws0
 
 # Alt Tab for workspace switches
 bindsym Mod1+Tab workspace next
@@ -167,28 +162,19 @@ bindsym Mod1+less workspace back_and_forth
 
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1 
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws0 
+bindsym $mod+Shift+q move container to workspace $ws1 
+bindsym $mod+Shift+w move container to workspace $ws2
+bindsym $mod+Shift+e move container to workspace $ws3
+bindsym $mod+Shift+r move container to workspace $ws4
+bindsym $mod+Shift+t move container to workspace $ws5
+bindsym $mod+Shift+y move container to workspace $ws6
+bindsym $mod+Shift+u move container to workspace $ws7
+bindsym $mod+Shift+i move container to workspace $ws8
+bindsym $mod+Shift+o move container to workspace $ws9
+bindsym $mod+Shift+p move container to workspace $ws0 
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'" 
-
-# lock screen
-bindsym $mod+Shift+w exec --no-startup-id "~/dotfiles/bin/lock"
-# suspend
-bindsym $mod+Shift+s exec --no-startup-id "~/dotfiles/bin/lock && systemctl suspend"
+# All i3 stuff like restart, logout, suspend, ...
+bindsym $mod+Control+w exec --no-startup-id "~/dotfiles/bin/wmtools"
 
 # resize window (you can also use the mouse for that)
 mode "layout" {
@@ -220,8 +206,6 @@ mode "layout" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "layout"
-
 # no focus on mouse hove
 focus_follows_mouse no
 
@@ -252,11 +236,6 @@ exec_always --no-startup-id sleep 10;pulseaudio -k && pulseaudio --start --exit-
 
 # switch monitors
 bindsym $mod+m move workspace to output left
-
-workspace 1 output eDP1
-workspace 2 output eDP1
-workspace 3 output eDP1
-workspace 4 output eDP1
 
 exec --no-startup-id compton
 
@@ -305,7 +284,6 @@ no_focus [title="mpvfloat"]
 # FS-UAE
 for_window [class="fs-uae"] floating enable
 
-bindsym $mod+Control+s exec --no-startup-id i3lock -u -c 000000
 
 # wal support
 exec_always --no-startup-id wal -R

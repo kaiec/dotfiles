@@ -1,0 +1,14 @@
+#!/bin/bash
+declare -A tools
+
+tools["Suspend"]="~/dotfiles/bin/lock && systemctl suspend"
+tools["Lock"]="~/dotfiles/bin/lock"
+tools["Black Lock"]="i3lock -u -c 000000"
+tools["Reload Config"]="i3-msg reload"
+tools["Restart i3"]="i3-msg restart"
+tools["Logout"]="i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+tools["Layout Mode"]="i3-msg mode 'layout'"
+
+P=$(printf '%s\n' "${!tools[@]}" |  rofi -dmenu -i -p "i3 Tools")
+/bin/bash -c "${tools[$P]}"
+

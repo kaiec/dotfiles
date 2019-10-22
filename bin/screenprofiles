@@ -1,3 +1,3 @@
 #!/bin/bash
-P=$(ls -1 ~/.screenlayout/ | rofi -dmenu -p "Select screen profile")
+P=$(ls -1 ~/.screenlayout/ | rofi -dmenu -p "Select screen profile" -monitor eDP-1 -select nb)
 ~/.screenlayout/$P
