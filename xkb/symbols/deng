@@ -26,7 +26,7 @@ xkb_symbols "basic" {
     include "deng(currency)"
     include "deng(nocaps)"
     include "deng(esctilde)"
-    include "deng(yzswitch)"
+//    include "deng(yzswitch)"
     include "level3(ralt_switch)"
     include "deng(cursor-on-hjkl)"
 };
@@ -74,6 +74,10 @@ xkb_symbols "cursor-on-hjkl" {
     key <AC07>  { [ j, J, Down, Down ] };
     key <AC08>  { [ k, K, Up, Up ] };
     key <AC09>  { [ l, L, Right, Right    ] };
+    key <AB06>  { [ n, N, Home, Home ] };
+    key <AB07>  { [ m, M, Next, Next ] };
+    key <AB08>  { [ comma, less, Prior, Prior ] };
+    key <AB09>  { [ period, greater, End, End    ] };
 };
 
 
