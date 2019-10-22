@@ -40,3 +40,8 @@ report.rofi.labels=
 report.rofi.columns=id,description.count
 report.rofi.filter=status:pending
 report.rofi.sort=start-,urgency-
+
+report.dailyreview.labels=
+report.dailyreview.columns=id,description.count,due
+report.dailyreview.filter=status:pending Daily review
+report.dailyreview.sort=due+
