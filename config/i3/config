@@ -101,6 +101,18 @@ bindsym $mod+Control+Shift+Up resize grow height 20 px or 5 ppt
 bindsym $mod+Control+Shift+Down resize shrink height 20 px or 5 ppt
 bindsym $mod+Control+Shift+Right resize grow width 20 px or 5 ppt
 
+# swap focused window
+bindsym $mod+Control+h exec ~/dotfiles/config/i3/swap left
+bindsym $mod+Control+l exec ~/dotfiles/config/i3/swap right
+bindsym $mod+Control+k exec ~/dotfiles/config/i3/swap up
+bindsym $mod+Control+j exec ~/dotfiles/config/i3/swap down
+
+# Resize focused window
+bindsym $mod+Control+Shift+h resize shrink width 20 px or 5 ppt
+bindsym $mod+Control+Shift+k resize grow height 20 px or 5 ppt
+bindsym $mod+Control+Shift+j resize shrink height 20 px or 5 ppt
+bindsym $mod+Control+Shift+l resize grow width 20 px or 5 ppt
+
 # split in vertical orientation
 bindsym $mod+v split toggle
 
@@ -140,7 +152,7 @@ set $ws6 "6:  Y  "
 set $ws7 "7:  U  "
 set $ws8 "8:  I  "
 set $ws9 "9:  O  "
-set $ws0 "0:  P  "
+set $ws0 "10:  P  "
 
 
 # switch to workspace
