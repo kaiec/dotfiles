@@ -39,8 +39,21 @@ else:
 
 today = get_stdout('date +%Y%m%d').strip()
 lastmail = get_stdout('cat /home/kai/.mail.log | tail -n 1 | cut -f1 -d" "').strip()
+lastinboxzero = get_stdout('cat /home/kai/.inboxzero.log | tail -n 1 | cut -f1 -d" "').strip()
+inboxzero = get_stdout("notmuch count folder:hdm/Inbox").strip()
+
 if today == lastmail:
     green('Mails fetched  (X)')
+    if inboxzero == '0' or lastinboxzero == today:
+        green('Inbox zero     (X)')
+        if lastinboxzero != today:
+            ts = get_stdout("date +%Y%m%d\ %H:%M")
+            with open("/home/kai/.inboxzero.log", "a", encoding='utf-8') as f:
+                f.write(ts)
+    else:
+        red('Inbox zero     ( )')
 else:
     red('Mails fetched  ( )')
+    red('Inbox zero     ( )')
+
 
