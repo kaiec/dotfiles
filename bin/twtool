@@ -84,6 +84,10 @@ doit() {
 		if [ -z $taskdone ]; then
 			echo "Starting task $taskid"
 			ttime=$(asktime)
+			if [ $? -eq 1 ]; then
+				echo 'User escaped'
+				exit 1
+			fi
 			start "$taskid" "$ttime"
 		else
 			echo 'Task done: $taskid'
@@ -92,11 +96,19 @@ doit() {
 		exit 0
 	elif [[ $task =~ STOP ]]; then
 		ttime=$(asktime)
+		if [ $? -eq 1 ]; then
+			echo 'User escaped'
+			exit 1
+		fi
 		stop $ttime
 	elif [[ $task =~ CONTINUE ]]; then
 		timew continue
 	elif [[ ! -z $task && -z $taskdone ]]; then
 		ttime=$(asktime)
+		if [ $? -eq 1 ]; then
+			echo 'User escaped'
+			exit 1
+		fi
 		stop $ttime
 		timew start $ttime "$task"
 	fi
