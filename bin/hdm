@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ $# -eq 0 ]
+then
+	task +hdm
+else
+	tag='+hdm'
+	if [[ $1 = 'not' ]]; then
+		echo 'Deselecting tasks for hdm'
+		tag='-hdm'
+		shift
+	fi
+	for task in $@
+	do
+		task rc.recurrence.confirmation=no $task modify $tag
+	done
+fi
