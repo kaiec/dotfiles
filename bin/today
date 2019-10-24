@@ -1,10 +1,31 @@
 #!/bin/bash
 if [ $# -eq 0 ]
 then
-	task pri:H
+	tasks=$(task today | head -n -2 | sed '1,3d')
+	while read task; do
+		id=$(echo $task | cut -f1 -d' ')
+		st=$(echo $task | cut -f2 -d' ')
+		desc=$(echo $task | cut -f3- -d' ')
+		check='(X)'
+		color='\033[32m'
+		if [[ $st = Pending ]]; then
+			check='( )'
+			color='\033[31m'
+			desc="$id: $desc"
+		fi
+		desc=$desc$(printf %80s)
+		desc=${desc:0:56}
+		echo -e "$color$desc $check\033[m"
+	done <<< "$tasks"
 else
+	pri='H'
+	if [[ $1 = 'not' ]]; then
+		echo 'Deselecting tasks for today'
+		pri=''
+		shift
+	fi
 	for task in $@
 	do
-		task $task modify pri:H
+		task rc.recurrence.confirmation=no $task modify pri:$pri
 	done
 fi

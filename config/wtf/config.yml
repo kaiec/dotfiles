@@ -47,6 +47,18 @@ wtf:
           refreshInterval: 60
           title: "Mails"
           type: cmdrunner
+        today:
+          args: []
+          cmd: "/home/kai/dotfiles/bin/today"
+          enabled: true
+          position:
+            top: 2
+            left: 1
+            height: 3
+            width: 2
+          refreshInterval: 5
+          title: "Plan für heute"
+          type: cmdrunner
         unsaved:
           args: ["__showunsavedlist"]
           cmd: "/home/kai/dotfiles/bin/agenda.sh"
@@ -60,7 +72,7 @@ wtf:
           title: "Unsaved Notes"
           type: cmdrunner
         daily:
-          args: ['']
+          args: []
           cmd: "/home/kai/dotfiles/bin/dailytasks"
           enabled: true
           position:

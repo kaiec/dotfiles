@@ -57,7 +57,7 @@ start() {
 }
 
 asktime() {
-	echo -e `date "+%H:%M"`\\n`date "+%H:00"` | rofi -dmenu -i --select-row 1
+	echo -e `date "+%H:%M"`\\n`date "+%H:00"` | rofi -dmenu -i --select-row 1 -p Uhrzeit
 
 }
 
