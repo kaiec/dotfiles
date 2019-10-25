@@ -12,6 +12,8 @@ then
 			check='( )'
 			color='\033[31m'
 			desc="$id: $desc"
+		elif [[ $st != Completed ]]; then
+			continue
 		fi
 		desc=$desc$(printf %80s)
 		desc=${desc:0:56}
