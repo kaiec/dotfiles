@@ -142,4 +142,5 @@ set query_format = "%4c %t %-70.70a %-70.70n %?e?(%e)?"
 # Remove temp files from opening attachmnts
 set my_ignore_this = `rm -rf /tmp/mutt/*`
 
-
+# Printing
+set print_command='set -e; f=`mktemp -p "$HOME"/.cache/mutt`; muttprint -P A4 -p TO_FILE:"$f"; evince "$f"; rm "$f"'
