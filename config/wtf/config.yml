@@ -7,7 +7,7 @@ wtf:
       normal: gray
   grid:
     columns: [20,20,42, 64,64]
-    rows: [10, 10, 7, 3, 50]
+    rows: [10, 10, 8, 3, 50]
   refreshInterval: 10
   term: "xterm-256color"
   mods:

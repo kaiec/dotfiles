@@ -20,7 +20,7 @@ function __showmail {
 	TOBESENT=$(msmtp-queue | grep -c id=)
 	if [ $TOBESENT -ne 0 ]
 	then
-		echo "QUEUED: " $TOBESENT 
+		echo -e "\033[31mQUEUED: " $TOBESENT "\033[m" 
 	fi
 
 }
