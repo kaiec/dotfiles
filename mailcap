@@ -11,6 +11,7 @@ application/pdf;  mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; evince /tmp/mutt/$(ba
 # Open everything in background using xdg-open
 # Source: 
 # https://unix.stackexchange.com/questions/65381/how-to-tell-mutt-not-to-wait-for-an-attachment-program-to-return
-application/*; mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; xdg-open /tmp/mutt/$(basename %s) > /dev/null 2>&1 &
+application/*; mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; xdg-open /tmp/mutt/$(basename %s)  &
+image/*; mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; xdg-open /tmp/mutt/$(basename %s)  &
 
 text/calendar; printics %s; needsterminal
