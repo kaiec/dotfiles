@@ -7,6 +7,8 @@ tools["Stop Recording"]="killrecording"
 tools["Record Audio"]="record-audio"
 tools["Toggle Mousepad"]="toggle-pad.sh"
 tools["Screenshot"]="screenshot.sh"
+tools["Presentation Mode Off"]="rm ~/.is_presentation; i3-msg restart"
+tools["Presentation Mode On"]="touch ~/.is_presentation; i3-msg restart"
 
 P=$(printf '%s\n' "${!tools[@]}" |  rofi -dmenu -i -p "Tools")
 /bin/bash -c "${tools[$P]}"

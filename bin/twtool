@@ -116,14 +116,27 @@ doit() {
 }
 
 status() {
-	task=$(timew | grep "^Tracking .*" | sed "s/^Tracking //" | sed "s/\"//g" | sed "s/z:[^ ]*//")
-	started=$(timew | grep "^  Started" | sed "s/  Started[ ]*//")
-	d1=$(date -d "$started" +%s)
-	d2=$(date +%s)
-	ddiff=$(( (d2 - d1)))
-	if [[ $task ]]
-	then
-		echo $task \| $(TZ=UTC date -d "@${ddiff}" +%H:%M)
+	if [[ -e ~/.is_presentation ]]; then
+		return
+	else
+		task=$(timew | grep "^Tracking .*" | sed "s/^Tracking //" | sed "s/\"//g" | sed "s/z:[^ ]*//")
+		started=$(timew | grep "^  Started" | sed "s/  Started[ ]*//")
+		d1=$(date -d "$started" +%s)
+		d2=$(date +%s)
+		ddiff=$(( (d2 - d1)))
+		if [[ $task ]]
+		then
+			echo $task \| $(TZ=UTC date -d "@${ddiff}" +%H:%M)
+		fi
+	fi
+}
+
+worktime() {
+	if [[ -e ~/.is_presentation ]]; then
+		return
+	else
+		wt=$(timew summary | tail -2 | head -1 | tr -d '[:space:]'| sed 's/:[0-9][0-9]$//' | sed 's/No.*//')
+		echo $wt
 	fi
 }
 
