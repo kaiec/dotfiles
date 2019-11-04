@@ -1,21 +1,22 @@
 #!/bin/bash
 
 mkdir -p ~/bin
+mkdir -p ~/.vim
 
 ln -sTf ~/dotfiles/config/nvim ~/.config/nvim
 ln -sTf ~/dotfiles/config/kitty ~/.config/kitty
 ln -sTf ~/dotfiles/config/i3 ~/.config/i3
 ln -sTf ~/dotfiles/config/i3blocks ~/.config/i3blocks
-ln -sTf ~/dotfiles/config/polybar ~/.config/polybar
+# ln -sTf ~/dotfiles/config/polybar ~/.config/polybar
 ln -sTf ~/dotfiles/config/vdirsyncer ~/.config/vdirsyncer
 ln -sTf ~/dotfiles/config/khal ~/.config/khal
-ln -sTf ~/dotfiles/config/i3status ~/.config/i3status
+# ln -sTf ~/dotfiles/config/i3status ~/.config/i3status
 ln -sTf ~/dotfiles/config/rofi ~/.config/rofi
-ln -sTf ~/dotfiles/config/conky ~/.config/conky
+# ln -sTf ~/dotfiles/config/conky ~/.config/conky
 ln -sTf ~/dotfiles/config/flake8 ~/.config/flake8
 ln -sTf ~/dotfiles/config/powerline-shell ~/.config/powerline-shell
 ln -sTf ~/dotfiles/config/mimeapps.list ~/.config/mimeapps.list
-ln -sTf ~/dotfiles/config/mimeapps.list ~/.local/share/applications/mimeapps.list
+# ln -sTf ~/dotfiles/config/mimeapps.list ~/.local/share/applications/mimeapps.list # deprecated
 ln -sTf ~/dotfiles/config/wtf ~/.config/wtf
 ln -sTf ~/dotfiles/vimrc ~/.vimrc
 ln -sTf ~/dotfiles/vim/UltiSnips ~/.vim/UltiSnips
@@ -23,15 +24,15 @@ ln -sTf ~/dotfiles/bashrc ~/.bashrc
 ln -sTf ~/dotfiles/inputrc ~/.inputrc
 ln -sTf ~/dotfiles/zshrc ~/.zshrc
 ln -sTf ~/dotfiles/urxvt ~/.urxvt
-ln -sTf ~/dotfiles/xonshrc ~/.xonshrc
+# ln -sTf ~/dotfiles/xonshrc ~/.xonshrc
 ln -sTf ~/dotfiles/tmux.conf ~/.tmux.conf
-ln -sTf ~/dotfiles/config/xonsh/ ~/.config/xonsh
+# ln -sTf ~/dotfiles/config/xonsh/ ~/.config/xonsh
 ln -sTf ~/dotfiles/Xdefaults ~/.Xdefaults
 ln -sTf ~/dotfiles/mailcap ~/.mailcap
-mkdir -p ~/.todo
-ln -sTf ~/dotfiles/todo.conf ~/.todo/config
-ln -sTf ~/dotfiles/bin/todo.sh ~/bin/todo.sh
-ln -sTf ~/dotfiles/todotxt-machinerc ~/.todotxt-machinerc
+# mkdir -p ~/.todo
+# ln -sTf ~/dotfiles/todo.conf ~/.todo/config
+# ln -sTf ~/dotfiles/bin/todo.sh ~/bin/todo.sh
+# ln -sTf ~/dotfiles/todotxt-machinerc ~/.todotxt-machinerc
 ln -sTf ~/dotfiles/profile ~/.profile
 ln -sTf ~/dotfiles/screenlayout ~/.screenlayout
 ln -sTf ~/dotfiles/bin/screenshot.sh ~/bin/screenshot.sh
@@ -48,9 +49,9 @@ mkdir -p ~/.mutt
 touch ~/.mutt/aliases
 ln -sTf ~/dotfiles/mutt/gpg.rc ~/.mutt/gpg.rc
 ln -sTf ~/dotfiles/mutt/gruvbox-transparent.conf ~/.mutt/gruvbox-transparent.conf
-ln -sTf ~/dotfiles/offlineimaprc ~/.offlineimaprc
-mkdir -p ~/.offlineimap
-ln -sTf ~/dotfiles/offlineimap/confhelpers.py ~/.offlineimap/confhelpers.py
+# ln -sTf ~/dotfiles/offlineimaprc ~/.offlineimaprc
+# mkdir -p ~/.offlineimap
+# ln -sTf ~/dotfiles/offlineimap/confhelpers.py ~/.offlineimap/confhelpers.py
 ln -sTf ~/dotfiles/mbsynrc ~/.mbsyncrc
 ln -sTf ~/dotfiles/msmtprc ~/.msmtprc
 ln -sTf /usr/share/doc/msmtp/msmtpq/msmtp-queue ~/bin/msmtp-queue
@@ -74,6 +75,7 @@ ln -sTf ~/dotfiles/bin/tt ~/bin/tt
 ln -sTf ~/dotfiles/bin/twtool ~/bin/twtool
 ln -sTf ~/dotfiles/bin/remotevim ~/bin/remotevim
 ln -sTf ~/dotfiles/bin/vfat ~/bin/vfat
+ln -sTf ~/dotfiles/bin/record-stat ~/bin/record-stat
 ln -sTf ~/dotfiles/bin/togglenotes ~/bin/togglenotes
 ln -sTf ~/dotfiles/compton.conf ~/.config/compton.conf
 # Task warrior

@@ -1,11 +1,11 @@
 #!/bin/bash
 TEXT=$([[ -e ~/.is_presentation ]] || (khal list `date +%H:%M` 3h | grep ^[012] --color=never || echo '') | head -n 2 | paste -sd '%' - | sed 's/%/ | /')
-if [ -z $TEXT ]; then
+if [ -z "$TEXT" ]; then
 	echo ""
 	echo ""
 else
-	echo  $TEXT
-	echo 
+	echo  " $TEXT"
+	echo  
 fi
-echo #ff0000
+# echo '#ff0000'
 

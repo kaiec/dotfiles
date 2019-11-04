@@ -53,7 +53,6 @@ export PS1="$COLOR_BLUE┌─ \w\$(__python_env '$COLOR_BLUE')\$(__git_branch '$
 
 
 # pyenv support
-export PATH="/home/kai/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1

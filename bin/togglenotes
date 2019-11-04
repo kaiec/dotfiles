@@ -13,7 +13,7 @@ else
 		echo "No WAL"
 		colors=""
 	fi
-	kitty --name vim_notes bash -c "$colors nvim ~/Dropbox/Notizen/index.md" &
+	kitty --name vim_notes bash -c "$colors nvim ~/notizen/index.md" &
 	sleep 1
 	i3-msg \[instance=\"vim_notes\"\] scratchpad show 
 fi

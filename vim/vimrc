@@ -165,7 +165,7 @@ let NERDTreeQuitOnOpen=1
 " vimwiki with markdown support
 " let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 " helppage -> :h vimwiki-syntax 
-let g:vimwiki_list = [{'path': '~/Dropbox/Notizen/', 'ext': '.md', 'syntax': 'markdown'}]
+let g:vimwiki_list = [{'path': '~/notizen/', 'ext': '.md', 'syntax': 'markdown'}]
 " No vimiwiki support for md files outside the wiki
 let g:vimwiki_global_ext = 0
 let g:taskwiki_markup_syntax = 'markdown'  
@@ -178,10 +178,10 @@ nmap <Leader>wp <Plug>VimwikiPrevLink
 :nmap <Leader>wf <Plug>VimwikiFollowLink
 
 " Notizen
-nmap <Leader>n :cd ~/Dropbox/Notizen<cr>:e index.md<cr>
+nmap <Leader>n :cd ~/notizen<cr>:e index.md<cr>
 " F24 should be S-F12
-nmap <Leader>nn :e ~/Dropbox/Notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
-nnoremap <Leader>n/ :cd ~/Dropbox/Notizen<cr>:Ag<space>
+nmap <Leader>nn :e ~/notizen/scratch.md<CR>Go<CR>### <C-R>=strftime('%Y-%m-%d %H:%M:')<CR> 
+nnoremap <Leader>n/ :cd ~/notizen<cr>:Ag<space>
 map <LEADER>d :put=strftime('%Y-%m-%d')<CR>10la
 
 " Call mutt with current line, hopefully containing a message id

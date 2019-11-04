@@ -23,7 +23,7 @@ b = "flokai_google"
 # You need to run `vdirsyncer discover` if new calendars/addressbooks are added
 # on the server.
 
-collections = ["from a", "from b"]
+collections = ["from b"]
 
 # Synchronize the "display name" property into a local file (~/.contacts/displayname).
 metadata = ["displayname", "color"]

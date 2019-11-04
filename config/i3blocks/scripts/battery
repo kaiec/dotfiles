@@ -23,6 +23,7 @@ my $ac_adapt;
 my $full_text;
 my $short_text;
 my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
+use open ':std', ':encoding(UTF-8)';
 
 # read the first line of the "acpi" command output
 open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;

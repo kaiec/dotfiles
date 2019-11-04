@@ -22,6 +22,7 @@ wtf:
             width: 3
           refreshInterval: 10
           title: "Todo"
+          focusable: false
           type: cmdrunner
         calendar:
           args: ["__showcal"]
@@ -34,6 +35,7 @@ wtf:
             width: 1
           refreshInterval: 60
           title: "Calendar"
+          focusable: false
           type: cmdrunner
         mails:
           args: ["__showmail"]
@@ -45,6 +47,7 @@ wtf:
             height: 1
             width: 1
           refreshInterval: 60
+          focusable: false
           title: "Mails"
           type: cmdrunner
         today:
@@ -58,6 +61,7 @@ wtf:
             width: 2
           refreshInterval: 5
           title: "Plan für heute"
+          focusable: false
           type: cmdrunner
         unsaved:
           args: ["__showunsavedlist"]
@@ -70,6 +74,7 @@ wtf:
             width: 1
           refreshInterval: 10
           title: "Unsaved Notes"
+          focusable: false
           type: cmdrunner
         daily:
           args: []
@@ -82,6 +87,7 @@ wtf:
             width: 1
           refreshInterval: 10
           title: "Daily tasks"
+          focusable: false
           type: cmdrunner
         github:
           args: ["wtf"]
@@ -94,6 +100,9 @@ wtf:
             width: 1
           refreshInterval: 300
           title: "Github"
+          tail: false
+          maxLines: 7
+          focusable: false
           type: cmdrunner
         bahn:
           args: []
@@ -106,4 +115,5 @@ wtf:
             width: 1
           refreshInterval: 300
           title: "Bahn"
+          focusable: false
           type: cmdrunner

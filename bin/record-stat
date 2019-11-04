@@ -1,0 +1,6 @@
+#!/bin/bash
+audio=""
+pgrep parecord > /dev/null && audio="A"
+screencast=""
+pgrep ffmpeg > /dev/null && screencat="S"
+echo $audio$screencast

@@ -124,8 +124,6 @@ status() {
 	if [[ $task ]]
 	then
 		echo $task \| $(TZ=UTC date -d "@${ddiff}" +%H:%M)
-	else
-		echo ""
 	fi
 }
 
