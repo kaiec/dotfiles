@@ -26,20 +26,20 @@ function __showmail {
 }
 
 function __showunsaved {
-	swaps=$(find ~/.local/share/nvim/swap -type f -name '%home%kai%Dropbox%Notizen%*.sw?') 
+	swaps=$(find ~/.local/share/nvim/swap -type f -name '%home%kai%notizen%*.sw?') 
 	if [[ -z $swaps ]]; then
 		return
 	fi
 	echo -n 'Unsaved notes: '
-	echo $swaps| sed 's/.*Notizen%//' | sed 's#%#/#g;s/\.sw.$//' | uniq | paste -sd '%' - | sed 's/%/, /g'
+	echo $swaps| sed 's/.*notizen%//' | sed 's#%#/#g;s/\.sw.$//' | uniq | paste -sd '%' - | sed 's/%/, /g'
 }
 
 function __showunsavedlist {
-	swaps=$(find ~/.local/share/nvim/swap -type f -name '%home%kai%Dropbox%Notizen%*.sw?') 
+	swaps=$(find ~/.local/share/nvim/swap -type f -name '%home%kai%notizen%*.sw?') 
 	if [[ -z $swaps ]]; then
 		return
 	fi
-	echo $swaps| sed 's/.*Notizen%//' | sed 's#%#/#g;s/\.sw.$//' | uniq 
+	echo $swaps| sed 's/.*notizen%//' | sed 's#%#/#g;s/\.sw.$//' | uniq 
 }
 if [[ -z $1 ]]; then
 	echo "------- AGENDA ------"
