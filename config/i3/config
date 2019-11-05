@@ -250,7 +250,7 @@ exec_always --no-startup-id /usr/bin/start-pulseaudio-x11
 # switch monitors
 bindsym $mod+m move workspace to output left
 
-exec --no-startup-id compton
+exec_always --no-startup-id killall compton ; compton
 
 # Calendar
 for_window [instance="float_cal"] move to scratchpad, border 1pixel
