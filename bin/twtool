@@ -136,7 +136,9 @@ worktime() {
 		return
 	else
 		wt=$(timew summary | tail -2 | head -1 | tr -d '[:space:]'| sed 's/:[0-9][0-9]$//' | sed 's/No.*//')
-		echo $wt
+		if [[ ! -z $wt ]]; then
+			echo $wt
+		fi
 	fi
 }
 
