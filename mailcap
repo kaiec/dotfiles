@@ -6,7 +6,7 @@ text/html; /usr/bin/firefox %s >/dev/null 2>&1 &; needsterminal
 # text/html; lynx -dump %s; nametemplate=%s.html; copiousoutput
 text/html; elinks -dump %s; nametemplate=%s.html; copiousoutput
 
-application/pdf;  mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; evince /tmp/mutt/$(basename %s) > /dev/null 2>&1 &
+# application/pdf;  mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; evince /tmp/mutt/$(basename %s) > /dev/null 2>&1 &
 
 # Open everything in background using xdg-open
 # Source: 
