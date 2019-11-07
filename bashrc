@@ -103,7 +103,7 @@ alias mutt='pushd ~ > /dev/null; mutt; popd > /dev/null'
 # TASK WARRIOR
 
 
-alias p=xonsh
+alias p=python
 alias t="task"
 alias in="task add +inbox"
 alias stop='twtool stop'
@@ -112,6 +112,16 @@ alias tmail=~/dotfiles/mutt/todo2mail
 alias tvim=~/dotfiles/bin/todo2vim
 alias a=~/dotfiles/bin/agenda.sh
 alias m="notmuch search folder:hdm/INBOX tag:unread | cut -f 3- -d ' '"
+alias pm='python manage.py'
+
+_taskopen() {
+	if [[ -z $1 ]]; then 
+		/usr/bin/taskopen '+ACTIVE'
+	else
+		/usr/bin/taskopen "$1"
+	fi
+}
+alias taskopen=_taskopen
 
 n() {
 	pushd ~/Dropbox/Notizen/
@@ -141,7 +151,7 @@ alias mflokai='mutt -F ~/dotfiles/mutt/muttrc-flokai'
 
 
 fzf_cd () {
-    local fzf_command="/home/kai/.fzf/bin/fzf --height 20"
+    local fzf_command="fzf --height 20"
     if [ $# -gt 0 ]
     then
 	    local dir=$(cat ~/dirs | $fzf_command -q $@)
