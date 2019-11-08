@@ -98,7 +98,12 @@ command -v nvim > /dev/null && alias vim=nvim
 alias v=vim
 
 alias fspdf='~/daten/projekte/fspdf/fspdf-runner.py'
-alias mutt='pushd ~ > /dev/null; mutt; popd > /dev/null'
+_mutt(){
+	pushd ~ > /dev/null
+	mutt $@
+	popd > /dev/null
+}
+alias mutt=_mutt
 
 # TASK WARRIOR
 
