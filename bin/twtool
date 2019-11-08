@@ -9,6 +9,17 @@ active() {
 	task active | sed -n '4p' | sed 's/^ //' | cut -f1 -d' '
 }
 
+endtime(){
+	# $1 is endtime
+	newend="$(date -d \"$(last-end)\" '+%Y-%m-%d') $1"
+	d1=$(date -d "$newend" +%s)
+	d2=$(date -d "$(last-end)" +%s)
+	ddiff=$(( (d2 - d1)))
+	timew @1 shorten "$ddiff secs"
+	echo "Last task end time set to $1"
+
+}
+
 stop() {
 	act=$(active)
 	if [[ -z $act ]]; then
@@ -20,13 +31,7 @@ stop() {
 	fi
 	if [[ $# -eq 1 ]]
 	then
-		newend="$(date -d \"$(last-end)\" '+%Y-%m-%d') $1"
-		
-		d1=$(date -d "$newend" +%s)
-		d2=$(date -d "$(last-end)" +%s)
-		ddiff=$(( (d2 - d1)))
-        	timew @1 shorten "$ddiff secs"
-		echo "Last task end time set to $1"
+		endtime $1 
 	fi
 }
 start() {
@@ -62,7 +67,7 @@ asktime() {
 }
 
 doit() {
-	task=$(task rofi | sed '3 r /home/kai/.mytasks' | sed '3 a STOP\nCONTINUE' | sed '1,3d;s/^ /0/;/^[^0-9]/s/^/.. /;s/ /\t\t/' | head -n -2 | rofi -dmenu -i -p "Los geht's mit" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-d)
+	task=$(task rofi | sed '3 r /home/kai/.mytasks' | sed '3 a STOP\nCONTINUE\nDONE' | sed '1,3d;s/^ /0/;/^[^0-9]/s/^/.. /;s/ /\t\t/' | head -n -2 | rofi -dmenu -i -p "Los geht's mit" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-d)
 	ret=$?
 	if [ $ret -eq 1 ]; then
 		echo 'User escaped'
@@ -101,6 +106,21 @@ doit() {
 			exit 1
 		fi
 		stop $ttime
+	elif [[ $task =~ DONE ]]; then
+		echo "User selected DONE"
+		ttime=$(asktime)
+		if [ $? -eq 1 ]; then
+			echo 'User escaped'
+			exit 1
+		fi
+		act=$(active)
+		if [[ -z $act ]]; then
+			timew stop
+		else
+			echo "Task done: $act"
+			task "done" "$act"
+		fi
+		endtime $ttime
 	elif [[ $task =~ CONTINUE ]]; then
 		timew continue
 	elif [[ ! -z $task && -z $taskdone ]]; then
