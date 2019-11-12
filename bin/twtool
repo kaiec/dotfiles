@@ -1,5 +1,11 @@
 #!/bin/bash
-last-end() {
+last_start() {
+	start=$(timew export | tail -2 | head -1 | jq '.start' | sed 's/"//g')
+	datestr=$( echo $start | sed -e 's/T/ /' -e 's/^\([0-9][0-9][0-9][0-9]\)\([0-9][0-9]\)/\1-\2-/' -e 's/ \([0-9][0-9]\)\([0-9][0-9]\)/ \1:\2:/' )
+	echo $datestr
+}
+
+last_end() {
 	end=$(timew export | tail -2 | head -1 | jq '.end' | sed 's/"//g')
 	datestr=$( echo $end | sed -e 's/T/ /' -e 's/^\([0-9][0-9][0-9][0-9]\)\([0-9][0-9]\)/\1-\2-/' -e 's/ \([0-9][0-9]\)\([0-9][0-9]\)/ \1:\2:/' )
 	echo $datestr
@@ -11,11 +17,16 @@ active() {
 
 endtime(){
 	# $1 is endtime
-	newend="$(date -d \"$(last-end)\" '+%Y-%m-%d') $1"
+	newend=$(date -d "$(last_start)" '+%Y-%m-%d')\ $1
+	echo newend $newend
 	d1=$(date -d "$newend" +%s)
-	d2=$(date -d "$(last-end)" +%s)
+	echo d1 $d1
+	d2=$(date -d "$(last_end)" +%s)
+	echo d2 $d2
 	ddiff=$(( (d2 - d1)))
-	timew @1 shorten "$ddiff secs"
+	echo ddiff $ddiff
+	timew @1 shorten $ddiff secs
+	echo ddiff $ddiff
 	echo "Last task end time set to $1"
 
 }
