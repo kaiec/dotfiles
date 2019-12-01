@@ -1,0 +1,2 @@
+set selection-clipboard clipboard
+map e exec 'evince $FILE'
