@@ -10,6 +10,8 @@ ln -sTf ~/dotfiles/config/i3blocks ~/.config/i3blocks
 # ln -sTf ~/dotfiles/config/polybar ~/.config/polybar
 ln -sTf ~/dotfiles/config/vdirsyncer ~/.config/vdirsyncer
 ln -sTf ~/dotfiles/config/khal ~/.config/khal
+ln -sTf ~/dotfiles/config/zathura ~/.config/zathura
+ln -sTf ~/dotfiles/config/vifm ~/.config/vifm
 # ln -sTf ~/dotfiles/config/i3status ~/.config/i3status
 ln -sTf ~/dotfiles/config/rofi ~/.config/rofi
 # ln -sTf ~/dotfiles/config/conky ~/.config/conky
@@ -77,6 +79,7 @@ ln -sTf ~/dotfiles/bin/remotevim ~/bin/remotevim
 ln -sTf ~/dotfiles/bin/vfat ~/bin/vfat
 ln -sTf ~/dotfiles/bin/record-stat ~/bin/record-stat
 ln -sTf ~/dotfiles/bin/togglenotes ~/bin/togglenotes
+ln -sTf ~/dotfiles/bin/taskell-cast ~/bin/taskell-cast
 ln -sTf ~/dotfiles/compton.conf ~/.config/compton.conf
 # Task warrior
 command -v task >/dev/null || echo "Task Warrior is not installed"

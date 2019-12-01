@@ -1,0 +1,7 @@
+#!/bin/zsh
+if [[ -f ~/.cache/taskell-current.md ]]; then
+	task=`cat ~/.cache/taskell-current.md | awk '/## Aktuell/{flag=1;next}/##.*/{flag=0}flag' | sed '/^$/d' | sed 's/^- //' | awk '{$1=$1};1'`
+	output="Aktuelle Aufgabe: $task"
+	output=${(r:90:l:90:)output}
+	echo $output
+fi

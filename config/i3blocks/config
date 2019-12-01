@@ -54,6 +54,11 @@ command=/home/kai/dotfiles/bin/i3b-nextdate
 interval=600
 signal=2
 
+[taskell]
+command=/home/kai/dotfiles/bin/taskell-current
+interval=600
+signal=6
+
 # CPU usage
 #
 # The script may be called with -w and -c switches to specify thresholds,

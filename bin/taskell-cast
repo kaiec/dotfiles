@@ -1,0 +1,10 @@
+#!/bin/bash
+if [[ ! -f $1 ]]; then
+	echo -e "## Geplant\n\n## Aktuell\n\n## Erledigt\n\n" > $1
+fi
+rm /home/kai/.cache/taskell-current.md 2> /dev/null
+ln -s `pwd`/$1 /home/kai/.cache/taskell-current.md
+trap : INT
+echo /home/kai/.cache/taskell-current.md | entr pkill -RTMIN+6 i3blocks
+rm /home/kai/.cache/taskell-current.md
+pkill -RTMIN+6 i3blocks
