@@ -21,7 +21,7 @@ URxvt.matcher.button:   1
 !URxvt.fading:           50
 !URxvt.fadeColor:        #000000
 
-Xft.dpi: 180
+# Xft.dpi: 180
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
