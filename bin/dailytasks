@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/kai/.pyenv/versions/tools/bin/python
 import subprocess
 import json
 from sarge import get_stdout
