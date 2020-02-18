@@ -47,6 +47,7 @@ bind pager l view-attachments
 bind pager <Right> view-attachments
 bind generic,pager,attach h exit
 bind generic,pager,attach <Left> exit
+bind index N search-opposite
 
 macro index,pager f "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><shell-escape>~/dotfiles/mutt/forward-mail.py -d ~/fwdtest<enter><enter-command>set wait_key<enter>"
 
