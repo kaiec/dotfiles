@@ -78,7 +78,7 @@ asktime() {
 }
 
 doit() {
-	task=$(task rofi | sed '3 r /home/kai/.mytasks' | sed '3 a STOP\nCONTINUE\nDONE' | sed '1,3d;s/^ /0/;/^[^0-9]/s/^/.. /;s/ /\t\t/' | head -n -2 | rofi -dmenu -i -p "Los geht's mit" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-d)
+	task=$(task rofi | sed '3 r /home/kai/.mytasks' | sed '3 a STOP\nCONTINUE\nDONE\nNEW' | sed '1,3d;s/^ /0/;/^[^0-9]/s/^/.. /;s/ /\t\t/' | head -n -2 | rofi -dmenu -i -p "Los geht's mit" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-d)
 	ret=$?
 	if [ $ret -eq 1 ]; then
 		echo 'User escaped'
@@ -134,6 +134,11 @@ doit() {
 		endtime $ttime
 	elif [[ $task =~ CONTINUE ]]; then
 		timew continue
+	elif [[ $task =~ NEW ]]; then
+		todotext=$(rofi -dmenu -i -lines 0 -p "New Task")
+		if [[ $? -eq 0 ]]; then
+			task add $todotext
+		fi
 	elif [[ ! -z $task && -z $taskdone ]]; then
 		ttime=$(asktime)
 		if [ $? -eq 1 ]; then
