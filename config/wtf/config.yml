@@ -92,7 +92,7 @@ wtf:
         github:
           args: ["wtf"]
           cmd: "/home/kai/dotfiles/bin/githelper"
-          enabled: true
+          enabled: false
           position:
             top: 1
             left: 3
@@ -107,7 +107,7 @@ wtf:
         bahn:
           args: []
           cmd: "/home/kai/bin/bahn.sh"
-          enabled: true
+          enabled: false
           position:
             top: 2
             left: 3
