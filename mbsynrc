@@ -124,6 +124,7 @@ IMAPAccount flokai-account
 Host imap.gmail.com
 User brautpaar@fam-eckert.net
 Port 993
+Timeout 60
 PassCmd "gpg --no-tty -q -d ~/.kak/flokai.gpg"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
