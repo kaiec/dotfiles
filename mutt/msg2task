@@ -1,10 +1,15 @@
 #!/bin/bash
 
 # Message-ID:<20fa3480-0eb1-a3f8-10d8-4e8a8ee3f229@hdm-stuttgart.de> 
-msgid=$(egrep -A1 -i '^Message-ID|^Message-id' $* | paste -s |sed 's/[ \t][ \t]*//g' | sed -e 's/^\(M.*>\)[A-Z].*/\1/g')
-todotext=$(dialog --output-fd 1 --title "INPUT BOX" --inputbox "New Task:" 8 51)
+# Read stdin in variable
+msg=$(cat)
+msgid=$(echo "$msg" | egrep -A1 -i '^Message-ID|^Message-id' | paste -s |sed 's/[ \t][ \t]*//g' | sed -e 's/^\(M.*>\)[A-Z].*/\1/g')
+subject=$(echo "$msg" | egrep -i '^Subject' $* | paste -s | sed -e 's/Subject: //I;s/Re: //gI;s/Fwd: //gI;s/todo: ?//I')
+todotext=$(dialog --output-fd 1 --title "INPUT BOX" --inputbox "New Task:" 8 51 "$subject")
 if [[ $? -eq 0 ]]; then
 	# todo.sh -a -t a $todotext $msgid
 	task add $todotext
-	task +LATEST annotate $msgid 
+	if [[ $? -eq 0 ]]; then
+		task +LATEST annotate $msgid 
+	fi
 fi
