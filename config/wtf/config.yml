@@ -31,7 +31,7 @@ wtf:
           position:
             top: 0
             left: 3
-            height: 1
+            height: 2
             width: 1
           refreshInterval: 60
           title: "Calendar"
@@ -100,6 +100,21 @@ wtf:
             width: 1
           refreshInterval: 300
           title: "Github"
+          tail: false
+          maxLines: 7
+          focusable: false
+          type: cmdrunner
+        timew:
+          args: []
+          cmd: "/home/kai/dotfiles/bin/timew-wtf"
+          enabled: true
+          position:
+            top: 2
+            left: 3
+            height: 3
+            width: 1
+          refreshInterval: 10
+          title: "Time Tracking"
           tail: false
           maxLines: 7
           focusable: false

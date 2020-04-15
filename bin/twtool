@@ -78,7 +78,7 @@ asktime() {
 }
 
 doit() {
-	task=$(task rofi | sed '3 r /home/kai/.mytasks' | sed '3 a STOP\nCONTINUE\nDONE\nNEW' | sed '1,3d;s/^ /0/;/^[^0-9]/s/^/.. /;s/ /\t\t/' | head -n -2 | rofi -dmenu -i -p "Los geht's mit" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-d)
+	task=$(task rofi | sed '3 r /home/kai/.mytasks' | sed '3 a STOP\nCONTINUE\nDONE\nNEW' | sed '1,3d;s/^ /0/;/^[^0-9]/s/^/.. /;s/ /\t\t/' | head -n -2 | grep -v 0\\s | sed 's/[ ][ ]*/ /g;' | rofi -dmenu -i -p "Los geht's mit" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-d)
 	ret=$?
 	if [ $ret -eq 1 ]; then
 		echo 'User escaped'

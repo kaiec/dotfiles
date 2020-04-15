@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+import timew
+from datetime import datetime, timezone
+
+tw = timew.TimeWarrior()
+tasks = tw.summary()
+tasks = sorted(tasks, key=lambda t: t['start'])
+for t in tasks:
+    start = datetime.strptime(t['start'], '%Y%m%dT%H%M%SZ').replace(tzinfo=timezone.utc).astimezone()
+    stime = start.strftime('%H:%M')
+    if 'end' in t:
+        end = datetime.strptime(t['end'], '%Y%m%dT%H%M%SZ').replace(tzinfo=timezone.utc).astimezone()
+        etime = end.strftime('%H:%M') 
+    else:
+        etime = '     '
+    for tag in t['tags']:
+        if tag.startswith('z:'):
+            t['tags'].remove(tag)
+    print("{}-{} {}".format(stime, etime, " ".join(t['tags'])))

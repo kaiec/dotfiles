@@ -37,7 +37,7 @@ report.next.labels=ID,P,Due,Description,Project,Tag,Urg
 report.next.sort=priority-,start-,urgency-
 
 report.rofi.labels=
-report.rofi.columns=id,description.count
+report.rofi.columns=id,description.count,project
 report.rofi.filter=status:pending
 report.rofi.sort=start-,priority-,urgency-
 
