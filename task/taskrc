@@ -47,7 +47,7 @@ report.dailyreview.filter=status:pending Daily review
 report.dailyreview.sort=due+
 
 report.today.labels=
-report.today.columns=id,status,description.count
+report.today.columns=id,status,description.count,project
 report.today.filter=prio:H (status:pending or (status:completed end:today))
 report.today.sort=due+
 
