@@ -32,8 +32,11 @@ include ~/dotfiles/task/dark-gray-blue-256.theme
 uda.blocks.label=Blocks
 uda.blocks.type=string
 
+search.case.sensitive=no
+
 report.next.columns=id,priority,due.relative,description.count,project,tags,urgency
 report.next.labels=ID,P,Due,Description,Project,Tag,Urg
+report.next.filter=status:pending -permanent
 report.next.sort=priority-,start-,urgency-
 
 report.rofi.labels=
