@@ -88,7 +88,7 @@ macro generic,index,pager ,c "<enter-command>push <pipe-message>~/dotfiles/mutt/
 # Create new task/todo from message
 macro generic,index,pager ,t "<enter-command>push <pipe-message>~/dotfiles/mutt/msg2task<enter><enter>" "Create new task from message"
 
-
+macro index,pager E "<pipe-entry>qprint -d 2>/dev/null| $EDITOR<enter>" "Edit decoded message"
 
 source ~/.mutt/gruvbox-transparent.conf
 
