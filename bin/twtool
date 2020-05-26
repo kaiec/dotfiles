@@ -68,7 +68,7 @@ start() {
 	if [ $# -eq 2 ]
 	then
 		echo "Starting task at $2"
-		timew @1 move $2
+		timew @1 move $2 :adjust
 	fi
 }
 
