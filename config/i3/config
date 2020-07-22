@@ -265,8 +265,12 @@ for_window [instance="vim_notes"] move to scratchpad, border 1pixel
 bindsym $mod+n exec ~/bin/togglenotes
 
 # Terminal scratchpad
-bindsym $mod+z [con_mark="scratch"] scratchpad show
-bindsym $mod+Shift+z mark scratch; move to scratchpad
+bindsym $mod+z [con_mark="scratch1"] scratchpad show
+bindsym $mod+Shift+z mark scratch1; move to scratchpad
+
+# Terminal scratchpad
+bindsym $mod+x [con_mark="scratch2"] scratchpad show
+bindsym $mod+Shift+x mark scratch2; move to scratchpad
 
 # Tasks
 bindsym $mod+comma exec --no-startup-id ~/dotfiles/bin/twtool doit 
@@ -301,6 +305,7 @@ no_focus [title="mpvfloat"]
 # FS-UAE
 for_window [class="fs-uae"] floating enable
 
+for_window [class="KeePassXC"] floating enable
 
 # wal support
 exec_always --no-startup-id wal -R

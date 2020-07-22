@@ -104,6 +104,7 @@ _mutt(){
 	popd > /dev/null
 }
 alias mutt=_mutt
+alias vimdiff='nvim -d'
 
 # TASK WARRIOR
 

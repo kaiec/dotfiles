@@ -7,7 +7,9 @@ ln -sTf ~/dotfiles/config/nvim ~/.config/nvim
 ln -sTf ~/dotfiles/config/kitty ~/.config/kitty
 ln -sTf ~/dotfiles/config/i3 ~/.config/i3
 ln -sTf ~/dotfiles/config/i3blocks ~/.config/i3blocks
-# ln -sTf ~/dotfiles/config/polybar ~/.config/polybar
+ln -sTf ~/dotfiles/config/bspwm ~/.config/bspwm
+ln -sTf ~/dotfiles/config/sxhkd ~/.config/sxhkd
+ln -sTf ~/dotfiles/config/polybar ~/.config/polybar
 ln -sTf ~/dotfiles/config/vdirsyncer ~/.config/vdirsyncer
 ln -sTf ~/dotfiles/config/khal ~/.config/khal
 ln -sTf ~/dotfiles/config/zathura ~/.config/zathura

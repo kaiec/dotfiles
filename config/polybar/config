@@ -56,7 +56,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = Font Awesome 5 Free Solid:pixelsize=13;2
 font-3 = Font Awesome 5 Free Regular:pixelsize=13;2
 
-modules-left = i3 screenmenu 
+modules-left = bspwm screenmenu 
 modules-center = pomodoro nextdate 
 ; modules-right = wlan filesystem xbacklight xkeyboard memory cpu battery temperature date powermenu
 modules-right = cpu battery1 battery2 date

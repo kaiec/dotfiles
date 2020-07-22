@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ $# -eq 0 ]
 then
-	tasks=$(task today | head -n -2 | sed '1,3d')
+	tasks=$(task rc.gc=off today | head -n -2 | sed '1,3d')
 	while read task; do
 		id=$(echo $task | cut -f1 -d' ')
 		st=$(echo $task | cut -f2 -d' ')
