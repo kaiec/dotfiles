@@ -8,9 +8,9 @@ set folder="~/Maildir/hdm"
 mailboxes +Inbox 
 
 set folder="~/Maildir/hdm"
-
 set record="=Inbox"
-set postponed="=Drafts"
+set folder="~/Maildir/hdm/Inbox"
+set postponed="=drafts"
 set mbox="=archive"
 set trash="=trash"
 

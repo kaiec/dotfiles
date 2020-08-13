@@ -13,10 +13,9 @@ IMAPStore hdm-remote
 Account hdm-account
 
 MaildirStore hdm-local
-Subfolders Verbatim
+SubFolders Verbatim
 Path ~/Maildir/hdm/
 Inbox ~/Maildir/hdm/Inbox
-Flatten "."
 
 Channel hdm
 Master :hdm-remote:
@@ -24,6 +23,7 @@ Slave :hdm-local:
 Patterns * 
 Create Both
 Expunge Both
+Remove Both
 SyncState *
 
 # }}}

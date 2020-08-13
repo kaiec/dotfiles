@@ -25,6 +25,10 @@ set mark_old=no
 set sort=threads
 set sort_aux=last-date-received
 set pager_stop=yes
+set pager_format="%4C %Z %[!%b %e at %H:%M]  %.20n  %s%* -- (%P)"
+set my_index_format="%4C %Z │ %D │ %-25.25L │ %s"
+set index_format=$my_index_format
+set date_format="%d.%m. %H:%M"
 
 bind index,pager \Ck sidebar-prev
 bind index,pager \Cj sidebar-next
@@ -56,8 +60,8 @@ bind index r reply
 bind index \Cr group-reply
 bind index R list-reply
 bind index,pager \Cq quit
-macro index,pager + "c=Inbox<enter>"
-macro index,pager = "c=Inbox<enter>"
+macro index,pager + "c=<enter>"
+macro index,pager = "c=<enter>"
 
 macro index d ":set confirmappend=no delete=yes resolve=no\n<clear-flag>N<tag-prefix><delete-message>:set confirmappend=yes delete=ask-yes resolve=yes\n<next-undeleted>"
 macro index <Delete> "d" 

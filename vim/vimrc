@@ -2,7 +2,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 set nocompatible
-let mapleader = ","
+let mapleader=" "
 
 " -------------------- Plugins --------------------{{{1
 set rtp+=~/dotfiles/vim/vim-plug
@@ -12,15 +12,17 @@ filetype off
 call plug#begin('~/dotfiles/vim/bundle')
 Plug 'tpope/vim-fugitive' 			" GIT support
 Plug 'tpope/vim-surround' 			" GIT support
-Plug 'ctrlpvim/ctrlp.vim'				" quick file browser
+" Plug 'ctrlpvim/ctrlp.vim'				" quick file browser
 Plug 'scrooloose/nerdtree'			" file tree
 Plug 'nelstrom/vim-markdown-folding'		" Markdown Folding
 Plug 'vim-pandoc/vim-pandoc'		" Markdown Pandoc
 Plug 'vim-pandoc/vim-pandoc-syntax'		" Markdown Pandoc
 Plug 'tpope/vim-markdown'       " Markdown support
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'junegunn/vim-easy-align'  " Align Markdown Tables and other stuff
 Plug 'vimwiki/vimwiki'			" Wiki style markdown
 Plug 'tbabej/taskwiki'			" Taskwarrior integration
+Plug 'farseer90718/vim-taskwarrior' " Taskwarriot interface
 " Plug 'davidhalter/jedi-vim'			" auto completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}			" auto completion
 Plug 'mhartington/oceanic-next'		" color scheme
@@ -41,9 +43,17 @@ Plug 'ap/vim-css-color'       " Hex Color highlighting.
 Plug 'mattn/emmet-vim'       " HTML auto competion magic.
 Plug 'ferrine/md-img-paste.vim'       " Image paste in markdown
 Plug 'machakann/vim-highlightedyank'   " Highlight yanked text
+Plug 'easymotion/vim-easymotion'   " Easymotion
+Plug 'tpope/vim-surround' " Add surrounding parentheses et al.
+Plug 'tpope/vim-repeat' " Repeat for surround
+Plug 'jiangmiao/auto-pairs' " Auto closing of parentheses
+Plug 'roman/golden-ratio' " automatic resizing of splits
+Plug 'niklasl/vim-rdf' " RDF syntax
+Plug 'lervag/vimtex' " Latex
 call plug#end()
 
 filetype plugin indent on    " required
+
 
 " -------------------- Common Stuff --------------------{{{1
 
@@ -94,6 +104,26 @@ nnoremap  <buffer> <silent> <Down> gj
 inoremap <expr> <buffer> <silent> <Up> pumvisible() ? '<C-P>' : '<C-O>gk'
 inoremap <expr> <buffer> <silent> <Down> pumvisible() ? '<C-N>' : '<C-O>gj' 
 
+" Copy Paste
+
+" use last yank
+nnoremap yp "0p
+nnoremap yP "0P
+" force paste on new line
+nnoremap ygp o<Esc>"0p
+nnoremap ygP O<Esc>"0p
+
+" CTRL-C to copy to system clipboard
+map <C-c> "+y<CR>
+" leader y and p to access clipboard
+nnoremap <Leader>y "+y 
+nnoremap <Leader>Y "+Y 
+nnoremap <Leader>p "+p 
+nnoremap <Leader>P "+P 
+" Force paste on new line
+nnoremap <Leader>gp o<Esc>"+p 
+nnoremap <Leader>gP O<Esc>"+P 
+
 " -------------------- Cursor --------------------{{{1
 "
 " When editing a file, always jump to the last known cursor position.
@@ -130,9 +160,8 @@ inoremap <C-L> <Right>
 
 inoremap <C-S> <esc>:w<cr>
 nnoremap <C-S> :w<cr>
+noremap <C-Q> <nop>
 
-nnoremap <C-Q> :qa<cr>
-inoremap <C-Q> <esc>:qa<cr>
 vnoremap < <gv
 vnoremap > >gv
 
@@ -144,14 +173,15 @@ inoremap jk <Esc>
 
 " FZF, Search
 nnoremap <C-B> :Buffers<cr>
+nnoremap <C-P> :Files<cr>
 
 " clear search highlight with esc
 " nnoremap <esc> :noh<return><esc>
 " remapping esc leads to strange sideffects in standard vim
 
+" Search current selection
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
-" CTRL-C to copy to system clipboard
-map <C-c> "+y<CR>
 
 if has("nvim")
    tnoremap <Esc> <C-\><C-n>
@@ -203,7 +233,11 @@ nnoremap <leader>t :call system("~/dotfiles/bin/vim2task '" . expand("%:p") ."'"
 " Copy current file path to clipboard
 nnoremap <leader>c :let @+=expand("%:p")<CR>
 
-" -------------------- Color Scheme --------------------{{{1
+" -------------------- Latex --------------------{{{1
+let g:tex_flavor='latex'
+let g:vimtex_quickfix_open_on_warning = 0
+
+"-------------------- Color Scheme --------------------{{{1
 set background=dark
 set termguicolors
 " Theme
@@ -306,11 +340,15 @@ let g:python3_host_prog = '/home/kai/.pyenv/versions/neovim3/bin/python'
 
 
 " Image past in Markdown
-autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+autocmd FileType markdown nmap <buffer><silent> <leader>i :call mdip#MarkdownClipboardImage()<CR>
 
 " there are some defaults for image directory and image name, you can change them
 " let g:mdip_imgdir = 'img'
 " let g:mdip_imgname = 'image'
+
+" Resize windows when terminal is resized
+" autocmd VimResized * wincmd =
+autocmd VimResized * GoldenRatioResize
 
 " -------------------- Goyo, Zen Mode --------------------{{{1 
 function! s:goyo_enter()
@@ -441,20 +479,3 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
