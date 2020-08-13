@@ -14,6 +14,8 @@ set postponed="=drafts"
 set mbox="=archive"
 set trash="=trash"
 
+save-hook . "="
+
 mailboxes `mutt-mailboxes.py` 
 
 set from="eckert@hdm-stuttgart.de"
