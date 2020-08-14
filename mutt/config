@@ -30,6 +30,8 @@ set my_index_format="%4C %Z │ %D │ %-25.25L │ %s"
 set index_format=$my_index_format
 set date_format="%d.%m. %H:%M"
 
+
+
 bind index,pager \Ck sidebar-prev
 bind index,pager \Cj sidebar-next
 bind index,pager \Cl  sidebar-open
@@ -66,9 +68,10 @@ macro index,pager = "c=<enter>"
 macro index d ":set confirmappend=no delete=yes resolve=no\n<clear-flag>N<tag-prefix><delete-message>:set confirmappend=yes delete=ask-yes resolve=yes\n<next-undeleted>"
 macro index <Delete> "d" 
 
-macro index S "<Esc>t;s"
-
+macro index S "<Esc>t;<enter-command>exec save-message<enter>" "Save Thread"
 macro index \Cn "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all new as read" 
+
+macro index \Cs "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><enter-command>source ~/dotfiles/mutt/autosort.py|<enter><enter-command>set wait_key<enter><enter-command>exec save-message<enter>" "Guess save folder"
 
 # Open Mail in less for copy / paste
 macro index,pager \Cu "<view-attachments><search>text/plain<enter><pipe-entry>less<enter><exit>"
