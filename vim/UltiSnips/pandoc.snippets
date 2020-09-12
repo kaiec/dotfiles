@@ -1,0 +1,41 @@
+snippet note "A note"
+:::{admonition,note} Hinweis
+${1:body}
+:::
+endsnippet
+
+snippet example "An example"
+:::{admonition,note} Beispiel
+${1:body}
+:::
+endsnippet
+
+
+snippet tip "A tip"
+:::{admonition,tip} Tipp
+${1:body}
+:::
+endsnippet
+
+snippet ex "An exercise"
+:::{admonition,attention} Aufgabe
+
+${1:body}
+:::
+endsnippet
+
+snippet panel "Full panel"
+\`\`\`\`{panels}
+:column: col-12
+${1:body}
+\`\`\`\`
+endsnippet
+
+snippet panels "Panels"
+\`\`\`\`{panels}
+${1:left}
+---
+${2:right}
+\`\`\`\`
+endsnippet
+

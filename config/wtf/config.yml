@@ -7,7 +7,7 @@ wtf:
       normal: gray
   grid:
     columns: [20,20,42, 64,64]
-    rows: [10, 10, 8, 3, 50]
+    rows: [15, 8, 3, 50]
   refreshInterval: 10
   term: "xterm-256color"
   mods:
@@ -18,7 +18,7 @@ wtf:
           position:
             top: 0
             left: 0
-            height: 2
+            height: 1
             width: 3
           refreshInterval: 10
           title: "Todo"
@@ -31,7 +31,7 @@ wtf:
           position:
             top: 0
             left: 3
-            height: 2
+            height: 1
             width: 1
           refreshInterval: 60
           title: "Calendar"
@@ -42,7 +42,7 @@ wtf:
           cmd: "/home/kai/dotfiles/bin/agenda.sh"
           enabled: true
           position:
-            top: 2
+            top: 1
             left: 0
             height: 1
             width: 1
@@ -55,7 +55,7 @@ wtf:
           cmd: "/home/kai/dotfiles/bin/today"
           enabled: true
           position:
-            top: 2
+            top: 1
             left: 1
             height: 3
             width: 2
@@ -68,7 +68,7 @@ wtf:
           cmd: "/home/kai/dotfiles/bin/agenda.sh"
           enabled: true
           position:
-            top: 3
+            top: 2
             left: 0
             height: 1
             width: 1
@@ -81,7 +81,7 @@ wtf:
           cmd: "/home/kai/dotfiles/bin/dailytasks"
           enabled: true
           position:
-            top: 4
+            top: 3
             left: 0
             height: 1
             width: 1
@@ -109,7 +109,7 @@ wtf:
           cmd: "/home/kai/dotfiles/bin/timew-wtf"
           enabled: true
           position:
-            top: 2
+            top: 1
             left: 3
             height: 3
             width: 1

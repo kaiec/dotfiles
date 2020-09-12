@@ -5,7 +5,7 @@ set spoolfile="~/Maildir/hdm/Inbox"
 # Define the = shortcut, and the entry point for the folder browser (c?)
 set folder="~/Maildir/hdm"
 
-mailboxes +Inbox 
+#mailboxes +Inbox 
 
 set folder="~/Maildir/hdm"
 set record="=Inbox"
@@ -16,6 +16,10 @@ set trash="=trash"
 
 save-hook . "="
 
+set virtual_spoolfile=yes
+virtual-mailboxes "inbox" "notmuch://?query=folder:hdm/Inbox"
+
+macro index % "<enter-command>unset wait_key<enter><shell-escape>notmuch new > /dev/null<enter><enter-command>set wait_key<enter>"
 mailboxes `mutt-mailboxes.py` 
 
 set from="eckert@hdm-stuttgart.de"

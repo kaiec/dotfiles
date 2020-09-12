@@ -6,7 +6,7 @@ User eckert
 Port 993
 PassCmd "gpg --no-tty -q -d ~/.kak/hdm.gpg"
 SSLType IMAPS
-CertificateFile /home/kai/hdm-imap-outdated.pem
+CertificateFile /home/kai/daten/setup/hdm-imap-outdated.pem
 
 
 IMAPStore hdm-remote

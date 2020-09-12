@@ -13,11 +13,13 @@ set use_envelope_from = yes
 
 set text_flowed
 
+set nm_default_url = "notmuch:///home/kai/Maildir"
+
 set mbox_type=Maildir
 set sidebar_short_path                  # Shorten mailbox names
 set sidebar_delim_chars="/."
 set sidebar_visible
-set sidebar_format = "%B%* %?N?%N?"
+set sidebar_format = "%D%* %?N?%N?"
 set sidebar_width = 14
 set sidebar_divider_char = '│'
 set mail_check_stats
@@ -26,7 +28,7 @@ set sort=threads
 set sort_aux=last-date-received
 set pager_stop=yes
 set pager_format="%4C %Z %[!%b %e at %H:%M]  %.20n  %s%* -- (%P)"
-set my_index_format="%4C %Z │ %D │ %-25.25L │ %s"
+set my_index_format="%4C %Z │ %D │ %-25.25L │ %s %?J?(%J)&?"
 set index_format=$my_index_format
 set date_format="%d.%m. %H:%M"
 
@@ -62,16 +64,18 @@ bind index r reply
 bind index \Cr group-reply
 bind index R list-reply
 bind index,pager \Cq quit
-macro index,pager + "c=<enter>"
-macro index,pager = "c=<enter>"
+macro index,pager + "cinbox<enter>"
+macro index,pager = "cinbox<enter>"
 
 macro index d ":set confirmappend=no delete=yes resolve=no\n<clear-flag>N<tag-prefix><delete-message>:set confirmappend=yes delete=ask-yes resolve=yes\n<next-undeleted>"
 macro index <Delete> "d" 
 
-macro index S "<Esc>t;<enter-command>exec save-message<enter>" "Save Thread"
+macro index,pager S "<esc>t<tag-prefix><save-message>" "Save Thread"
 macro index \Cn "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all new as read" 
 
-macro index \Cs "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><enter-command>source ~/dotfiles/mutt/autosort.py|<enter><enter-command>set wait_key<enter><enter-command>exec save-message<enter>" "Guess save folder"
+macro index,pager \Cs "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><enter-command>source ~/dotfiles/mutt/autosort.py|<enter><enter-command>set wait_key<enter><save-message>" "Guess save folder"
+
+macro index,pager S "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><enter-command>source ~/dotfiles/mutt/autosort.py|<enter><enter-command>set wait_key<enter><esc>t<tag-prefix><save-message>" "Guess save folder"
 
 # Open Mail in less for copy / paste
 macro index,pager \Cu "<view-attachments><search>text/plain<enter><pipe-entry>less<enter><exit>"

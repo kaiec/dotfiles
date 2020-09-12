@@ -360,3 +360,11 @@ def get_context_data(self, **kwargs):
 	return super(${2:CLASS_NAME}, self).get_context_data(**kwargs)
 endsnippet
 
+snippet beautifulsoup "Get my BS cheatsheet" b
+from bs4 import BeautifulSoup
+# soup = BeautifulSoup(HTMLSTRING, 'html.parser')
+# soup.h2.string # First H2
+# table = soup.select_one('table.myclass') # first by CSS Selector
+# table.find_all("tr") # select all tr tags
+# tr.find("th").text.strip() # Find first Tag
+endsnippet

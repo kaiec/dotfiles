@@ -46,10 +46,13 @@ Plug 'machakann/vim-highlightedyank'   " Highlight yanked text
 Plug 'easymotion/vim-easymotion'   " Easymotion
 Plug 'tpope/vim-surround' " Add surrounding parentheses et al.
 Plug 'tpope/vim-repeat' " Repeat for surround
-Plug 'jiangmiao/auto-pairs' " Auto closing of parentheses
+" Plug 'jiangmiao/auto-pairs' " Auto closing of parentheses
 Plug 'roman/golden-ratio' " automatic resizing of splits
 Plug 'niklasl/vim-rdf' " RDF syntax
 Plug 'lervag/vimtex' " Latex
+" Plug 'jpalardy/vim-slime' " REPL support
+" Plug 'jupyter-vim/jupyter-vim' " Jupyter support
+Plug 'bfredl/nvim-ipy'
 call plug#end()
 
 filetype plugin indent on    " required
@@ -143,24 +146,9 @@ let &guicursor = 'n-v-c-sm:block-blinkwait1000-blinkon500-blinkoff500,'
 
 " -------------------- Key Mappings --------------------{{{1
 
-nnoremap ö ;
-nnoremap Ö :
-vnoremap ö ;
-vnoremap Ö :
-
-nnoremap <C-H> <C-W>h
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-
-inoremap <C-H> <Left>
-inoremap <C-J> <Down>
-inoremap <C-K> <Up>
-inoremap <C-L> <Right>
-
 inoremap <C-S> <esc>:w<cr>
 nnoremap <C-S> :w<cr>
-noremap <C-Q> <nop>
+" noremap <C-Q> <nop>
 
 vnoremap < <gv
 vnoremap > >gv
@@ -197,6 +185,8 @@ let NERDTreeQuitOnOpen=1
 
 " vimwiki - Personal Wiki for Vim
 " https://github.com/vimwiki/vimwiki
+
+" autocmd BufRead,BufNewFile /home/kai/notizen/* cd /home/kai/notizen 
 
 " vimwiki with markdown support
 " let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
@@ -236,6 +226,13 @@ nnoremap <leader>c :let @+=expand("%:p")<CR>
 " -------------------- Latex --------------------{{{1
 let g:tex_flavor='latex'
 let g:vimtex_quickfix_open_on_warning = 0
+
+
+" -------------------- Vim-Slime --------------------{{{1
+
+" let g:slime_target = "neovim"
+" let g:slime_python_ipython = 1
+
 
 "-------------------- Color Scheme --------------------{{{1
 set background=dark
