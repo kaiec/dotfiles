@@ -1,0 +1,6 @@
+#!/bin/sh
+rm ~/.is_presentation 2> /dev/null
+xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x444 --rotate normal --output DP-1 --off --output HDMI-1 --mode 3840x2160 --pos 1920x0 --rotate normal --output DP-2 --off
+xrandr --output eDP-1 --scale 1x1
+i3-msg restart
+echo 16 > ~/.term-font-size

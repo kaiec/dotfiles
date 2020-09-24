@@ -160,9 +160,9 @@ fzf_cd () {
     local fzf_command="fzf --height 20"
     if [ $# -gt 0 ]
     then
-	    local dir=$(cat ~/dirs | $fzf_command -q $@)
+	    local dir=$(cat ~/.fzfdirs | $fzf_command -q $@)
     else
-	    local dir=$(cat ~/dirs | $fzf_command)
+	    local dir=$(cat ~/.fzfdirs | $fzf_command)
     fi
     cd "$dir"
 }

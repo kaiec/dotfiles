@@ -252,24 +252,26 @@ hi LineNr guibg=none ctermbg=none
 
 " -------------------- Line Numbers --------------------{{{1
 let g:numbertoggle=1
-set number relativenumber
+set number norelativenumber 
 " https://jeffkreeftmeijer.com/vim-number/
-function! RelNum ()
-   if g:numbertoggle
-      set relativenumber
-   endif
-endfunction
-function! AbsNum ()
-   if g:numbertoggle
-      set norelativenumber
-   endif
-endfunction
+" function! RelNum ()
+"    if g:numbertoggle
+"       set relativenumber
+"    endif
+" endfunction
+" function! AbsNum ()
+"    if g:numbertoggle
+"       set norelativenumber
+"    endif
+" endfunction
+" 
+" augroup numbertoggle
+"    autocmd!
+"    autocmd BufEnter,FocusGained,InsertLeave * :call RelNum() 
+"    autocmd BufLeave,FocusLost,InsertEnter   * :call AbsNum()
+" augroup END
 
-augroup numbertoggle
-   autocmd!
-   autocmd BufEnter,FocusGained,InsertLeave * :call RelNum() 
-   autocmd BufLeave,FocusLost,InsertEnter   * :call AbsNum()
-augroup END
+
 " highlight LineNr ctermfg=5 ctermbg=4
 " highlight CursorLineNr ctermfg=5 ctermbg=4
 
