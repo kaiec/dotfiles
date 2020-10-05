@@ -148,6 +148,8 @@ let &guicursor = 'n-v-c-sm:block-blinkwait1000-blinkon500-blinkoff500,'
 
 inoremap <C-S> <esc>:w<cr>
 nnoremap <C-S> :w<cr>
+noremap! <C-BS> <C-W>
+noremap! <C-h> <C-w> 
 " noremap <C-Q> <nop>
 
 vnoremap < <gv

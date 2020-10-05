@@ -81,7 +81,7 @@ min_width= 100%
 # Date Time
 #
 [time]
-command=date '+  %H:%M'
+command=date '+  %H:%M | %a, %b %d'
 interval=60
 min_width= 88:88X
 
