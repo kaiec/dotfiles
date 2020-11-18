@@ -296,6 +296,15 @@ exec --no-startup-id unclutter -root
 # Enable tapping in touch pad (libinput)
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 
+# Zoom Windows
+
+for_window [title="Chat"] floating enable
+for_window [title="Chat"] resize set 615 310
+for_window [title="Participants"] floating enable
+for_window [title="Participants"] resize set 450 840
+for_window [title="Windowed Projector"] floating enable
+for_window [title="Windowed Projector"] resize set 1920 1080
+
 # Cam setup
 for_window [title="mpvfloat"] floating enable
 for_window [title="mpvfloat"] sticky enable

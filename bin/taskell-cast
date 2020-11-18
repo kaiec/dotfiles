@@ -1,10 +1,16 @@
 #!/bin/bash
+function update_task {
+	~/dotfiles/bin/taskell-current > /dev/null
+	pkill -RTMIN+6 i3blocks 
+}
+export -f update_task
 if [[ ! -f $1 ]]; then
 	echo -e "## Geplant\n\n## Aktuell\n\n## Erledigt\n\n" > $1
 fi
 rm /home/kai/.cache/taskell-current.md 2> /dev/null
 ln -s `pwd`/$1 /home/kai/.cache/taskell-current.md
 trap : INT
-echo /home/kai/.cache/taskell-current.md | entr pkill -RTMIN+6 i3blocks
+echo /home/kai/.cache/taskell-current.md | entr bash -c update_task
 rm /home/kai/.cache/taskell-current.md
+rm /home/kai/.cache/taskell-current.txt
 pkill -RTMIN+6 i3blocks

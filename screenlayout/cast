@@ -1,0 +1,8 @@
+#!/bin/sh
+xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --mode 1600x900 --pos 1920x180 --rotate normal --output DP-2 --off
+touch ~/.is_presentation
+i3-msg restart
+sleep 3
+hsetroot -solid "#3E4847"
+i3-msg "bar mode hide"
+v4l2ctrl -d /dev/v4l/by-id/usb-USB_Camera_USB_Camera_USB_Camera-video-index0 -l ~/dotfiles/hdcam-settings.txt

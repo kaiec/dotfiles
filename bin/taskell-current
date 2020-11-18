@@ -4,4 +4,5 @@ if [[ -f ~/.cache/taskell-current.md ]]; then
 	output="Aktuelle Aufgabe: $task"
 	output=${(r:90:l:90:)output}
 	echo $output
+	echo $task > ~/.cache/taskell-current.txt
 fi
