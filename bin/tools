@@ -1,4 +1,5 @@
 #!/bin/bash
+export LANG=C
 declare -A tools
 tools["Screenkey"]="killall screenkey || screenkey"
 tools["Cam"]="camtoggle"
@@ -9,6 +10,10 @@ tools["Toggle Mousepad"]="toggle-pad.sh"
 tools["Screenshot"]="screenshot.sh"
 tools["Presentation Mode Off"]="rm ~/.is_presentation; i3-msg restart"
 tools["Presentation Mode On"]="touch ~/.is_presentation; i3-msg restart"
+tools["Cam Light On"]="curl -d '' http://192.168.188.39/power?value=1"
+tools["Cam Light Off"]="curl -d '' http://192.168.188.39/power?value=0"
+tools["Key Light Toggle"]="~/dotfiles/bin/keylight"
+tools["Switch Audio"]="~/dotfiles/bin/switch-audio"
 
 P=$(printf '%s\n' "${!tools[@]}" |  rofi -dmenu -i -p "Tools")
 /bin/bash -c "${tools[$P]}"

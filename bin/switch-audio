@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# See https://www.reddit.com/r/i3wm/comments/czsl8b/i_wrote_a_script_for_switching_audio_sinks_in/
+# Based on https://gist.github.com/pdonadeo/aaf5f3f164ef23c9db4ac8458137c2c8
+
+set -e
+
+# FEATURES
+# - Doesn't show the sink that is already the default
+# - Automatically switches all running input sinks when switching the default sink
+
+# Get the current default sink
+export LC_ALL=C
+SINK_DEFAULT=$(pactl info | ag "Default Sink" | ag -o "(?!.*:)[^\s].*")
+# Get the audio sink names
+SINK_NAMES=$(pactl list sinks | ag Name | cut --complement -c 1-7)
+# Get the index of the default sink
+DEFAULT_INDEX=$(printf "%s" "$SINK_NAMES" | ag --number "$SINK_DEFAULT" | sed 's/:.*//' )
+# Get the audio sink descriptions
+SINK_DESCRIPTIONS=$(pactl list sinks | ag Description | cut --complement -c 1-13 | sed 's/^ \+//' | sed 's/ \+$//')
+# Get all the programs that revieve the audio from the sinks
+SINK_INPUTS=$(pactl list sink-inputs | ag "Sink Input #")
+# Get the descriptions from the sinks without the default sink to display to the user and have the user pick a sink
+SINK_DESCRIPTION=$(printf "%s" "$SINK_DESCRIPTIONS" | sed "${DEFAULT_INDEX}d" | rofi -dmenu -i -p "Audio Ausgabe:")
+SINK_DESCRIPTION=$(printf "%s" "$SINK_DESCRIPTION" | sed 's/(/\\(/'g | sed 's/)/\\)/'g)
+echo Selected: 
+echo "$SINK_DESCRIPTION"
+# Get the index for the answer that the user wrote
+echo "$SINK_DESCRIPTIONS"
+DESCRIPTION_INDEX=$(printf "%s\n" "$SINK_DESCRIPTIONS" | ag --number "$SINK_DESCRIPTION" | sed 's/:.*//')
+DESCRIPTION_INDEX=$((DESCRIPTION_INDEX - 1)) # Correct the index hihi
+
+# Set the default sink
+echo Setting default sink to index $DESCRIPTION_INDEX
+pactl set-default-sink $DESCRIPTION_INDEX
+
+# Change all the ouputs for the programs that are using the default sink
+printf "%s\n" "$SINK_INPUTS" | while read -r SINK_INPUT
+do
+    echo $SINK_INPUT
+    # Get the index for the program
+    SINK_INPUT_INDEX=$(printf "%s" "$SINK_INPUT" | ag -o "(?!Sink Input #)[0-9]+")
+    echo $SINK_INPUT_INDEX
+    echo $DESCRIPTION_INDEX
+    pactl move-sink-input "$SINK_INPUT_INDEX" "$DESCRIPTION_INDEX"
+done

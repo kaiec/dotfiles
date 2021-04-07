@@ -1,4 +1,5 @@
 #!/bin/bash
+export LANG=C
 last_start() {
 	start=$(timew export | tail -2 | head -1 | jq '.start' | sed 's/"//g')
 	datestr=$( echo $start | sed -e 's/T/ /' -e 's/^\([0-9][0-9][0-9][0-9]\)\([0-9][0-9]\)/\1-\2-/' -e 's/ \([0-9][0-9]\)\([0-9][0-9]\)/ \1:\2:/' )
@@ -73,12 +74,12 @@ start() {
 }
 
 asktime() {
-	echo -e `date "+%H:%M"`\\n`date "+%H:00"` | rofi -dmenu -i --select-row 1 -p Uhrzeit
+	echo -e `date "+%H:%M"`\\n`date "+%H:00"` | ~/dotfiles/bin/rofi-starter -dmenu -i --select-row 1 -p Uhrzeit
 
 }
 
 doit() {
-	task=$(task rc.gc=off rofi | sed '3 r /home/kai/.mytasks' | sed '3 a STOP\nCONTINUE\nDONE\nNEW' | sed '1,3d;s/^ /0/;/^[^0-9]/s/^/.. /;s/ /\t\t/' | head -n -2 | grep -v ^0\\s | sed 's/[ ][ ]*/ /g;' | rofi -dmenu -i -p "Los geht's mit" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-d)
+	task=$(task rc.gc=off rofi | sed '3 r /home/kai/.mytasks' | sed '3 a STOP\nCONTINUE\nDONE\nNEW' | sed '1,3d;s/^ /0/;/^[^0-9]/s/^/.. /;s/ /\t\t/' | head -n -2 | grep -v ^0\\s | sed 's/[ ][ ]*/ /g;' | ~/dotfiles/bin/rofi-starter -dmenu -i -p "Los geht's mit" -kb-remove-char-forward Delete -kb-custom-1 Ctrl-d)
 	ret=$?
 	if [ $ret -eq 1 ]; then
 		echo 'User escaped'
@@ -135,7 +136,7 @@ doit() {
 	elif [[ $task =~ CONTINUE ]]; then
 		timew continue
 	elif [[ $task =~ NEW ]]; then
-		todotext=$(rofi -dmenu -i -lines 0 -p "New Task")
+		todotext=$(coproc ~/dotfiles/bin/rofi-starter -dmenu -i -lines 0 -p "New Task")
 		if [[ $? -eq 0 ]]; then
 			task add $todotext
 		fi

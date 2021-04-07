@@ -4,6 +4,10 @@ set fileencoding=utf-8
 set nocompatible
 let mapleader=" "
 
+" Hdm Notenlisten Import
+" Geht von 5-stelliger Matrikenummer aus
+let @h = '0/\ai;5hi;:s/\(.\{3}$\)/;\1/j'
+
 " -------------------- Plugins --------------------{{{1
 set rtp+=~/dotfiles/vim/vim-plug
 set rtp+=~/.fzf
@@ -171,6 +175,7 @@ nnoremap <C-P> :Files<cr>
 
 " Search current selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
 
 
 if has("nvim")

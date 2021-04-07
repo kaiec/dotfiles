@@ -64,18 +64,12 @@ bind index r reply
 bind index \Cr group-reply
 bind index R list-reply
 bind index,pager \Cq quit
-macro index,pager + "cinbox<enter>"
-macro index,pager = "cinbox<enter>"
 
 macro index d ":set confirmappend=no delete=yes resolve=no\n<clear-flag>N<tag-prefix><delete-message>:set confirmappend=yes delete=ask-yes resolve=yes\n<next-undeleted>"
 macro index <Delete> "d" 
 
 macro index,pager S "<esc>t<tag-prefix><save-message>" "Save Thread"
 macro index \Cn "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all new as read" 
-
-macro index,pager \Cs "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><enter-command>source ~/dotfiles/mutt/autosort.py|<enter><enter-command>set wait_key<enter><save-message>" "Guess save folder"
-
-macro index,pager S "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><enter-command>source ~/dotfiles/mutt/autosort.py|<enter><enter-command>set wait_key<enter><esc>t<tag-prefix><save-message>" "Guess save folder"
 
 # Open Mail in less for copy / paste
 macro index,pager \Cu "<view-attachments><search>text/plain<enter><pipe-entry>less<enter><exit>"

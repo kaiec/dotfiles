@@ -7,17 +7,26 @@ set folder="~/Maildir/hdm"
 
 #mailboxes +Inbox 
 
-set folder="~/Maildir/hdm"
+set folder="~/Maildir/hdm/"
 set record="=Inbox"
-set folder="~/Maildir/hdm/Inbox"
+#set folder="~/Maildir/hdm/Inbox"
 set postponed="=drafts"
 set mbox="=archive"
 set trash="=trash"
 
-save-hook . "="
+macro index,pager + "c=Inbox<enter>"
+macro index,pager = "c=Inbox<enter>"
 
-set virtual_spoolfile=yes
-virtual-mailboxes "inbox" "notmuch://?query=folder:hdm/Inbox"
+
+# set virtual_spoolfile=yes
+# virtual-mailboxes "inbox" "notmuch://?query=folder:hdm/Inbox"
+
+# Auto folder tagger
+# save-hook . "="
+# macro index,pager \Cs "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><enter-command>source ~/dotfiles/mutt/autosort.py|<enter><enter-command>set wait_key<enter><save-message>" "Guess save folder"
+
+# macro index,pager S "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><enter-command>source ~/dotfiles/mutt/autosort.py|<enter><enter-command>set wait_key<enter><esc>t<tag-prefix><save-message>" "Guess save folder"
+
 
 macro index % "<enter-command>unset wait_key<enter><shell-escape>notmuch new > /dev/null<enter><enter-command>set wait_key<enter>"
 mailboxes `mutt-mailboxes.py` 

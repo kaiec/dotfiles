@@ -1,3 +1,4 @@
 #!/bin/bash
+export LANG=C
 P=$(ls -1 ~/.screenlayout/ | rofi -dmenu -p "Select screen profile" -monitor eDP-1 -select nb)
 ~/.screenlayout/$P

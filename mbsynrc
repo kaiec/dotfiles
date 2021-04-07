@@ -18,8 +18,8 @@ Path ~/Maildir/hdm/
 Inbox ~/Maildir/hdm/Inbox
 
 Channel hdm
-Master :hdm-remote:
-Slave :hdm-local:
+Far :hdm-remote:
+Near :hdm-local:
 Patterns * 
 Create Both
 Expunge Both
@@ -48,8 +48,8 @@ Inbox ~/Maildir/hallo/Inbox
 Flatten "."
 
 Channel hallo
-Master :hallo-remote:
-Slave :hallo-local:
+Far :hallo-remote:
+Near :hallo-local:
 Patterns * ![Gmail]*
 Create Both
 Expunge Both
@@ -78,8 +78,8 @@ Inbox ~/Maildir/gen/Inbox
 Flatten "."
 
 Channel gen
-Master :gen-remote:
-Slave :gen-local:
+Far :gen-remote:
+Near :gen-local:
 Patterns * ![Gmail]*
 Create Both
 Expunge Both
@@ -109,8 +109,8 @@ Inbox ~/Maildir/kep/Inbox
 Flatten "."
 
 Channel kep
-Master :kep-remote:
-Slave :kep-local:
+Far :kep-remote:
+Near :kep-local:
 Patterns * ![Gmail]*
 Create Both
 Expunge Both
@@ -140,8 +140,8 @@ Inbox ~/Maildir/flokai/Inbox
 Flatten "."
 
 Channel flokai
-Master :flokai-remote:
-Slave :flokai-local:
+Far :flokai-remote:
+Near :flokai-local:
 Patterns * ![Gmail]*
 Create Both
 Expunge Both
