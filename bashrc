@@ -214,3 +214,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+source /home/kai/.config/broot/launcher/bash/br
+
+export SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR=0

@@ -1,2 +1,2 @@
 #!/bin/bash
-rofi $@ 2> ~/.cache/rofi.log
+rofi $@ -async-pre-read 0 2> ~/.cache/rofi.log

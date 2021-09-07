@@ -1,0 +1,4 @@
+configuration {
+	font: "SFNS Display 24";
+	theme: "colors-rofi-dark.rasi";
+}

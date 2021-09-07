@@ -73,6 +73,10 @@ textbox-prompt-colon {
     padding: 1px;
 }
 
+element-text {
+    text-color: @foreground;
+}
+
 #element.normal.normal {
     background-color: @normal-background;
     text-color: @normal-foreground;

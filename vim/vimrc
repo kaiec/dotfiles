@@ -22,6 +22,7 @@ Plug 'nelstrom/vim-markdown-folding'		" Markdown Folding
 Plug 'vim-pandoc/vim-pandoc'		" Markdown Pandoc
 Plug 'vim-pandoc/vim-pandoc-syntax'		" Markdown Pandoc
 Plug 'tpope/vim-markdown'       " Markdown support
+Plug 'tpope/vim-abolish'       " Case sensitive replace
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'junegunn/vim-easy-align'  " Align Markdown Tables and other stuff
 Plug 'vimwiki/vimwiki'			" Wiki style markdown
@@ -57,6 +58,7 @@ Plug 'lervag/vimtex' " Latex
 " Plug 'jpalardy/vim-slime' " REPL support
 " Plug 'jupyter-vim/jupyter-vim' " Jupyter support
 Plug 'bfredl/nvim-ipy'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 call plug#end()
 
 filetype plugin indent on    " required
@@ -343,6 +345,8 @@ let g:UltiSnipsEditSplit="vertical"
 " Python support
 let g:python_host_prog = '/home/kai/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/home/kai/.pyenv/versions/neovim3/bin/python'
+
+let g:pydocstring_formatter = 'numpy'
 
 
 " Image past in Markdown
