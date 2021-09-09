@@ -1,4 +1,10 @@
 configuration {
-	font: "SFNS Display 24";
-	theme: "colors-rofi-dark.rasi";
+
+
+}
+
+@theme "/usr/share/rofi/themes/glue_pro_blue.rasi"
+
+element {
+    children: [element-icon, element-text];
 }

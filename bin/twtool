@@ -74,7 +74,7 @@ start() {
 }
 
 asktime() {
-	echo -e `date "+%H:%M"`\\n`date "+%H:00"` | ~/dotfiles/bin/rofi-starter -dmenu -i --select-row 1 -p Uhrzeit
+	echo -e `date "+%H:%M"`\\n`date "+%H:00"` | ~/dotfiles/bin/rofi-starter -dmenu -i -p Uhrzeit
 
 }
 
