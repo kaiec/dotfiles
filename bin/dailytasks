@@ -3,9 +3,11 @@ import subprocess
 import json
 from sarge import get_stdout
 
-def load_tasks(filter):
+def load_tasks(report="", filter=""):
     cmd = ['task', 'export']
-    cmd.extend(filter.split())
+    for filter_element in filter.split()[::-1]:
+        cmd.insert(1, filter_element)
+    cmd.extend(report.split())
     out = subprocess.run(cmd, stdout=subprocess.PIPE)
     tasks = json.loads(str(out.stdout, encoding='utf8'))
     return tasks
@@ -13,8 +15,7 @@ def load_tasks(filter):
 def update_task(task):
     subprocess.run(['task', 'rc.recurrence.confirmation=no', 'rc.confirmation=no', 'import'], input=json.dumps(task).encode('utf8'))
 
-
-tasks = load_tasks('status:pending Daily review')
+tasks = load_tasks(report='dailyreview')
 
 tasks.sort(key=lambda t: t['due'])
 
