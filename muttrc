@@ -26,6 +26,15 @@ macro index,pager = "c=Inbox<enter>"
 # macro index,pager \Cs "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><enter-command>source ~/dotfiles/mutt/autosort.py|<enter><enter-command>set wait_key<enter><save-message>" "Guess save folder"
 
 # macro index,pager S "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><enter-command>source ~/dotfiles/mutt/autosort.py|<enter><enter-command>set wait_key<enter><esc>t<tag-prefix><save-message>" "Guess save folder"
+#
+macro attach M "\
+<enter-command>unset wait_key<enter>\
+<shell-escape>rm -rf /tmp/mutt-attach<enter>\
+<shell-escape>mkdir /tmp/mutt-attach<enter>\
+<save-entry><bol><delete-char>/tmp/mutt-attach<enter>\
+<shell-escape>dragon-drag-and-drop /tmp/mutt-attach/*<enter>\
+<enter-command>set wait_key<enter>\
+"
 
 
 macro index % "<enter-command>unset wait_key<enter><shell-escape>notmuch new > /dev/null<enter><enter-command>set wait_key<enter>"
