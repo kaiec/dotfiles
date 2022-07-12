@@ -1,0 +1,97 @@
+#!/usr/bin/env python3
+
+import json
+import os
+import re
+import collections
+import sys
+import random
+import fileinput
+import frame # frame.py in same directory
+
+
+PONYDIR = "/usr/share/ponysay/ponies"
+EXTDIR = "/usr/share/ponysay/extraponies/"
+DBFILE = os.environ["HOME"] + "/.cache/ponies.json"
+db = {
+    "ponies": {}, # here is all the data about the ponies
+    "by_height": collections.defaultdict(list),
+}
+balloon_element = re.compile("\\$.*\\$")
+
+def parse_directory(directory, db):
+    for ponyfile in os.listdir(directory):
+        if not ponyfile.endswith(".pony"):
+            continue
+        name = ponyfile[:-5]
+        data = {}
+        data["lines"] = []
+        height = 0
+        with open(os.path.join(directory, ponyfile), "r", encoding="UTF-8") as f:
+            print("Reading {}".format(ponyfile))
+            in_header = False
+            in_image = False
+            for line in f.readlines():
+                line = line.strip("\n")
+                if not in_header and not in_image:
+                    if line.strip()=="$$$":
+                        in_header=True
+                elif in_header:
+                    if line.strip()=="$$$":
+                        in_header=False
+                        in_image=True
+                    else:
+                        elems = line.split(":")
+                        key = elems[0].strip().lower()
+                        value = ":".join(elems[1:])
+                        data[key] = value
+                elif in_image:
+                    line = balloon_element.sub(" ", line)
+                    if line.strip().replace("\u001b[00m", "")=="":
+                        continue
+                    else:
+                        data["lines"].append(line)
+                        height += 1
+        data["height"] = str(height)
+        db["ponies"][name] = data
+        db["by_height"][height].append(name)
+
+if not os.path.exists(DBFILE):
+    parse_directory(PONYDIR, db)
+    parse_directory(EXTDIR, db)
+        
+    with open(DBFILE, "w", encoding="UTF-8") as f:
+        json.dump(db, f)
+
+with open(DBFILE, "r", encoding="UTF-8") as f:
+    db = json.load(f)
+
+max_height = 60
+if len(sys.argv)==2:
+    if sys.argv[1].isnumeric:
+        # we have a max height
+        max_height = int(sys.argv[1])
+
+# Choose a pony
+ponies = []
+for i in range(11, max_height+1):
+    if str(i) in db["by_height"]:
+        ponies.extend(db["by_height"][str(i)])
+pony = random.choice(ponies)
+
+# Read input text
+lines = []
+for line in sys.stdin:
+    lines.append(line.strip("\n").replace("\t", "    "))
+
+frame_lines = frame.get_frame(lines, limit=30)
+pony_lines = db["ponies"][pony]["lines"]
+
+height = max(len(frame_lines), len(pony_lines))
+
+for i in range(height):
+    print(pony_lines[i], "   ", end="")
+    if i < len(frame_lines):
+        print(frame_lines[i])
+    else:
+        print()

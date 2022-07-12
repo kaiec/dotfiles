@@ -135,10 +135,11 @@ n() {
 	popd
 }
 
-alias ls='ls --group-directories-first'
+# alias ls='ls --group-directories-first'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias ldl='ls -Alt ~/Downloads | head -n 10'
 
 alias ..='cd ..'
 alias 1..='cd ..'
@@ -193,10 +194,11 @@ stty -ixon
 # fi
 # 
 # Autostart
-if ! [ -e ~/.is_presentation ]
-then
-	~/dotfiles/bin/agenda.sh
-fi
+# if ! [ -e ~/.is_presentation ]
+# then
+# 	~/dotfiles/bin/agenda.sh
+# fi
+/home/kai/dotfiles/bin/pony_term
 
 
 # >>> conda initialize >>>
@@ -218,3 +220,8 @@ unset __conda_setup
 source /home/kai/.config/broot/launcher/bash/br
 
 export SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR=0
+
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION

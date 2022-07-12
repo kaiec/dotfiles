@@ -1,0 +1,5 @@
+#!/bin/bash
+setterm --linewrap off
+quotes | /home/kai/dotfiles/bin/pony 16
+setterm --linewrap on
+
