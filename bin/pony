@@ -17,7 +17,8 @@ db = {
     "ponies": {}, # here is all the data about the ponies
     "by_height": collections.defaultdict(list),
 }
-balloon_element = re.compile("\\$.*\\$")
+balloon_element = re.compile(r"\$.*\$")
+ansi = re.compile(r"\x1b\[[^m]*m")
 
 def parse_directory(directory, db):
     for ponyfile in os.listdir(directory):
@@ -27,6 +28,7 @@ def parse_directory(directory, db):
         data = {}
         data["lines"] = []
         height = 0
+        width = 0
         with open(os.path.join(directory, ponyfile), "r", encoding="UTF-8") as f:
             print("Reading {}".format(ponyfile))
             in_header = False
@@ -51,8 +53,11 @@ def parse_directory(directory, db):
                         continue
                     else:
                         data["lines"].append(line)
+                        w = len(ansi.sub("", line))
+                        width = w if w > width else width
                         height += 1
         data["height"] = str(height)
+        data["width"] = str(width)
         db["ponies"][name] = data
         db["by_height"][height].append(name)
 
@@ -66,8 +71,10 @@ if not os.path.exists(DBFILE):
 with open(DBFILE, "r", encoding="UTF-8") as f:
     db = json.load(f)
 
+frame_limit=30
+max_width = os.get_terminal_size().columns - frame_limit - 4 -4 
 max_height = 60
-if len(sys.argv)==2:
+if len(sys.argv)>1:
     if sys.argv[1].isnumeric:
         # we have a max height
         max_height = int(sys.argv[1])
@@ -77,14 +84,19 @@ ponies = []
 for i in range(11, max_height+1):
     if str(i) in db["by_height"]:
         ponies.extend(db["by_height"][str(i)])
+ponies = [p for p in ponies if int(db['ponies'][p]['width'])<=max_width]
+if not ponies:
+    print("Sorry, not enough space for our ponies...")
+    sys.exit(0)
 pony = random.choice(ponies)
+# print(pony, db['ponies'][pony]['width'])
 
 # Read input text
 lines = []
 for line in sys.stdin:
     lines.append(line.strip("\n").replace("\t", "    "))
 
-frame_lines = frame.get_frame(lines, limit=30)
+frame_lines = frame.get_frame(lines, limit=frame_limit)
 pony_lines = db["ponies"][pony]["lines"]
 
 height = max(len(frame_lines), len(pony_lines))

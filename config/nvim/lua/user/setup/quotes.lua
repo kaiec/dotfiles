@@ -35,6 +35,16 @@ local quotes = {
 		[[Bad programmers worry about the code. Good programmers]],
 		[[worry about data structures and their relationships.]],
 		[[- Linus Torvalds]],
+	},{
+		[[To me, programming is more than an important]],
+		[[practical art. It is also a gigantic undertaking]],
+		[[in the foundations of knowledge.]],
+		[[- Grace Hopper]],
+	},{
+		[[We're having an information explosion, and it's]],
+		[[certainly obvious that information is of no use]],
+		[[unless it's available.]],
+		[[- Mary Kenneth Keller]],
 	},
 }
 
