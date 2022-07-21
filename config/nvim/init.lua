@@ -3,4 +3,4 @@ require 'user.keymap'
 require 'user.plugins'
 require 'user.colors'
 
-vim.cmd "source vimscripts.vim"
+vim.cmd "source ~/.config/nvim/vimscripts.vim"
