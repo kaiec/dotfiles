@@ -45,6 +45,18 @@ local quotes = {
 		[[certainly obvious that information is of no use]],
 		[[unless it's available.]],
 		[[- Mary Kenneth Keller]],
+	},{
+		[[Programming requires: High tolerance for failure.]],
+		[[Failure inducing a sense of intrigue. A rush of]],
+		[[pleasure when something works. This special sort]],
+		[[of drive can overcome anyone.]],
+		[[- Ellen Ullman]],
+	},{
+		[[Code breaks and then it falls apart, and it often]],
+		[[takes many, many tries until that magical moment]],
+		[[when what you're trying to build comes to life.]],
+		[[It requires perseverance. It requires imperfection.]],
+		[[- Reshma Saujani]],
 	},
 }
 
