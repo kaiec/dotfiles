@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: columns
+# key: columns
+# --
+*** left :BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_COL: $1
+:END:
+
+$2
+
+*** right :BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_COL: ${1:$(- 1 (string-to-number yas-text))}
+:END:
+
+$3

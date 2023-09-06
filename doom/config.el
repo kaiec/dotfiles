@@ -8,7 +8,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Kai Eckert"
-      user-mail-address "hallo@kaiec.de")
+      user-mail-address "k.eckert@hs-mannheim.de")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -41,24 +41,38 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-(setq org-roam-capture-templates
-      '(
-        ("d" "default" plain "%?" :target (file+head "${slug}.org" "#+title: ${title}\n") :unnarrowed t)
-
-        ("p" "people" plain "%?" :target (file+head "people/${slug}.org" "#+title: ${title}\n") :unnarrowed t)
-
-        ;; bibliography note template
-        ("r" "bibliography reference" plain (file "~/org/templates/reference.org")
-        :target
-        (file+head "references/${citekey}.org" "#+title: ${citekey} - ${author-or-editor-abbrev} - ${title}\n")
-        :unnarrowed t)
-
-        ))
+(setq org-directory "~/sync/org/")
 (after! org
         (require 'my-roam-agenda)
+        (require 'org-download)
+        ; (load "my-org-present")
         ; WORKAROUND, https://github.com/org-roam/org-roam/issues/2198
         (setq org-fold-core-style 'overlays)
+        (setq org-latex-caption-above nil)
+        (setq org-todo-keywords '(
+                                  (sequence "TODO(t!)" "WAIT(w@)" "OPEN(o!)"  "|" "DONE(d!)" "CANCELED(c@)" "IRRELEVANT(i!)" "HOLD(h@)"  )
+                                  (sequence "PLANNED(p!)" "ACTIVE(a!)" "|" "SUBMITTED(s!)" "ACCEPTED(a@)" "REJECTED(r@)" "ICED(i@)")
+                                  ))
+        (setq org-capture-templates
+        '(
+        ("m" "Email Workflow")
+        ("mt" "Todo" entry (file+olp "~/sync/org/roam/mail.org" "Todos")
+                "* TODO %a (%:fromname )\n%i")
+        ))
+        (setq org-roam-capture-templates
+        '(
+                ("d" "default" plain "%?" :target (file+head "${slug}.org" "#+title: ${title}\n") :unnarrowed t)
+
+                ("p" "people" plain "%?" :target (file+head "people/${slug}.org" "#+title: ${title}\n") :unnarrowed t)
+
+                ;; bibliography note template
+                ("r" "bibliography reference" plain (file "~/sync/org/templates/reference.org")
+                :target
+                (file+head "references/${citekey}.org" ":PROPERTIES:\n :NOTER_DOCUMENT: ${file}\n :END:\n \n #+title: ${citekey} - ${author-or-editor-abbrev} - ${title}\n\n")
+                :unnarrowed t)
+
+
+                ))
   )
 
 
@@ -99,12 +113,12 @@
   :after org-roam
   :config
   (require 'org-ref)
-  (setq! reftex-default-bibliography '("~/org/roam/references/references.bib") )
+  (setq! reftex-default-bibliography '("~/sync/org/roam/references/references.bib") )
   ;; This is overwritten by bibtex-completion-bibliography anyway
-  ;; (setq! helm-bibtex-bibliography '("~/org/roam/references/references.bib") )
-  (setq! bibtex-completion-bibliography '("~/org/roam/references/references.bib") )
+  ;; (setq! helm-bibtex-bibliography '("~/sync/org/roam/references/references.bib") )
+  (setq! bibtex-completion-bibliography '("~/sync/org/roam/references/references.bib") )
   (setq! bibtex-completion-pdf-field "file")
-  (setq! bibtex-completion-notes-path "~/org/roam/references")
+  (setq! bibtex-completion-notes-path "~/sync/org/roam/references")
   (org-roam-bibtex-mode)
   (setq! orb-insert-interface 'helm-bibtex)
   (setq! orb-preformat-keywords '("citekey" "entry-type" "date" "pdf?" "note?" "file" "author" "editor" "author-abbrev" "editor-abbrev" "author-or-editor-abbrev" "title"))
@@ -161,6 +175,68 @@
                             (:name "Meetings"
                                    :and (:todo "MEET" :scheduled future)
                                    :order 10)
+                            (:name "On hold"
+                                   :todo "HOLD"
+                                   :order 8)
                             (:discard (:not (:todo "TODO")))))))))))
   :config
   (org-super-agenda-mode))
+
+(defun kai-rename-image ()
+  "Rename image at point."
+  (interactive)
+  (let* ((current-path (org-element-property :path (org-element-context)))
+         (current-name (file-name-nondirectory current-path))
+         (current-dir (f-dirname current-path))
+         (ext (file-name-extension current-name))
+         (new-name (read-string "Rename file at point to: " (file-name-sans-extension current-name)))
+         (new-path (concat current-dir "/" new-name "." ext)))
+    (rename-file current-path new-path)
+    (message "File successfully renamed...")
+    (org-download-replace-all current-name (concat new-name "." ext))))
+
+(use-package! orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
+;; E-Mail Setup
+
+;; Each path is relative to the path of the maildir you passed to mu
+(set-email-account! "HSMA"
+  '((mu4e-sent-folder       . "/Inbox")
+    (mu4e-drafts-folder     . "/Drafts")
+    (mu4e-trash-folder      . "/trash")
+    (mu4e-refile-folder     . "/archive")
+    (smtpmail-smtp-user     . "k.eckert@hs-mannheim.de")
+    (mu4e-compose-signature . "Prof. Dr. Kai Eckert\nMannheim University of Applied Sciences\nhttp://www.kaiec.org/\nPGP Public Key:   http://www.kaiec.org/2012/pgp/pubkey.asc\nA987  3760  12A6  35A4  E6D2  577E  513A  6B84  C755  5A67")
+  ) t )
+
+;; add to $DOOMDIR/config.el
+(after! mu4e
+  (remove-hook! 'mu4e-compose-mode-hook #'org-msg-post-setup)
+  (setq mu4e-compose-format-flowed t)
+  (setq message-kill-buffer-on-exit t)
+  (setq mu4e-compose-dont-reply-to-self t)
+  (setq mu4e-compose-crypto-policy '(sign-all-messages))
+  (setq sendmail-program (executable-find "msmtp")
+	send-mail-function #'smtpmail-send-it
+	message-sendmail-f-is-evil t
+	message-sendmail-extra-arguments '("--read-envelope-from")
+	message-send-mail-function #'message-send-mail-with-sendmail)
+  ;; deactivate mail fetching, only reindex at update
+  (setq mu4e-get-mail-command "true")
+  ;; (setq mu4e-split-view 'single-window)
+    ;; https://systemcrafters.net/emacs-mail/email-workflow-with-org-mode/
+    (defun efs/capture-mail-todo (msg)
+    (interactive)
+    (call-interactively 'org-store-link)
+    (org-capture nil "mt"))
+
+
+    ;; Add custom actions for our capture templates
+    (add-to-list 'mu4e-headers-actions
+    '("todo" . efs/capture-mail-todo) t)
+    (add-to-list 'mu4e-view-actions
+    '("todo" . efs/capture-mail-todo) t)
+)

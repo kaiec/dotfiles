@@ -63,3 +63,6 @@
 (unpin! bibtex-completion helm-bibtex ivy-bibtex)
 
 (package! org-super-agenda)
+(package! org-download)
+(package! org-present)
+(package! visual-fill-column)

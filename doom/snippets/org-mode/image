@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: image
+# key: image
+# --
+#+attr_latex: :width $1\\textwidth
+#+caption: $2
+[[./images/$3.png]]
