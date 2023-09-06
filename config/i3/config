@@ -13,17 +13,17 @@ set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:SFNS Display 13
+font pango:SFNS Display 12
 
-gaps inner 3
-gaps outer 0 
-for_window [class="^.*"] border pixel 3
+gaps inner 8
+gaps outer 1
+for_window [class="^.*"] border pixel 2
 smart_gaps on
 smart_borders on
 
 # Colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #f4c7899  #6699ff
+client.focused          #4c7899 #285577 #ffffff #f4c789   #6699ff
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
@@ -88,7 +88,7 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-	
+
 # swap focused window
 bindsym $mod+Control+Left exec ~/dotfiles/config/i3/swap left
 bindsym $mod+Control+Right exec ~/dotfiles/config/i3/swap right
@@ -211,7 +211,7 @@ mode "layout" {
         bindsym Shift+Down move down 20 px
         bindsym Shift+Up move up 20 px
         bindsym Shift+Right move right 20 px
-	
+
 	bindsym c move position center
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -232,6 +232,7 @@ bar {
 	height 32
 	colors {
 		background #00000088
+		focused_workspace #67b21b #3d6910 #ffffff
 	}
 	strip_workspace_numbers yes
 }
@@ -318,8 +319,10 @@ for_window [class="fs-uae"] floating enable
 
 for_window [class="KeePassXC"] floating enable
 
+# Other stuff
+for_window [title="pyStage"] floating enable
 # wal support
-exec_always --no-startup-id wal -R
+# exec_always --no-startup-id wal -R
 
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
@@ -331,19 +334,20 @@ set_from_resource $bg i3wm.color2 #f0f0f0
 # set_from_resource $focus i3wm.color15 #f0f0f0
 # set_from_resource $indicator i3wm.color12 #f0f0f0
 set $indicator #ffb52a
-set $focus #f90000
+set $focus #eeeeee
 set $bg #000000
+set $unfocused #333333
 
-# class                 border  backgr. text indicator  child_border
-client.focused          $focus  $bg     $fg  $indicator $focus
-client.focused_inactive $bg     $bg     $fg  $bg        $bg
-client.unfocused        $bg     $bg     $fg  $bg        $bg
-client.urgent           $bg     $bg     $fg  $bg        $bg
-client.placeholder      $bg     $bg     $fg  $bg        $bg
+# class                 border         backgr. text indicator  child_border
+client.focused          $focus         $bg     $fg  $indicator $focus
+client.focused_inactive $unfocused     $bg     $fg  $bg        $unfocused
+client.unfocused        $unfocused     $bg     $fg  $bg        $unfocused
+client.urgent           $unfocused     $bg     $fg  $bg        $unfocused
+client.placeholder      $unfocused     $bg     $fg  $bg        $unfocused
 
 client.background       $bg
 
-exec_always --no-startup-id feh --bg-scale ~/dotfiles/bg.png
+exec_always --no-startup-id feh --bg-fill ~/daten/themes/bambus-wald-osaka-20221029_134016.jpg
 
 
 # Exec notify server

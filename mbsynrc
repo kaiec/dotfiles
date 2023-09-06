@@ -1,3 +1,31 @@
+# HSMA {{{
+
+IMAPAccount hsma-account
+Host mail.hs-mannheim.de
+User eckert
+Port 993
+PassCmd "gpg --no-tty -q -d ~/.kak/hsma.gpg"
+SSLType IMAPS
+#CertificateFile /home/kai/daten/setup/hdm-imap-outdated.pem
+
+
+IMAPStore hsma-remote
+Account hsma-account
+
+MaildirStore hsma-local
+SubFolders Verbatim
+Path ~/Maildir/hsma/
+Inbox ~/Maildir/hsma/Inbox
+
+Channel hsma
+Far :hsma-remote:
+Near :hsma-local:
+Patterns * 
+Create Both
+Expunge Both
+Remove Both
+SyncState *
+
 # HdM {{{
 
 IMAPAccount hdm-account

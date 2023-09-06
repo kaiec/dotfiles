@@ -132,4 +132,4 @@ with tempfile.TemporaryDirectory() as tmpdir:
     print("Running mutt with draft: {}".format(filename))
     # import time
     # time.sleep(60)
-    subprocess.run(["mutt", "-H", filename], stdin=sys.stdin)
+    subprocess.run(["neomutt" ,"-F", "~/dotfiles/mutt/muttrc-hsma", "-H", filename], stdin=sys.stdin)

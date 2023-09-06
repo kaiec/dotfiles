@@ -1,4 +1,5 @@
 #!/bin/bash
+
 pgrep -f float_cal
 RUNNING=$?
 if [ $RUNNING -eq 0 ]
@@ -6,7 +7,7 @@ then
 	i3-msg \[instance=\"float_cal\"\] scratchpad show
 	exit 0
 else
-	kitty --name float_cal bash -c "(cat ~/.cache/wal/sequences &);ikhal" &
+	kitty --name float_cal bash -c "(cat ~/.cache/wal/sequences &);source ~/.pyenv/versions/hdm/bin/activate;ikhal" &
 	sleep 1
 	i3-msg \[instance=\"float_cal\"\] scratchpad show 
 fi

@@ -53,7 +53,10 @@ tasks."
 
 (defun roam-extra:update-todo-files (&rest _)
   "Update the value of `org-agenda-files'."
-  (setq org-agenda-files (roam-extra:todo-files)))
+  (setq org-agenda-files (roam-extra:todo-files))
+  (setq org-agenda-files (append org-agenda-files my-org-agenda-files))
+
+  )
 
 (add-to-list 'org-tags-exclude-from-inheritance "todo")
 (add-hook 'find-file-hook #'roam-extra:update-todo-tag)

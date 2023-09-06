@@ -1,11 +1,13 @@
 #!/bin/bash
 msmtp-queue -r
+mbsync hsma &
 mbsync hdm &
 mbsync gen &
 mbsync hallo &
 mbsync kep &
 mbsync flokai &
 vdirsyncer sync &
+~/bin/fetch-cals.sh 2> /dev/null
 wait
 notmuch new
 vdirsyncer sync

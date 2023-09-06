@@ -57,7 +57,7 @@ __python_env() {
 	fi
 }
 
-export PS1="$COLOR_BLUE┌─ \w\$(__python_env '$COLOR_BLUE')\$(__git_branch '$COLOR_BLUE')\n└─ \\$ \[$COLOR_RESET\]"
+export PS1="$COLOR_GREEN┌─ \w\$(__python_env '$COLOR_GREEN')\$(__git_branch '$COLOR_GREEN')\n└─ \\$ \[$COLOR_RESET\]"
 
 
 # pyenv support
@@ -105,13 +105,10 @@ alias ga='git add'
 command -v nvim > /dev/null && alias vim=nvim
 alias v=vim
 
+alias emacs="emacsclient -c "
+alias e=emacs
+
 alias fspdf='~/daten/projekte/fspdf/fspdf-runner.py'
-_mutt(){
-	pushd ~ > /dev/null
-	mutt $@
-	popd > /dev/null
-}
-alias mutt=_mutt
 alias vimdiff='nvim -d'
 
 # TASK WARRIOR
@@ -138,7 +135,7 @@ _taskopen() {
 alias taskopen=_taskopen
 
 n() {
-	pushd ~/Dropbox/Notizen/
+	pushd ~/daten/notizen/
 	vim $1.md
 	popd
 }
@@ -156,10 +153,18 @@ alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
 alias 5..='cd ../../../../..'
 
-alias mgen='mutt -F ~/dotfiles/mutt/muttrc-gen'
-alias mhallo='mutt -F ~/dotfiles/mutt/muttrc-hallo'
-alias mkep='mutt -F ~/dotfiles/mutt/muttrc-kep'
-alias mflokai='mutt -F ~/dotfiles/mutt/muttrc-flokai'
+_mutt(){
+	pushd ~/attachments > /dev/null
+	/usr/bin/neomutt $@
+	popd > /dev/null
+}
+alias mutt='_mutt -F ~/dotfiles/mutt/muttrc-hsma'
+alias mgen='_mutt -F ~/dotfiles/mutt/muttrc-gen'
+alias mhs='_mutt -F ~/dotfiles/mutt/muttrc-hsma'
+alias mhdm=_mutt
+alias mhallo='_mutt -F ~/dotfiles/mutt/muttrc-hallo'
+alias mkep='_mutt -F ~/dotfiles/mutt/muttrc-kep'
+alias mflokai='_mutt -F ~/dotfiles/mutt/muttrc-flokai'
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

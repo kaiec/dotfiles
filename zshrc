@@ -184,3 +184,5 @@ _fzf_compgen_dir() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /home/kai/.config/broot/launcher/bash/br

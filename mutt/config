@@ -39,6 +39,9 @@ bind index,pager \Cj sidebar-next
 bind index,pager \Cl  sidebar-open
 # backspace is control h
 bind index,pager <Backspace> sidebar-toggle-visible
+# not anymore...
+bind index,pager \Ch sidebar-toggle-visible
+bind pager H display-toggle-weed
 
 bind index,attach k previous-entry
 bind index,attach j next-entry

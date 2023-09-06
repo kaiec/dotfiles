@@ -1,2 +1,2 @@
 #!/bin/bash
-rofi $@ -async-pre-read 5 2> ~/.cache/rofi.log
+/home/kai/software/rofi/build/rofi $@ -async-pre-read 5 2> ~/.cache/rofi.log

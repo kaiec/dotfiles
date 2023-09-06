@@ -45,8 +45,8 @@ if [[ -z $1 ]]; then
 	echo "------- AGENDA ------"
 	command -v khal > /dev/null && __showcal
 	echo
-	echo "------- TODO --------"
-	command -v task > /dev/null && __showtasks
+#	echo "------- TODO --------"
+#	command -v task > /dev/null && __showtasks
 	echo "---------------------"
 	echo
 	command -v notmuch > /dev/null && __showmail

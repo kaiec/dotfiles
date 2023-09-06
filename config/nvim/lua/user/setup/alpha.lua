@@ -14,10 +14,10 @@ dashboard.button( "o", "  Open File" , ":Telescope find_files<CR>"),
 dashboard.button( "q", "  Quit NVIM" , ":qa<CR>"),
 dashboard.button( "c", "  Config" , ":cd ~/.config/nvim<CR>:e init.lua<CR>"),
 }
-local handle = io.popen('fortune ~/.config/nvim/quotes')
-			local fortune = handle:read("*a")
-			handle:close()
-			-- dashboard.section.footer.val = fortune
+-- local handle = io.popen('fortune ~/.config/nvim/quotes')
+--			local fortune = handle:read("*a")
+--			handle:close()
+--			-- dashboard.section.footer.val = fortune
 
 
 dashboard.section.footer.val = require('alpha.fortune')({

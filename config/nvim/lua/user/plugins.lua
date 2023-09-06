@@ -73,7 +73,7 @@ return require('packer').startup({
 		-- use 'maksimr/vim-jsbeautify'			-- Javascript Formatting
 		use 'junegunn/goyo.vim'			-- Zen mode
 		use 'ap/vim-css-color'       -- Hex Color highlighting.
-		-- use 'mattn/emmet-vim'       -- HTML auto competion magic.
+		use 'mattn/emmet-vim'       -- HTML auto competion magic.
 		use 'ferrine/md-img-paste.vim'       -- Image paste in markdown
 		use 'machakann/vim-highlightedyank'   -- Highlight yanked text
 		use 'easymotion/vim-easymotion'   -- Easymotion

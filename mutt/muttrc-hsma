@@ -1,0 +1,55 @@
+source ~/dotfiles/mutt/config
+
+# Automatically log in to this mailbox at startup
+set spoolfile="~/Maildir/hsma/Inbox"
+# Define the = shortcut, and the entry point for the folder browser (c?)
+set folder="~/Maildir/hsma"
+
+mailboxes +Inbox +hdm +dws +ki +fak +prof +moodle +verwaltung +s3se +s3nlp +mds +confident +fid +caius +vadis +dw +reisen +events +reviews +scifoo
+# mailboxes `find ~/Maildir/hsma/ -mindepth 1 -maxdepth 1 -type d ! -name "*trash*" ! -name "test" ! -name "*spam*" ! -name "drafts" ! -name "*.notmuch*" -printf '"%p"\0' | xargs -0`
+
+
+set record="=Inbox"
+set postponed="=drafts"
+set mbox="=archive"
+set trash="=trash"
+
+macro index,pager + "c=Inbox<enter>"
+macro index,pager = "c=Inbox<enter>"
+
+
+# set virtual_spoolfile=yes
+# virtual-mailboxes "inbox" "notmuch://?query=folder:hdm/Inbox"
+
+# Auto folder tagger
+# save-hook . "="
+# macro index,pager \Cs "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><enter-command>source ~/dotfiles/mutt/autosort.py|<enter><enter-command>set wait_key<enter><save-message>" "Guess save folder"
+
+# macro index,pager S "<enter-command>unset wait_key<enter><pipe-entry>cat > ~/fwdtest<enter><enter-command>source ~/dotfiles/mutt/autosort.py|<enter><enter-command>set wait_key<enter><esc>t<tag-prefix><save-message>" "Guess save folder"
+#
+macro attach M "\
+<enter-command>unset wait_key<enter>\
+<shell-escape>rm -rf /tmp/mutt-attach<enter>\
+<shell-escape>mkdir /tmp/mutt-attach<enter>\
+<save-entry><bol><delete-char>/tmp/mutt-attach<enter>\
+<shell-escape>dragon-drag-and-drop /tmp/mutt-attach/*<enter>\
+<enter-command>set wait_key<enter>\
+"
+
+
+macro index % "<enter-command>unset wait_key<enter><shell-escape>notmuch new > /dev/null<enter><enter-command>set wait_key<enter>"
+
+set from="k.eckert@hs-mannheim.de"
+set signature="~/dotfiles/hsma-signature.sig"
+
+set sendmail="/home/kai/dotfiles/mutt/checkmail.py msmtpq -a hsma"
+set sendmail_wait = -1
+
+# GPG Support
+source ~/.mutt/gpg.rc
+
+set crypt_autosign = yes
+set crypt_replyencrypt = yes
+set pgp_verify_sig = yes
+set pgp_auto_decode = yes
+

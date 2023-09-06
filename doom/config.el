@@ -43,6 +43,11 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/sync/org/")
 (after! org
+        ;; custom list of static agenda files that are not managed by my-roam-agenda
+        (defvar my-org-agenda-files nil "Custom list of static agenda files")
+        (setq my-org-agenda-files '("/home/kai/sync/org/calendars/calendar-kai.org" "/home/kai/sync/org/calendars/calendar-flo-kai.org"))
+
+
         (require 'my-roam-agenda)
         (require 'org-download)
         ; (load "my-org-present")
@@ -73,6 +78,13 @@
 
 
                 ))
+        ;; Needs more work, could be something for a filtered view of active stuff
+        ;; https://emacs.stackexchange.com/questions/70106/in-org-tags-view-how-can-i-only-see-headlines-with-non-inherited-tags
+        (defun my/org-tags-view (&optional todo-only watch)
+                (interactive)
+                (let ((org-use-tag-inheritance nil))
+                (org-tags-view todo-only watch)))
+
   )
 
 
@@ -133,9 +145,9 @@
     org-agenda-include-deadlines t
     org-agenda-block-separator nil
     org-agenda-compact-blocks t
-    ; org-agenda-start-day nil  ;; i.e. today
-    org-agenda-span 14
-    org-agenda-start-on-weekday 1)
+    org-agenda-start-day nil  ;; i.e. today
+    org-agenda-span 1
+    org-agenda-start-on-weekday nil)
   (setq org-agenda-custom-commands
         '(("c" "Super view"
            ((agenda "" ((org-agenda-overriding-header "Week")
@@ -165,7 +177,7 @@
                                    :order 8)
                             (:name "Reschedule"
                                    :scheduled past
-                                   :order 8)
+                                   :order 15)
                             (:name "Waiting"
                                    :todo "WAIT"
                                    :order 8)
