@@ -45,7 +45,7 @@
 (after! org
         ;; custom list of static agenda files that are not managed by my-roam-agenda
         (defvar my-org-agenda-files nil "Custom list of static agenda files")
-        (setq my-org-agenda-files '("/home/kai/sync/org/calendars/calendar-kai.org" "/home/kai/sync/org/calendars/calendar-flo-kai.org"))
+        (setq my-org-agenda-files '("/home/kai/sync/org/calendars/calendar-kai.org" "/home/kai/sync/org/calendars/calendar-flo-kai.org" "/home/kai/sync/org/calendars/calendar-team.org"))
 
 
         (require 'my-roam-agenda)
@@ -85,6 +85,39 @@
                 (let ((org-use-tag-inheritance nil))
                 (org-tags-view todo-only watch)))
 
+        ;; Agenda settings
+        (setq org-agenda-compact-blocks nil)
+        (setq org-agenda-block-separator 9620) ;≡ 8801 /  ─ 9472
+        (setq org-agenda-custom-commands
+        '(("c" "My Agenda"
+                ((agenda "" (
+                (org-agenda-overriding-header "Calendar")
+                (org-agenda-span 2)
+                (org-agenda-start-day nil)
+                (org-deadline-warning-days 1)
+                ))
+                (tags-todo "SCHEDULED>\"<+1d>\"+SCHEDULED<\"<+4d>\"" (
+                (org-agenda-overriding-header "Scheduled soon")
+                (org-agenda-prefix-format "%(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%A\" scheduled) \"\")) ")
+                (org-agenda-sorting-strategy '(scheduled-up))
+                ))
+                (tags-todo "DEADLINE>\"<+1d>\"+DEADLINE<\"<+8d>\"" (
+                (org-agenda-overriding-header "Upcoming Deadlines")
+                (org-agenda-prefix-format "%(let ((deadline (org-get-deadline-time (point)))) (if deadline (format-time-string \"%A\" deadline) \"\")) ")
+                (org-agenda-sorting-strategy '(deadline-up))
+                ))
+                (alltodo "" (
+                (org-agenda-todo-ignore-scheduled t)
+                (org-agenda-overriding-header "Open Todos")
+                ))
+                )
+
+                ( ;; options set here apply to the entire block
+                (org-agenda-compact-blocks nil))
+                (org-agenda-block-separator "*")
+                ))
+                ;; ...other commands here
+                )
   )
 
 
@@ -137,62 +170,6 @@
   ) ; optional: if using Org-ref v2 or v3 citation links
 
 ;; (setq confirm-kill-emacs yes-or-n-p)
-(use-package! org-super-agenda
-  :after org-agenda
-  :init
- (setq org-agenda-skip-scheduled-if-done t
-    org-agenda-skip-deadline-if-done t
-    org-agenda-include-deadlines t
-    org-agenda-block-separator nil
-    org-agenda-compact-blocks t
-    org-agenda-start-day nil  ;; i.e. today
-    org-agenda-span 1
-    org-agenda-start-on-weekday nil)
-  (setq org-agenda-custom-commands
-        '(("c" "Super view"
-           ((agenda "" ((org-agenda-overriding-header "Week")
-                        (org-super-agenda-groups
-                         '((:name "Today"
-                                  :time-grid t
-                                  :date today
-                                  :order 1)))))
-            (alltodo "" ((org-agenda-overriding-header "")
-                         (org-super-agenda-groups
-                          '((:log t)
-                            (:name "To refile"
-                                   :file-path "refile\\.org")
-                            (:name "Next to do"
-                                   :todo "NEXT"
-                                   :order 1)
-                            (:name "Important"
-                                   :priority "A"
-                                   :order 6)
-                            (:name "Today's tasks"
-                                   :file-path "journal/")
-                            (:name "Due Today"
-                                   :deadline today
-                                   :order 2)
-                            (:name "Scheduled Soon"
-                                   :scheduled future
-                                   :order 8)
-                            (:name "Reschedule"
-                                   :scheduled past
-                                   :order 15)
-                            (:name "Waiting"
-                                   :todo "WAIT"
-                                   :order 8)
-                            (:name "Overdue"
-                                   :deadline past
-                                   :order 7)
-                            (:name "Meetings"
-                                   :and (:todo "MEET" :scheduled future)
-                                   :order 10)
-                            (:name "On hold"
-                                   :todo "HOLD"
-                                   :order 8)
-                            (:discard (:not (:todo "TODO")))))))))))
-  :config
-  (org-super-agenda-mode))
 
 (defun kai-rename-image ()
   "Rename image at point."
@@ -237,7 +214,8 @@
 	message-sendmail-extra-arguments '("--read-envelope-from")
 	message-send-mail-function #'message-send-mail-with-sendmail)
   ;; deactivate mail fetching, only reindex at update
-  (setq mu4e-get-mail-command "true")
+  (setq mu4e-get-mail-command "~/dotfiles/bin/mail-emacs")
+  (setq mu4e-update-interval 300)
   ;; (setq mu4e-split-view 'single-window)
     ;; https://systemcrafters.net/emacs-mail/email-workflow-with-org-mode/
     (defun efs/capture-mail-todo (msg)
