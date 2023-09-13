@@ -216,7 +216,8 @@
   ;; deactivate mail fetching, only reindex at update
   (setq mu4e-get-mail-command "~/dotfiles/bin/mail-emacs")
   (setq mu4e-update-interval 300)
-  ;; (setq mu4e-split-view 'single-window)
+  ;;(setq mu4e-split-view 'single-window)
+  (setq mu4e-split-view nil)
     ;; https://systemcrafters.net/emacs-mail/email-workflow-with-org-mode/
     (defun efs/capture-mail-todo (msg)
     (interactive)
@@ -229,4 +230,10 @@
     '("todo" . efs/capture-mail-todo) t)
     (add-to-list 'mu4e-view-actions
     '("todo" . efs/capture-mail-todo) t)
+
+    ;; do not kill all windows when mu4e opens main vew
+    ;; https://github.com/djcb/mu/issues/2382
+    (add-to-list 'display-buffer-alist
+             `(,(regexp-quote mu4e-main-buffer-name)
+               display-buffer-same-window))
 )
