@@ -203,7 +203,20 @@
 
 ;; add to $DOOMDIR/config.el
 (after! mu4e
+  ;; deactivate org-msg
   (remove-hook! 'mu4e-compose-mode-hook #'org-msg-post-setup)
+  ;; get just back to headers view from a mail
+  (map! :map mu4e-view-mode-map :n "q" (lambda! () (interactive) (mu4e-view-quit)(=mu4e)))
+  ;; quit without going to mu4e main window
+  (map! :map mu4e-headers-mode-map :n "q" (lambda! () (interactive) (mu4e-mark-handle-when-leaving) (quit-window t)))
+  ;; set Inbox as favorite for direct access
+  (add-to-list 'mu4e-bookmarks
+  '( :name  "Inbox"
+     :favorite t
+     :query "maildir:/Inbox"
+     :key   ?i))
+  (map! :leader :n "om" (lambda! () (interactive) (mu4e-jump-to-favorite)))
+
   (setq mu4e-compose-format-flowed t)
   (setq message-kill-buffer-on-exit t)
   (setq mu4e-compose-dont-reply-to-self t)
@@ -216,8 +229,8 @@
   ;; deactivate mail fetching, only reindex at update
   (setq mu4e-get-mail-command "~/dotfiles/bin/mail-emacs")
   (setq mu4e-update-interval 300)
-  ;;(setq mu4e-split-view 'single-window)
-  (setq mu4e-split-view nil)
+  (setq mu4e-split-view 'single-window)
+  ;;(setq mu4e-split-view nil)
     ;; https://systemcrafters.net/emacs-mail/email-workflow-with-org-mode/
     (defun efs/capture-mail-todo (msg)
     (interactive)
