@@ -4,7 +4,7 @@ IMAPAccount hsma-account
 Host mail.hs-mannheim.de
 User eckert
 Port 993
-PassCmd "gpg --no-tty -q -d ~/.kak/hsma.gpg"
+PassCmd "gpg --no-tty -q -d ~/sync/.kak/hsma.gpg"
 SSLType IMAPS
 #CertificateFile /home/kai/daten/setup/hdm-imap-outdated.pem
 
@@ -32,9 +32,9 @@ IMAPAccount hdm-account
 Host mail.hdm-stuttgart.de
 User eckert
 Port 993
-PassCmd "gpg --no-tty -q -d ~/.kak/hdm.gpg"
+PassCmd "gpg --no-tty -q -d ~/sync/.kak/hdm.gpg"
 SSLType IMAPS
-CertificateFile /home/kai/daten/setup/hdm-imap-outdated.pem
+# CertificateFile /home/kai/daten/setup/hdm-imap-outdated.pem
 
 
 IMAPStore hdm-remote
@@ -61,7 +61,7 @@ IMAPAccount hallo-account
 Host imap.gmail.com
 User hallo@kaiec.de
 Port 993
-PassCmd "gpg --no-tty -q -d ~/.kak/hallo.gpg"
+PassCmd "gpg --no-tty -q -d ~/sync/.kak/hallo.gpg"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -91,7 +91,7 @@ IMAPAccount gen-account
 Host imap.gmail.com
 User gen@kaiec.de
 Port 993
-PassCmd "gpg --no-tty -q -d ~/.kak/gen.gpg"
+PassCmd "gpg --no-tty -q -d ~/sync/.kak/gen.gpg"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -122,7 +122,7 @@ IMAPAccount kep-account
 Host imap.gmail.com
 User kai.eckert@ke-p.de
 Port 993
-PassCmd "gpg --no-tty -q -d ~/.kak/kep.gpg"
+PassCmd "gpg --no-tty -q -d ~/sync/.kak/kep.gpg"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -153,7 +153,7 @@ Host imap.gmail.com
 User brautpaar@fam-eckert.net
 Port 993
 Timeout 60
-PassCmd "gpg --no-tty -q -d ~/.kak/flokai.gpg"
+PassCmd "gpg --no-tty -q -d ~/sync/.kak/flokai.gpg"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
