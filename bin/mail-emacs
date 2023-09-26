@@ -1,0 +1,5 @@
+#!/bin/bash
+msmtp-queue -r
+mbsync hsma
+~/bin/fetch-cals.sh
+vdirsyncer sync
