@@ -47,6 +47,9 @@
         (defvar my-org-agenda-files nil "Custom list of static agenda files")
         (setq my-org-agenda-files '("/home/kai/sync/org/calendars/calendar-kai.org" "/home/kai/sync/org/calendars/calendar-flo-kai.org" "/home/kai/sync/org/calendars/calendar-team.org"))
 
+        (defun my-clocktable-files ()
+          "Collect all files for time tracking"
+          (file-expand-wildcards "/home/kai/sync/org/roam/daily/*.org"))
 
         (require 'my-roam-agenda)
         (require 'org-download)
@@ -118,6 +121,8 @@
                 ))
                 ;; ...other commands here
                 )
+        ;; Allow seting of local variable with bind to overwrite headers in beamer export
+        (setq org-export-allow-bind-keywords t)
   )
 
 
@@ -169,7 +174,17 @@
   (setq! orb-preformat-keywords '("citekey" "entry-type" "date" "pdf?" "note?" "file" "author" "editor" "author-abbrev" "editor-abbrev" "author-or-editor-abbrev" "title"))
   ) ; optional: if using Org-ref v2 or v3 citation links
 
-;; (setq confirm-kill-emacs yes-or-n-p)
+
+;; auto-save
+(defun save-all ()
+    (interactive)
+    (save-some-buffers t))
+
+(add-hook 'focus-out-hook 'save-all)
+
+;; No confirmation for killing emacs
+(setq confirm-kill-emacs nil)
+
 
 (defun kai-rename-image ()
   "Rename image at point."
@@ -230,6 +245,7 @@
   (setq mu4e-get-mail-command "~/dotfiles/bin/mail-emacs")
   (setq mu4e-update-interval 300)
   (setq mu4e-split-view 'single-window)
+  (setq mu4e-attachment-dir "~/attachments")
   ;;(setq mu4e-split-view nil)
     ;; https://systemcrafters.net/emacs-mail/email-workflow-with-org-mode/
     (defun efs/capture-mail-todo (msg)

@@ -21,7 +21,7 @@ export TERMINAL=kitty
 
 # Should fix Skype audio issues
 # https://answers.microsoft.com/en-us/skype/forum/skype_linux-skype_callms-skype_audioms/loose-contact-between-skype-and-pulseaudio/aa686d77-8dc4-4f54-aaeb-bee723d2493a
-export PULSE_LATENCY_MSEC=300
+# export PULSE_LATENCY_MSEC=300
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
